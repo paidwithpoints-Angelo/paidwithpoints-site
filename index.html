@@ -900,8 +900,15 @@
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      padding: 24px 16px;
+      padding: 40px 24px;
+      grid-column: 1 / -1;
+      flex-direction: row;
+      gap: 40px;
+      align-items: center;
+      text-align: left;
     }
+    .client-card.cta-card .cta-card-body { flex: 1; }
+    .client-card.cta-card .cta-card-icon { margin-bottom: 0; font-size: 48px; }
     .client-initials {
       width: 40px; height: 40px;
       border-radius: 50%;
@@ -1401,11 +1408,21 @@
         <div class="client-savings">$0 out of pocket</div>
         <div class="client-savings-lbl">Flights + hotel — fully covered</div>
       </div>
+      <div class="client-card">
+        <div class="client-initials">A</div>
+        <div class="client-name">Amber & Ryan</div>
+        <div class="client-trip-lbl">Maldives Honeymoon · Qatar Q-Suites + Conrad</div>
+        <p class="client-quote">We had over 700k Hilton points and no idea what to do with them. Angelo mapped out every airline, every transfer ratio, every route — and landed us in Qatar Q-Suites business class to the Maldives with an over-water bungalow at the Conrad. We couldn't thank him enough.</p>
+        <div class="client-savings">$35,000+</div>
+        <div class="client-savings-lbl">Flights + 7 nights OTW — fully on points</div>
+      </div>
       <div class="client-card cta-card">
         <div class="cta-card-icon">✈️</div>
-        <div class="cta-card-h">Your trip could be next</div>
-        <p class="cta-card-sub">Start with a free 30-minute discovery call. Walk away knowing what your points are actually worth.</p>
-        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">Book a Discovery Call →</a>
+        <div class="cta-card-body">
+          <div class="cta-card-h">Your trip could be next</div>
+          <p class="cta-card-sub">Start with a free 30-minute discovery call. Walk away knowing what your points are actually worth.</p>
+          <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">Book a Discovery Call →</a>
+        </div>
       </div>
     </div>
   </div>
