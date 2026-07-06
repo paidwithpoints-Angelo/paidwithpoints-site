@@ -405,25 +405,37 @@
     .how-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.06);
+      gap: 0;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.14);
       border-radius: 8px;
       overflow: hidden;
     }
     .how-step {
       background: rgba(255,255,255,.05);
-      padding: 24px 16px;
+      padding: 28px 20px;
       transition: background .2s;
+      border-right: 2px solid rgba(255,255,255,.14);
     }
-    .how-step:hover { background: rgba(255,255,255,.09); border-left: 2px solid var(--gold); }
+    .how-step:last-child { border-right: none; }
+    .how-step:hover { background: rgba(255,255,255,.09); }
     .how-step-num {
       font-family: var(--serif);
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      color: rgba(184,146,42,.7);
-      letter-spacing: .12em;
+      color: rgba(184,146,42,.65);
+      letter-spacing: .18em;
       text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .how-step-num .step-n {
+      display: block;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -.02em;
+      line-height: 1;
+      margin-top: 2px;
       margin-bottom: 16px;
     }
     .how-step h3 {
@@ -1136,7 +1148,7 @@
       .problem-left { position: static; }
       .how-section { padding: 64px 20px; }
       .how-header { grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
-      .how-steps { grid-template-columns: 1fr 1fr; gap: 1px; }
+      .how-steps { grid-template-columns: 1fr 1fr; gap: 0; } .how-step { border-right: 2px solid rgba(255,255,255,.14); border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:nth-child(2n) { border-right: none; } .how-step:nth-last-child(-n+2) { border-bottom: none; }
       .how-step { padding: 20px 14px; }
       .calc-section { padding: 64px 24px; }
       .calc-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -1180,7 +1192,7 @@
       }
       .proof-circle { width: 120px; height: 120px; }
       .proof-circle-val { font-size: 32px; }
-      .how-steps { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; } .how-step { border-right: none; border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:last-child { border-bottom: none; }
       .how-step-visual { aspect-ratio: 16/9; }
       .calc-field select { font-size: 13px; }
       .calc-output-val { font-size: 44px; }
@@ -1471,7 +1483,7 @@
   <line x1="245" y1="95" x2="255" y2="85" stroke="rgba(184,146,42,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
 </svg>
         </div>
-        <div class="how-step-num">Step 01</div>
+        <div class="how-step-num">Step <span class="step-n">01</span></div>
         <h3>Discovery Call</h3>
         <p>A 30-minute call to review your spend, your existing points, and where you want to go. We map the gap between where you are and where you want to be. No homework. No obligation.</p>
       </div>
@@ -1531,7 +1543,7 @@
   <text x="294" y="162" font-size="8" fill="#d4a83a" text-anchor="middle" font-family="sans-serif" font-weight="bold">PWP</text>
 </svg>
         </div>
-        <div class="how-step-num">Step 02</div>
+        <div class="how-step-num">Step <span class="step-n">02</span></div>
         <h3>Custom Card Strategy</h3>
         <p>We build a tailored card stack around how you actually spend — designed to earn 3–5x on every dollar instead of 1x. You apply for the right cards. We tell you which ones and in what order.</p>
       </div>
@@ -1623,7 +1635,7 @@
 
 </svg>
         </div>
-        <div class="how-step-num">Step 03</div>
+        <div class="how-step-num">Step <span class="step-n">03</span></div>
         <h3>Award Space & Booking Guide</h3>
         <p>We find the best available redemptions for your dream trip, walk you through every transfer on a live Google Meet or Loom, and guide you through the booking. You click the buttons — we're right there.</p>
       </div>
@@ -1749,7 +1761,7 @@
 
 </svg>
         </div>
-        <div class="how-step-num">Step 04</div>
+        <div class="how-step-num">Step <span class="step-n">04</span></div>
         <h3>You Travel Better</h3>
         <p>Walk into the business class lounge, board your flight, and enjoy. We stay in your corner for the next trip too — the strategy compounds over time.</p>
       </div>
