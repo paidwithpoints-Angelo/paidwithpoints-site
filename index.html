@@ -901,7 +901,7 @@
       justify-content: center;
       text-align: center;
       padding: 40px 24px;
-      grid-column: 1 / -1;
+      grid-column: 2 / -1;
       flex-direction: row;
       gap: 40px;
       align-items: center;
@@ -941,6 +941,18 @@
     .cta-card-icon { font-size: 40px; margin-bottom: 16px; }
     .cta-card-h { font-family: var(--serif); font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -.01em; }
     .cta-card-sub { font-size: 13px; color: rgba(255,255,255,.75); margin-bottom: 24px; line-height: 1.6; }
+
+    /* ── VIDEO EMBEDS ── */
+    .client-video { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule); }
+    .client-card.featured .client-video { border-top-color: rgba(255,255,255,.12); }
+    .yt-thumb { position: relative; cursor: pointer; border-radius: 6px; overflow: hidden; background: #000; user-select: none; }
+    .yt-thumb img { width: 100%; display: block; opacity: .88; transition: opacity .2s; }
+    .yt-thumb:hover img { opacity: 1; }
+    .yt-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .yt-play-circle { width: 40px; height: 40px; background: rgba(220,0,0,.88); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+    .yt-play-arrow { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #fff; margin-left: 3px; }
+    .yt-embed { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 6px; overflow: hidden; }
+    .yt-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
     /* ── ABOUT ── */
     .about-section { padding: 120px 40px; background: var(--white); border-top: 1px solid var(--rule); }
@@ -1372,6 +1384,8 @@
       <h2 class="section-h2">Real people. Real first-class trips.</h2>
     </div>
     <div class="clients-masonry">
+
+      <!-- Jason -->
       <div class="client-card featured">
         <div>
           <div class="client-initials">J</div>
@@ -1382,8 +1396,16 @@
         <div>
           <div class="client-savings">$40,000+</div>
           <div class="client-savings-lbl">Unlocked in travel value</div>
+          <div class="client-video">
+            <div class="yt-thumb" data-yt="3qh_EjEqL6k">
+              <img src="https://img.youtube.com/vi/3qh_EjEqL6k/mqdefault.jpg" alt="Meet Jason">
+              <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Garrett & Nicole -->
       <div class="client-card">
         <div class="client-initials">G</div>
         <div class="client-name">Garrett & Nicole</div>
@@ -1391,7 +1413,15 @@
         <p class="client-quote">Business class on ITA to Rome, Emirates A380 home from Milan. Unlimited champagne on the upper deck. The perfect cap to our anniversary.</p>
         <div class="client-savings">$22,000</div>
         <div class="client-savings-lbl">Saved on a trip of a lifetime</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="G2xIcePJXxI">
+            <img src="https://img.youtube.com/vi/G2xIcePJXxI/mqdefault.jpg" alt="Meet Garrett & Nicole">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
       </div>
+
+      <!-- Rachel -->
       <div class="client-card">
         <div class="client-initials">R</div>
         <div class="client-name">Rachel</div>
@@ -1399,7 +1429,15 @@
         <p class="client-quote">I wanted the private suite, the shower at 40,000 feet, the bar. Angelo made it happen. I've been traveling the world in style ever since.</p>
         <div class="client-savings">$18,000</div>
         <div class="client-savings-lbl">First class for economy's price</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="1e1H9iWc6Io">
+            <img src="https://img.youtube.com/vi/1e1H9iWc6Io/mqdefault.jpg" alt="Meet Rachel">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
       </div>
+
+      <!-- Gabrielle -->
       <div class="client-card">
         <div class="client-initials">Ga</div>
         <div class="client-name">Gabrielle</div>
@@ -1407,7 +1445,15 @@
         <p class="client-quote">A year of working together and our entire honeymoon — flights and hotel — was covered on points. We didn't pay a cent for travel.</p>
         <div class="client-savings">$0 out of pocket</div>
         <div class="client-savings-lbl">Flights + hotel — fully covered</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="wuxXq3NaAwc">
+            <img src="https://img.youtube.com/vi/wuxXq3NaAwc/mqdefault.jpg" alt="Meet Gabrielle">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
       </div>
+
+      <!-- Amber & Ryan -->
       <div class="client-card">
         <div class="client-initials">A</div>
         <div class="client-name">Amber & Ryan</div>
@@ -1416,6 +1462,24 @@
         <div class="client-savings">$35,000+</div>
         <div class="client-savings-lbl">Flights + 7 nights OTW — fully on points</div>
       </div>
+
+      <!-- Frank & Lia -->
+      <div class="client-card">
+        <div class="client-initials">FL</div>
+        <div class="client-name">Frank & Lia</div>
+        <div class="client-trip-lbl">Honeymoon Finale · British Airways First Class</div>
+        <p class="client-quote">We wanted to close out our honeymoon the right way. Angelo put us in British Airways 787-9 First Class for 180,000 points — a $14,000 experience that cost us $250 in taxes.</p>
+        <div class="client-savings">$14,000</div>
+        <div class="client-savings-lbl">First class honeymoon finale on points</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="Oz10MoQ0ymw">
+            <img src="https://img.youtube.com/vi/Oz10MoQ0ymw/mqdefault.jpg" alt="Meet Frank & Lia">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA (cols 2-3, row 3) -->
       <div class="client-card cta-card">
         <div class="cta-card-icon">✈️</div>
         <div class="cta-card-body">
@@ -1424,6 +1488,7 @@
           <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">Book a Discovery Call →</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -2102,6 +2167,17 @@
       const top = s.offsetTop, bot = top + s.offsetHeight;
       const link = document.querySelector(`.nav-right a[href="#${id}"]`);
       if (link) link.style.color = (y >= top && y < bot) ? 'var(--ink)' : '';
+    });
+  });
+
+  // YouTube video embeds — click thumbnail to play inline
+  document.querySelectorAll('.yt-thumb').forEach(el => {
+    el.addEventListener('click', function() {
+      const id = this.dataset.yt;
+      const embed = document.createElement('div');
+      embed.className = 'yt-embed';
+      embed.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      this.replaceWith(embed);
     });
   });
 </script>
