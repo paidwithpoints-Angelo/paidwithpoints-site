@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools & Resources — Paid With Points</title>
+  <meta name="description" content="Free tools and templates to help you earn, track, and redeem your credit card points for maximum value.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --ivory:   #F7F4EF;
+      --ivory2:  #EDE8E0;
+      --navy:    #0D1B2A;
+      --navy2:   #162536;
+      --gold:    #B8922A;
+      --gold-lt: #F0E4C8;
+      --ink:     #111111;
+      --muted:   #6B6560;
+      --white:   #FFFFFF;
+      --rule:    #DDD8CF;
+      --green:   #1A6B3C;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: #ffffff;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+    }
+    .nav-wrap {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 40px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px; font-weight: 700;
+      color: var(--ink); text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-link {
+      font-size: 14px; font-weight: 600; color: var(--ink);
+      text-decoration: none; letter-spacing: .01em;
+      transition: color .15s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link-active { color: var(--gold); }
+    .nav-link-ec { color: var(--gold) !important; border: 1.5px solid rgba(184,146,42,.35); border-radius: 4px; padding: 6px 14px; }
+    .nav-link-ec:hover { background: rgba(184,146,42,.08); color: var(--gold) !important; }
+    .nav-cta {
+      font-size: 13px; font-weight: 600;
+      color: var(--navy); background: transparent;
+      border: 1.5px solid var(--navy);
+      padding: 9px 20px; border-radius: 4px;
+      text-decoration: none;
+      transition: all .18s;
+      letter-spacing: .01em;
+    }
+    .nav-cta:hover { background: var(--navy); color: #fff; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--ivory);
+      padding: 140px 40px 80px;
+      text-align: center;
+    }
+    .page-header-inner { max-width: 680px; margin: 0 auto; }
+    .page-kicker {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .page-kicker::before, .page-kicker::after {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+    }
+    .page-h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    .page-h1 em { font-style: italic; color: var(--gold); }
+    .page-sub {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── TOOLS GRID ── */
+    .tools-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px 120px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    /* ── TOOL CARD ── */
+    .tool-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .tool-card:hover {
+      box-shadow: 0 8px 40px rgba(0,0,0,.1);
+      transform: translateY(-2px);
+    }
+    .tool-card-header {
+      background: var(--navy);
+      padding: 36px 32px 28px;
+      position: relative;
+    }
+    .tool-badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(184,146,42,.15);
+      border: 1px solid rgba(184,146,42,.3);
+      border-radius: 3px;
+      padding: 4px 10px;
+      margin-bottom: 18px;
+    }
+    .tool-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .tool-name {
+      font-family: var(--serif);
+      font-size: 26px; font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+    .tool-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.5;
+    }
+
+    /* ── PREVIEW STRIP ── */
+    .tool-preview {
+      background: var(--ivory2);
+      border-bottom: 1px solid var(--rule);
+    }
+    .tool-preview-main {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      object-position: top;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .tool-preview-main:hover { opacity: .92; }
+    .tool-preview-thumbs {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-top: 1px solid var(--rule);
+    }
+    .tool-preview-thumbs::-webkit-scrollbar { display: none; }
+    .tool-thumb {
+      flex: 0 0 25%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: top;
+      cursor: pointer;
+      border-right: 1px solid var(--rule);
+      opacity: .8;
+      transition: opacity .15s;
+    }
+    .tool-thumb:last-child { border-right: none; }
+    .tool-thumb:hover { opacity: 1; }
+    .tool-thumb.active { opacity: 1; outline: 2px solid var(--gold); outline-offset: -2px; }
+
+    .tool-card-body {
+      padding: 32px;
+    }
+    .tool-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .tool-features {
+      list-style: none;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tool-features li {
+      font-size: 14px;
+      color: var(--ink);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .tool-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tool-card-footer {
+      padding: 0 32px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .tool-price {
+      display: flex;
+      flex-direction: column;
+    }
+    .tool-price-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .tool-price-amount {
+      font-family: var(--serif);
+      font-size: 30px; font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+    .tool-price-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .btn-buy {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 14px; font-weight: 700;
+      letter-spacing: .02em;
+      padding: 13px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background .18s, transform .15s;
+      white-space: nowrap;
+    }
+    .btn-buy:hover {
+      background: #9e7c24;
+      transform: translateY(-1px);
+    }
+
+    /* ── COMING SOON CARD ── */
+    .tool-card-coming {
+      opacity: .55;
+      pointer-events: none;
+    }
+    .tool-card-coming .tool-card-header {
+      background: var(--ivory2);
+    }
+    .tool-card-coming .tool-name { color: var(--ink); }
+    .tool-card-coming .tool-tagline { color: var(--muted); }
+    .coming-badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+      background: var(--rule);
+      border-radius: 3px;
+      padding: 4px 10px;
+      margin-bottom: 18px;
+    }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      background: var(--navy);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .bottom-cta-inner { max-width: 600px; margin: 0 auto; }
+    .bottom-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .bottom-cta h2 em { font-style: italic; color: var(--gold); }
+    .bottom-cta p {
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .btn-cta-white {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-size: 14px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,.4);
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all .18s;
+    }
+    .btn-cta-white:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.7); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2);
+      padding: 32px 40px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+    }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-wrap { padding: 0 20px; }
+      .nav-right { gap: 14px; }
+      .nav-right .nav-link { display: none; }
+      .nav-link-ec { display: none; }
+      .page-header { padding: 120px 24px 60px; }
+      .tools-section { padding: 60px 24px 80px; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .tool-card-footer { flex-direction: column; align-items: flex-start; }
+      .btn-buy { width: 100%; text-align: center; }
+      .bottom-cta { padding: 60px 24px; }
+      footer { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-wrap">
+      <a href="paidwithpoints-new.html" class="nav-logo">Paid <em>With</em> Points</a>
+      <div class="nav-right">
+        <a href="paidwithpoints-new.html#how" class="nav-link">How It Works</a>
+        <a href="paidwithpoints-new.html#trips" class="nav-link">Real Trips</a>
+        <a href="paidwithpoints-new.html#about" class="nav-link">About</a>
+        <a href="tools.html" class="nav-link nav-link-active">Tools</a>
+        <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
+        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">Book a Discovery Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="page-kicker">Resources</p>
+      <h1 class="page-h1">Tools to <em>maximize</em><br>every point you earn</h1>
+      <p class="page-sub">Practical resources built by a points expert — to help you track, plan, and redeem smarter.</p>
+    </div>
+  </section>
+
+  <!-- TOOLS GRID -->
+  <section class="tools-section">
+    <div class="tools-grid">
+
+      <!-- CARD 1: Statement Credits Tracker -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <span class="tool-badge">Most Popular</span>
+          <span class="tool-icon">📊</span>
+          <h2 class="tool-name">Statement Credits Tracker</h2>
+          <p class="tool-tagline">Never leave a credit on the table again</p>
+        </div>
+        <!-- PREVIEW GALLERY -->
+        <div class="tool-preview">
+          <img id="preview-main" class="tool-preview-main"
+            src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png"
+            alt="Statement Credits Tracker — overview">
+          <div class="tool-preview-thumbs">
+            <img class="tool-thumb active"
+              src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png"
+              alt="Overview"
+              onclick="setPreview(this,'https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png')">
+            <img class="tool-thumb"
+              src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/5d15c606-d644-4e31-86cc-7805fa86d544/StatementCreditTracker.png"
+              alt="Credit tracker"
+              onclick="setPreview(this,'https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/5d15c606-d644-4e31-86cc-7805fa86d544/StatementCreditTracker.png')">
+            <img class="tool-thumb"
+              src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/fb44de26-297b-4e06-8882-90d45b77a0ad/CreditTalliesProgress.png"
+              alt="Credit tallies"
+              onclick="setPreview(this,'https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/fb44de26-297b-4e06-8882-90d45b77a0ad/CreditTalliesProgress.png')">
+            <img class="tool-thumb"
+              src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/1291052f-4514-4291-b571-2f5625123423/AvailableCredits.png"
+              alt="Available credits"
+              onclick="setPreview(this,'https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/1291052f-4514-4291-b571-2f5625123423/AvailableCredits.png')">
+          </div>
+        </div>
+
+        <div class="tool-card-body">
+          <p class="tool-desc">A ready-to-use spreadsheet that tracks every annual statement credit across your premium cards — so you always know exactly what's left to use and by when.</p>
+          <ul class="tool-features">
+            <li>Pre-loaded with Amex Platinum, Gold, Chase Sapphire, and more</li>
+            <li>Tracks used vs. remaining credits by card and category</li>
+            <li>Color-coded expiration alerts so nothing slips through</li>
+            <li>Includes tips on the best ways to use each credit</li>
+            <li>Instant download — works in Excel and Google Sheets</li>
+          </ul>
+        </div>
+        <div class="tool-card-footer">
+          <div class="tool-price">
+            <span class="tool-price-label">One-time</span>
+            <span class="tool-price-amount">$29</span>
+            <span class="tool-price-sub">Instant download</span>
+          </div>
+          <a href="https://buy.stripe.com/3cIaEX3h88YH5p123HgMw09" target="_blank" class="btn-buy">Get the Tracker →</a>
+        </div>
+      </div>
+
+      <!-- CARD 2: Coming Soon -->
+      <div class="tool-card tool-card-coming">
+        <div class="tool-card-header">
+          <span class="coming-badge">Coming Soon</span>
+          <span class="tool-icon">✈️</span>
+          <h2 class="tool-name">Award Search Cheat Sheet</h2>
+          <p class="tool-tagline">Find first-class seats faster</p>
+        </div>
+        <div class="tool-card-body">
+          <p class="tool-desc">A step-by-step guide to finding and booking business and first-class award seats — even when availability seems nonexistent.</p>
+          <ul class="tool-features">
+            <li>Partner airline award search strategies</li>
+            <li>Best programs for each route</li>
+            <li>Waitlist and alert tactics</li>
+          </ul>
+        </div>
+        <div class="tool-card-footer">
+          <div class="tool-price">
+            <span class="tool-price-label">Coming soon</span>
+            <span class="tool-price-amount">—</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <div class="bottom-cta-inner">
+      <h2>Want someone to handle it <em>all</em> for you?</h2>
+      <p>The Statement Credits Tracker is a great start — but if you'd rather have an expert manage your entire points strategy, a Discovery Call is the next step.</p>
+      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-cta-white">Book a Free Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Paid With Points · <a href="paidwithpoints-new.html">Home</a> · <a href="executive-concierge.html">EC Membership</a></p>
+  </footer>
+
+  <script>
+    function setPreview(thumb, src) {
+      document.getElementById('preview-main').src = src;
+      document.querySelectorAll('.tool-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
+  </script>
+</body>
+</html>
