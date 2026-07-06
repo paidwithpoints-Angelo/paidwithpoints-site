@@ -1,2 +1,6 @@
+# Force www to redirect to apex
+https://www.paidwithpoints.com/* https://paidwithpoints.com/:splat 301!
+
+# Legacy Squarespace store URLs
 /store/p/paid-with-points-statement-credits-tracker  /tools.html  301
 /store/*  /tools.html  301
