@@ -1193,6 +1193,8 @@
     @media (max-width: 640px) {
       .nav-right .nav-link { display: none; }
       .nav-link-ec { display: none; }
+      .nav-wrap { padding: 0 16px; gap: 12px; }
+      .nav-cta { font-size: 11px; padding: 7px 12px; white-space: nowrap; }
     }
     /* Narrow mobile: stack proof bar 2x2 + center circle, single-col process */
     @media (max-width: 600px) {
@@ -1274,25 +1276,25 @@
 <section class="proof-bar">
   <div class="proof-bar-inner">
     <div class="proof-stat">
-      <div class="proof-stat-val">$59k</div>
+      <div class="proof-stat-val" id="stat-total-saved">$59k</div>
       <div class="proof-stat-lbl">Total saved for clients</div>
     </div>
     <div class="proof-stat">
-      <div class="proof-stat-val">5.6¢</div>
+      <div class="proof-stat-val" id="stat-avg-cpp">5.6¢</div>
       <div class="proof-stat-lbl">Avg value per point</div>
     </div>
     <div class="proof-circle-wrap">
       <div class="proof-circle">
-        <div class="proof-circle-val">80%</div>
+        <div class="proof-circle-val" id="stat-avg-savings-pct">80%</div>
         <div class="proof-circle-lbl">Avg savings off retail price</div>
       </div>
     </div>
     <div class="proof-stat">
-      <div class="proof-stat-val">2.2M</div>
+      <div class="proof-stat-val" id="stat-total-pts">2.2M</div>
       <div class="proof-stat-lbl">Points moved</div>
     </div>
     <div class="proof-stat">
-      <div class="proof-stat-val">$9,332</div>
+      <div class="proof-stat-val" id="stat-avg-trip">$9,332</div>
       <div class="proof-stat-lbl">Avg value per client trip</div>
     </div>
   </div>
@@ -2104,6 +2106,21 @@
   // Calculator — live CPP from dashboard
   let pwpCpp = 5.6; // fallback until API responds
 
+  // Format large numbers for proof bar (e.g. 59000 → "$59k", 2200000 → "2.2M")
+  function fmtSaved(n) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(1).replace(/\.0$/,'') + 'M';
+    if (n >= 1000)    return '$' + Math.round(n/1000) + 'k';
+    return '$' + Math.round(n);
+  }
+  function fmtPts(n) {
+    if (n >= 1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'') + 'M';
+    if (n >= 1000)    return Math.round(n/1000) + 'k';
+    return Math.round(n).toLocaleString();
+  }
+  function fmtTrip(n) {
+    return '$' + Math.round(n).toLocaleString();
+  }
+
   async function fetchLiveCpp() {
     try {
       const res = await fetch('https://paidwithpoints-dashboard.onrender.com/api/public/stats');
@@ -2113,6 +2130,17 @@
           pwpCpp = parseFloat(data.avgCpp.toFixed(2));
           calcUpdate(); // re-render with live value
         }
+        // Update proof bar stats
+        const ts = document.getElementById('stat-total-saved');
+        const ac = document.getElementById('stat-avg-cpp');
+        const ap = document.getElementById('stat-avg-savings-pct');
+        const tp = document.getElementById('stat-total-pts');
+        const at = document.getElementById('stat-avg-trip');
+        if (ts && data.totalSaved > 0) ts.textContent = fmtSaved(data.totalSaved);
+        if (ac && data.avgCpp > 0) ac.textContent = data.avgCpp.toFixed(1) + '¢';
+        if (ap && data.avgSavingsPct > 0) ap.textContent = data.avgSavingsPct + '%';
+        if (tp && data.totalPts > 0) tp.textContent = fmtPts(data.totalPts);
+        if (at && data.avgTripValue > 0) at.textContent = fmtTrip(data.avgTripValue);
       }
     } catch (e) { /* silently keep fallback */ }
   }
