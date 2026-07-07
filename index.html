@@ -92,7 +92,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 40px 80px;
+      padding: 80px 40px 56px;
       position: relative;
     }
     .hero-inner {
@@ -278,7 +278,7 @@
     /* ── PULL QUOTE strip ── */
     .pull-quote-strip {
       background: var(--ivory);
-      padding: 80px 40px;
+      padding: 48px 40px;
       text-align: center;
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
@@ -374,7 +374,7 @@
     }
 
     /* ── HOW IT WORKS — editorial ── */
-    .how-section { background: var(--navy); padding: 100px 20px; }
+    .how-section { background: var(--navy); padding: 72px 20px; }
     .how-inner { max-width: 100%; }
     .how-header {
       display: grid;
@@ -473,7 +473,7 @@
     /* ── PROOF BAR ── */
     .proof-bar {
       background: var(--navy);
-      padding: 52px 40px;
+      padding: 40px 40px;
       border-top: 2px solid var(--gold);
       border-bottom: 2px solid var(--gold);
     }
@@ -555,7 +555,7 @@
       .proof-bar-inner { grid-template-columns: 1fr 1fr; }
     }
     /* ── TRIPS — horizontal scroll ── */
-    .trips-section { padding: 120px 0; overflow: hidden; }
+    .trips-section { padding: 72px 0; overflow: hidden; }
     .trips-header {
       max-width: 1200px;
       margin: 0 auto 56px;
@@ -664,18 +664,63 @@
       background: var(--ivory);
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      padding: 120px 40px;
+      padding: 72px 40px;
+      text-align: center;
     }
-    .calc-inner {
-      max-width: 1200px;
+    .calc-center {
+      max-width: 640px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
     }
-    .calc-left .section-h2 { margin-bottom: 16px; }
-    .calc-left .section-body { margin-bottom: 0; }
+    .calc-center .section-h2 { margin-bottom: 12px; }
+    .calc-center .section-body { margin-bottom: 32px; }
+    .calc-widget-c {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 36px;
+      text-align: left;
+    }
+    .calc-gap-block {
+      text-align: center;
+      padding: 28px 0 20px;
+    }
+    .calc-gap-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .calc-gap-num {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+    .calc-gap-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .calc-row-divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 16px 0;
+    }
+    .calc-comp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+    }
+    .calc-comp-row + .calc-comp-row { border-top: 1px solid var(--rule); }
+    .calc-comp-label { font-size: 13px; color: var(--muted); }
+    .calc-comp-val { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .calc-comp-val-pwp { color: var(--gold); font-size: 15px; }
+    /* legacy widget kept for backward compat — hidden */
     .calc-widget {
       background: var(--white);
       border: 1px solid var(--rule);
@@ -966,7 +1011,7 @@
     .calc-cta { display: block; text-align: center; }
 
     /* ── WHO IT'S FOR ── */
-    .who-section { padding: 120px 40px; }
+    .who-section { padding: 72px 40px; }
     .who-inner { max-width: 1200px; margin: 0 auto; }
     .who-header { margin-bottom: 64px; }
     .who-grid {
@@ -1005,7 +1050,7 @@
     .who-cta-sub { font-size: 14px; color: var(--muted); margin-top: 14px; }
 
     /* ── CLIENTS ── */
-    .clients-section { background: var(--ivory); border-top: 1px solid var(--rule); padding: 120px 40px; }
+    .clients-section { background: var(--ivory); border-top: 1px solid var(--rule); padding: 72px 40px; }
     .clients-inner { max-width: 1200px; margin: 0 auto; }
     .clients-header { margin-bottom: 64px; }
     .clients-masonry {
@@ -1088,7 +1133,7 @@
     .yt-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
     /* ── ABOUT ── */
-    .about-section { padding: 120px 40px; background: var(--white); border-top: 1px solid var(--rule); }
+    .about-section { padding: 72px 40px; background: var(--white); border-top: 1px solid var(--rule); }
     .about-inner {
       max-width: 1200px; margin: 0 auto;
       display: grid;
@@ -1131,7 +1176,7 @@
     .btn-outline-dark:hover { background: var(--navy); color: #fff; }
 
     /* ── FAQ ── */
-    .faq-section { background: var(--ivory); border-top: 1px solid var(--rule); padding: 120px 40px; text-align: center; }
+    .faq-section { background: var(--ivory); border-top: 1px solid var(--rule); padding: 72px 40px; text-align: center; }
     .faq-inner {
       max-width: 760px; margin: 0 auto;
     }
@@ -1181,7 +1226,7 @@
     /* ── FINAL CTA ── */
     .final-section {
       background: var(--navy);
-      padding: 140px 40px;
+      padding: 100px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -1250,7 +1295,7 @@
     /* ── FOOTER ── */
 
     .learn-more-section {
-      padding: 80px 40px;
+      padding: 48px 40px;
       background: var(--ivory);
       border-top: 1px solid var(--rule);
     }
@@ -1326,7 +1371,7 @@
     }
     @media (max-width: 900px) {
       .sticky-bar { display: block; }
-      .hero { min-height: auto; padding: 90px 24px 52px; }
+      .hero { min-height: auto; padding: 60px 24px 40px; }
       .hero-h1 { font-size: clamp(36px, 9vw, 64px); }
       .hero-body { font-size: 16px; }
       .hero-stats { flex-wrap: wrap; }
@@ -1338,7 +1383,7 @@
       .how-header { grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
       .how-steps { grid-template-columns: 1fr 1fr; gap: 0; } .how-step { border-right: 2px solid rgba(255,255,255,.14); border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:nth-child(2n) { border-right: none; } .how-step:nth-last-child(-n+2) { border-bottom: none; }
       .how-step { padding: 20px 14px; }
-      .calc-section { padding: 64px 24px; }
+      .calc-section { padding: 52px 24px; }
       .calc-inner { grid-template-columns: 1fr; gap: 36px; }
       .calc-widget { padding: 28px 24px; }
       .who-section { padding: 64px 24px; }
@@ -1349,10 +1394,10 @@
       .client-card.featured { grid-row: span 1; }
       .about-section { padding: 64px 24px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .faq-section { padding: 64px 24px; }
+      .faq-section { padding: 52px 24px; }
       .faq-left { position: static; }
-      .final-section { padding: 80px 24px; }
-      .pull-quote-strip { padding: 48px 24px; }
+      .final-section { padding: 64px 24px; }
+      .pull-quote-strip { padding: 36px 24px; }
       .proof-bar { padding: 36px 20px; }
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
       .nav-right .nav-link { font-size: 12px; letter-spacing: 0; }
@@ -1528,62 +1573,34 @@
 
 <!-- CALCULATOR -->
 <section class="calc-section" id="calc">
-  <div class="calc-inner">
-    <div class="calc-left">
-      <p class="section-label">Run the Numbers</p>
-      <h2 class="section-h2">What is your spending actually worth?</h2>
-      <p class="section-body">Most people genuinely have no idea. See the difference between earning and redeeming on autopilot versus doing it the PWP way.</p>
-    </div>
-    <div class="calc-widget">
+  <div class="calc-center">
+    <p class="section-label">Run the Numbers</p>
+    <h2 class="section-h2">What is your spending actually worth?</h2>
+    <p class="section-body">Move the slider to see exactly how much you're leaving on the table.</p>
+    <div class="calc-widget-c">
       <div class="calc-field">
         <div class="calc-spend-header">
-          <label>Annual Credit Card Spend</label>
+          <label>Annual credit card spend</label>
           <span class="calc-spend-display" id="calc-spend-display">$120,000</span>
         </div>
         <input type="range" id="calc-spend" value="120000" min="10000" max="1000000" step="5000" oninput="calcSpendUpdate()" class="calc-spend-slider" />
       </div>
-      <div class="calc-field">
-        <label>Earn Rate</label>
-        <div class="calc-rate-toggle">
-          <button id="calc-btn-std" class="calc-rate-btn active" onclick="setCalcMode('std')">
-            <span class="calc-rate-btn-val">1x</span>
-            <span class="calc-rate-btn-lbl">Standard earn rate</span>
-          </button>
-          <button id="calc-btn-pwp" class="calc-rate-btn" onclick="setCalcMode('pwp')">
-            <span class="calc-rate-btn-val">3x – 4x</span>
-            <span class="calc-rate-btn-lbl">PWP client earn rate</span>
-          </button>
-        </div>
+      <div class="calc-gap-block">
+        <div class="calc-gap-lbl">You're leaving on the table</div>
+        <div class="calc-gap-num" id="calc-gap-num">$5,520 – $10,560</div>
+        <div class="calc-gap-sub" id="calc-gap-sub">per year vs what PWP clients earn</div>
       </div>
-      <div class="calc-divider"></div>
-      <div class="calc-compare">
-        <div class="calc-before" id="calc-panel-std">
-          <div class="calc-col-lbl">Standard — 1x earn rate</div>
-          <div class="calc-before-val" id="calc-std-pts">120,000 pts/yr</div>
-          <div style="flex:1"></div>
-          <div class="calc-before-rate">Redeemed at 1¢ / pt (travel portal)</div>
-          <div style="flex:1"></div>
-          <div class="calc-before-val" id="calc-std-val" style="font-size:28px;color:#aaa">$1,200 / yr</div>
-        </div>
-        <div class="calc-before" id="calc-panel-pwp" style="display:none">
-          <div class="calc-col-lbl" style="color:var(--gold)">PWP Client — 3x – 4x earn rate</div>
-          <div class="calc-before-val" id="calc-pwp-pts" style="font-size:18px;line-height:1.3">360,000 – 480,000 pts/yr</div>
-          <div style="flex:1"></div>
-          <div class="calc-before-rate" id="calc-pwp-cpp-note">Redeemed at 5.6¢ / pt (PWP avg)</div>
-          <div style="flex:1"></div>
-          <div class="calc-before-val" id="calc-pwp-val" style="font-size:24px;color:var(--green)">$18,720 – $24,960 / yr</div>
-        </div>
-        <div class="calc-arrow">→</div>
-        <div class="calc-after">
-          <div class="calc-col-lbl">Live Avg PWP Client</div>
-          <div class="calc-output-val" id="calc-out">$18,720 – $24,960</div>
-          <div class="calc-multiplier" id="calc-multiplier">15× more travel value</div>
-          <div class="calc-output-sub" id="calc-sub">360k – 480k pts at 5.6¢/pt avg</div>
-          <div class="calc-rate-note" id="calc-rate-note">3–4× earning · 5.6¢/pt redemption</div>
-        </div>
+      <div class="calc-row-divider"></div>
+      <div class="calc-comp-row">
+        <span class="calc-comp-label">Standard · 1× earn · 1¢/pt</span>
+        <span class="calc-comp-val" id="calc-std-val">$1,200 / yr</span>
+      </div>
+      <div class="calc-comp-row calc-comp-row-pwp">
+        <span class="calc-comp-label">PWP clients · 3–4× earn · 5.2¢/pt</span>
+        <span class="calc-comp-val calc-comp-val-pwp" id="calc-pwp-val">$6,720 – $11,760 / yr</span>
       </div>
       <div class="calc-cta">
-        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="display:inline-block;font-size:13px;padding:14px 28px">See your actual number on a call →</a>
+        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="display:inline-block;font-size:13px;padding:14px 28px;width:100%;text-align:center;box-sizing:border-box">See your actual number on a call →</a>
       </div>
     </div>
   </div>
@@ -2443,59 +2460,28 @@
     } catch (e) { /* silently keep fallback */ }
   }
 
-  var calcMode = 'std';
-
-  function setCalcMode(mode) {
-    calcMode = mode;
-    document.getElementById('calc-btn-std').classList.toggle('active', mode === 'std');
-    document.getElementById('calc-btn-pwp').classList.toggle('active', mode === 'pwp');
-    document.getElementById('calc-panel-std').style.display = mode === 'std' ? '' : 'none';
-    document.getElementById('calc-panel-pwp').style.display = mode === 'pwp' ? '' : 'none';
+  function calcSpendUpdate() {
+    var slider = document.getElementById('calc-spend');
+    var val = parseFloat(slider.value) || 120000;
+    document.getElementById('calc-spend-display').textContent = '$' + val.toLocaleString('en-US');
+    var pct = ((val - 10000) / (1000000 - 10000)) * 100;
+    slider.style.background = 'linear-gradient(to right, var(--gold) 0%, var(--gold) ' + pct + '%, #ddd ' + pct + '%, #ddd 100%)';
     calcUpdate();
   }
-
-  function calcSpendUpdate() {
-      var slider = document.getElementById('calc-spend');
-      var val = parseFloat(slider.value) || 120000;
-      document.getElementById('calc-spend-display').textContent = '$' + val.toLocaleString('en-US');
-      // update slider gradient fill
-      var pct = ((val - 10000) / (1000000 - 10000)) * 100;
-      slider.style.background = 'linear-gradient(to right, var(--gold) 0%, var(--gold) ' + pct + '%, #ddd ' + pct + '%, #ddd 100%)';
-      calcUpdate();
-    }
-    function calcUpdate() {
+  function calcUpdate() {
     const annualSpend = parseFloat(document.getElementById('calc-spend').value) || 120000;
     const cppDisplay = Number.isInteger(pwpCpp) ? pwpCpp + '¢' : pwpCpp.toFixed(1) + '¢';
-
-    if (calcMode === 'std') {
-      const stdPts = Math.round(annualSpend);
-      const stdVal = Math.round(stdPts * 0.01);
-      document.getElementById('calc-std-pts').textContent = stdPts.toLocaleString() + ' pts/yr';
-      document.getElementById('calc-std-val').textContent = '$' + stdVal.toLocaleString() + ' / yr';
-      const pwpLoP = Math.round(annualSpend * 3);
-      const pwpHiP = Math.round(annualSpend * 4);
-      const pwpLoV = Math.round(pwpLoP * pwpCpp / 100);
-      const pwpHiV = Math.round(pwpHiP * pwpCpp / 100);
-      const mult = stdVal > 0 ? Math.round(pwpLoV / stdVal) : '—';
-      document.getElementById('calc-out').textContent = '$' + pwpLoV.toLocaleString() + ' – $' + pwpHiV.toLocaleString();
-      document.getElementById('calc-multiplier').textContent = mult + '× more travel value';
-      document.getElementById('calc-sub').textContent = pwpLoP.toLocaleString() + '–' + pwpHiP.toLocaleString() + ' pts at ' + cppDisplay + '/pt avg';
-      document.getElementById('calc-rate-note').textContent = '3–4× earning · ' + cppDisplay + '/pt redemption';
-    } else {
-      const pwpLoP = Math.round(annualSpend * 3);
-      const pwpHiP = Math.round(annualSpend * 4);
-      const pwpLoV = Math.round(pwpLoP * pwpCpp / 100);
-      const pwpHiV = Math.round(pwpHiP * pwpCpp / 100);
-      const stdVal = Math.round(annualSpend * 0.01);
-      const mult = stdVal > 0 ? Math.round(pwpLoV / stdVal) : '—';
-      document.getElementById('calc-pwp-pts').textContent = pwpLoP.toLocaleString() + ' – ' + pwpHiP.toLocaleString() + ' pts/yr';
-      document.getElementById('calc-pwp-val').textContent = '$' + pwpLoV.toLocaleString() + ' – $' + pwpHiV.toLocaleString() + ' / yr';
-      document.getElementById('calc-pwp-cpp-note').textContent = 'Redeemed at ' + cppDisplay + ' / pt (PWP avg)';
-      document.getElementById('calc-out').textContent = '$' + pwpLoV.toLocaleString() + ' – $' + pwpHiV.toLocaleString();
-      document.getElementById('calc-multiplier').textContent = mult + '× more travel value';
-      document.getElementById('calc-sub').textContent = pwpLoP.toLocaleString() + '–' + pwpHiP.toLocaleString() + ' pts at ' + cppDisplay + '/pt avg';
-      document.getElementById('calc-rate-note').textContent = '3–4× earning · ' + cppDisplay + '/pt redemption';
-    }
+    const stdVal = Math.round(annualSpend * 0.01);
+    const pwpLoV = Math.round(annualSpend * 3 * pwpCpp / 100);
+    const pwpHiV = Math.round(annualSpend * 4 * pwpCpp / 100);
+    const gapLo = pwpLoV - stdVal;
+    const gapHi = pwpHiV - stdVal;
+    const gapEl = document.getElementById('calc-gap-num');
+    if (gapEl) gapEl.textContent = '$' + gapLo.toLocaleString() + ' – $' + gapHi.toLocaleString();
+    const stdEl = document.getElementById('calc-std-val');
+    if (stdEl) stdEl.textContent = '$' + stdVal.toLocaleString() + ' / yr';
+    const pwpEl = document.getElementById('calc-pwp-val');
+    if (pwpEl) pwpEl.textContent = '$' + pwpLoV.toLocaleString() + ' – $' + pwpHiV.toLocaleString() + ' / yr';
   }
   calcUpdate();
   fetchLiveCpp();
