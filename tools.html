@@ -184,12 +184,15 @@
     }
     .tool-preview-wrap {
       width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
+      padding-top: 56.25%; /* 16:9 ratio */
       position: relative;
+      overflow: hidden;
       cursor: pointer;
+      background: var(--navy);
     }
     .tool-preview-main {
+      position: absolute;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       display: block;
@@ -208,7 +211,8 @@
     .tool-preview-thumbs::-webkit-scrollbar { display: none; }
     .tool-thumb {
       flex: 0 0 25%;
-      aspect-ratio: 4/3;
+      width: 25%;
+      height: 60px;
       object-fit: cover;
       object-position: top;
       cursor: pointer;
