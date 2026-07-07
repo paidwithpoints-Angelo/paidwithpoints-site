@@ -315,6 +315,7 @@
     }
     .problem-left { position: sticky; top: 100px; }
     .section-label {
+      text-align: center;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .18em;
@@ -325,6 +326,7 @@
     }
     .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
     .section-h2 {
+      text-align: center;
       font-family: var(--serif);
       font-size: clamp(32px, 3.5vw, 48px);
       font-weight: 900;
@@ -334,6 +336,7 @@
       margin-bottom: 20px;
     }
     .section-body {
+      text-align: center;
       font-size: 16px;
       color: var(--muted);
       line-height: 1.75;
@@ -1215,6 +1218,7 @@
     .expand-item { border-bottom: 1px solid var(--rule); }
     .expand-item:first-of-type { border-top: 1px solid var(--rule); }
     .expand-trigger {
+      text-align: left;
       width: 100%; display: flex; justify-content: space-between;
       align-items: center; padding: 20px 0; background: none; border: none;
       cursor: pointer; font-family: var(--sans); font-size: 17px;
@@ -2335,6 +2339,12 @@
 </div>
 
 <script>
+  // Accordion (learn-more sections)
+  function expandToggle(btn) {
+    const item = btn.closest('.expand-item');
+    item.classList.toggle('open');
+  }
+
   // FAQ
   function faqToggle(btn) {
     const item = btn.closest('.faq-item');
