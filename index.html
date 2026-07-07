@@ -715,6 +715,7 @@
     }
     .calc-before {
       flex: 1;
+      min-width: 0;
       padding: 14px 16px 20px;
       background: #f0ebe3;
       border: 1.5px solid #d4cdc3;
@@ -727,6 +728,7 @@
     }
     .calc-after {
       flex: 1.3;
+      min-width: 0;
       padding: 14px 16px 20px;
       background: var(--navy);
       border-radius: 6px;
@@ -1214,7 +1216,13 @@
       .how-steps { grid-template-columns: 1fr; } .how-step { border-right: none; border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:last-child { border-bottom: none; }
       .how-step-visual { aspect-ratio: 16/9; }
       .calc-field select { font-size: 13px; }
-      .calc-output-val { font-size: 44px; }
+      .calc-output-val { font-size: 30px; }
+      .calc-before-val { font-size: 30px; }
+      .calc-before-detail { font-size: 11px; line-height: 1.4; }
+      .calc-rate-note { font-size: 11px; }
+      .calc-multiplier { font-size: 13px; }
+      .calc-compare { gap: 6px; }
+      .calc-before, .calc-after { padding: 12px 10px 16px; }
       .trips-header { margin-bottom: 32px; }
     }
   </style>
