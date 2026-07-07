@@ -80,8 +80,20 @@
       text-decoration: none;
       transition: all .18s;
       letter-spacing: .01em;
+          white-space: nowrap;
     }
     .nav-cta:hover { background: var(--navy); color: #fff; }
+    .nav-mobile-right { display: none; align-items: center; gap: 10px; }
+    .nav-burger { background: none; border: none; cursor: pointer; padding: 4px; display: flex; flex-direction: column; gap: 5px; }
+    .nav-burger span { display: block; width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: none; background: #fff; border-top: 0.5px solid var(--rule); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .nav-drawer.open { display: block; }
+    .nav-drawer-link { display: block; font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; padding: 14px 20px; border-bottom: 0.5px solid var(--rule); transition: color .15s; }
+    .nav-drawer-link:last-child { border-bottom: none; }
+    .nav-drawer-link:hover { color: var(--gold); }
 
     /* ── HERO — full-width centered ── */
     .hero {
@@ -1384,10 +1396,10 @@
       .how-step { padding: 20px 14px; }
       .calc-section { padding: 52px 24px; }
       .calc-widget-c { padding: 28px 20px; }
-      .calc-comp-row { flex-wrap: wrap; gap: 2px; }
-      .calc-comp-label { font-size: 12px; }
-      .calc-comp-val { font-size: 13px; margin-left: auto; }
-      .calc-comp-val-pwp { font-size: 14px; }
+      .calc-comp-row { flex-wrap: nowrap; align-items: baseline; }
+      .calc-comp-label { font-size: 11px; }
+      .calc-comp-val { font-size: 12px; white-space: nowrap; }
+      .calc-comp-val-pwp { font-size: 12px; }
       .calc-inner { grid-template-columns: 1fr; gap: 36px; }
       .calc-widget { padding: 28px 24px; }
       .who-section { padding: 64px 24px; }
@@ -1410,11 +1422,10 @@
       .trips-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 0 24px; }
     }
     @media (max-width: 640px) {
-      .nav-wrap { padding: 0 10px; }
-      .nav-logo { font-size: 14px; }
-      .nav-right { gap: 8px; }
-      .nav-right .nav-link { font-size: 9px; letter-spacing: 0; }
-      .nav-cta { font-size: 9px; padding: 5px 9px; white-space: nowrap; }
+      .nav-right { display: none; }
+      .nav-mobile-right { display: flex; }
+      .nav-wrap { padding: 0 16px; }
+      .nav-cta { font-size: 11px; padding: 7px 12px; }
     }
     /* Narrow mobile: stack proof bar 2x2 + center circle, single-col process */
     @media (max-width: 600px) {
@@ -1495,6 +1506,20 @@
       <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
       <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">Book a Discovery Call</a>
     </div>
+    <div class="nav-mobile-right">
+      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">Book a Call</a>
+      <button class="nav-burger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#how" class="nav-drawer-link" onclick="navScrollTo('how',event);toggleMobileNav()">How It Works</a>
+    <a href="#trips" class="nav-drawer-link" onclick="navScrollTo('trips',event);toggleMobileNav()">Real Trips</a>
+    <a href="#about" class="nav-drawer-link" onclick="navScrollTo('about',event);toggleMobileNav()">About</a>
+    <a href="#faq" class="nav-drawer-link" onclick="navScrollTo('faq',event);toggleMobileNav()">FAQ</a>
+    <a href="tools.html" class="nav-drawer-link">Tools</a>
+    <a href="executive-concierge.html" class="nav-drawer-link">EC Membership</a>
   </div>
 </nav>
 
@@ -1593,15 +1618,15 @@
       <div class="calc-gap-block">
         <div class="calc-gap-lbl">You're leaving on the table</div>
         <div class="calc-gap-num" id="calc-gap-num">$5,520 – $10,560</div>
-        <div class="calc-gap-sub" id="calc-gap-sub">per year vs what PWP clients earn</div>
+        <div class="calc-gap-sub" id="calc-gap-sub">per year vs what PWP clients redeem</div>
       </div>
       <div class="calc-row-divider"></div>
       <div class="calc-comp-row">
-        <span class="calc-comp-label">Standard · 1× earn · 1¢/pt</span>
+        <span class="calc-comp-label">Standard · 1¢/pt</span>
         <span class="calc-comp-val" id="calc-std-val">$1,200 / yr</span>
       </div>
       <div class="calc-comp-row calc-comp-row-pwp">
-        <span class="calc-comp-label">PWP clients · 3–4× earn · 5.2¢</span>
+        <span class="calc-comp-label">PWP clients · 5.2¢/pt</span>
         <span class="calc-comp-val calc-comp-val-pwp" id="calc-pwp-val">$6,720 – $11,760 / yr</span>
       </div>
       <div class="calc-cta">
@@ -2412,6 +2437,13 @@
     var item = el.closest ? el.closest('.expand-item') : null;
     if (item) item.classList.add('open');
     setTimeout(function() { el.scrollIntoView({behavior:'smooth', block:'start'}); }, 60);
+  }
+
+  function toggleMobileNav() {
+    var drawer = document.getElementById('nav-drawer');
+    var burger = document.querySelector('.nav-burger');
+    drawer.classList.toggle('open');
+    burger.classList.toggle('open');
   }
 
   function expandToggle(btn) {
