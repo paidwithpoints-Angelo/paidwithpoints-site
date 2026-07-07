@@ -887,16 +887,67 @@
       color: var(--muted);
       line-height: 1.3;
     }
-    .proof-stat-compare-row {
+    .cpp-compare-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cpp-row {
       display: flex;
       align-items: baseline;
-      gap: 8px;
+      gap: 6px;
     }
-    .proof-stat-vs {
-      font-size: 16px;
-      color: #aaa;
-      font-weight: 400;
-      white-space: nowrap;
+    .cpp-badge {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      border-radius: 3px;
+      padding: 2px 5px;
+      line-height: 1.4;
+      align-self: center;
+    }
+    .cpp-badge-portal {
+      background: rgba(255,255,255,.15);
+      color: rgba(255,255,255,.5);
+    }
+    .cpp-val {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+    .cpp-val-portal {
+      font-size: 22px;
+      color: rgba(255,255,255,.35);
+    }
+    .cpp-unit {
+      font-size: 13px;
+      color: rgba(255,255,255,.35);
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    .cpp-row-pwp .cpp-unit { color: rgba(255,255,255,.5); }
+    .cpp-vs-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 2px 0;
+    }
+    .cpp-vs-dash {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.12);
+    }
+    .cpp-vs-word {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
     }
     .calc-multiplier {
       font-size: 15px;
@@ -1372,17 +1423,6 @@
       color: var(--muted);
       line-height: 1.3;
     }
-    .proof-stat-compare-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .proof-stat-vs {
-      font-size: 16px;
-      color: #aaa;
-      font-weight: 400;
-      white-space: nowrap;
-    }
     .calc-multiplier { font-size: 13px; }
       .calc-compare { gap: 6px; }
       .calc-before, .calc-after { padding: 12px 10px 16px; }
@@ -1451,11 +1491,23 @@
       <div class="proof-stat-lbl">Total saved for clients</div>
     </div>
     <div class="proof-stat proof-stat-compare">
-      <div class="proof-stat-compare-row">
-        <span class="proof-stat-val" id="stat-avg-cpp">5.6¢</span>
-        <span class="proof-stat-vs">vs&nbsp;1¢</span>
+      <div class="cpp-compare-block">
+        <div class="cpp-row cpp-row-pwp">
+          <span class="cpp-badge">PWP</span>
+          <span class="cpp-val" id="stat-avg-cpp">5.2¢</span>
+          <span class="cpp-unit">/ pt</span>
+        </div>
+        <div class="cpp-vs-line">
+          <span class="cpp-vs-dash"></span>
+          <span class="cpp-vs-word">vs</span>
+          <span class="cpp-vs-dash"></span>
+        </div>
+        <div class="cpp-row cpp-row-portal">
+          <span class="cpp-badge cpp-badge-portal">Portals</span>
+          <span class="cpp-val cpp-val-portal">1¢</span>
+          <span class="cpp-unit">/ pt</span>
+        </div>
       </div>
-      <div class="proof-stat-lbl">Per point vs travel portals</div>
     </div>
     <div class="proof-circle-wrap">
       <div class="proof-circle">
