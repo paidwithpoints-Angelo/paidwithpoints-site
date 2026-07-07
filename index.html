@@ -816,6 +816,39 @@
       margin-top: 4px;
       font-weight: 500;
     }
+    .calc-spend-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+    .calc-spend-display { font-size: 20px; font-weight: 700; color: var(--ink); }
+    .calc-spend-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--gold) 0%, var(--gold) 12%, #ddd 12%, #ddd 100%);
+      outline: none;
+      cursor: pointer;
+      margin: 0;
+    }
+    .calc-spend-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+    .calc-spend-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
     .calc-rate-toggle {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1451,8 +1484,11 @@
     </div>
     <div class="calc-widget">
       <div class="calc-field">
-        <label>Annual Credit Card Spend</label>
-        <input type="number" id="calc-spend" value="120000" min="10000" max="1000000" step="5000" oninput="calcUpdate()" />
+        <div class="calc-spend-header">
+          <label>Annual Credit Card Spend</label>
+          <span class="calc-spend-display" id="calc-spend-display">$120,000</span>
+        </div>
+        <input type="range" id="calc-spend" value="120000" min="10000" max="1000000" step="5000" oninput="calcSpendUpdate()" class="calc-spend-slider" />
       </div>
       <div class="calc-field">
         <label>Earn Rate</label>
@@ -2360,7 +2396,16 @@
     calcUpdate();
   }
 
-  function calcUpdate() {
+  function calcSpendUpdate() {
+      var slider = document.getElementById('calc-spend');
+      var val = parseFloat(slider.value) || 120000;
+      document.getElementById('calc-spend-display').textContent = '$' + val.toLocaleString('en-US');
+      // update slider gradient fill
+      var pct = ((val - 10000) / (1000000 - 10000)) * 100;
+      slider.style.background = 'linear-gradient(to right, var(--gold) 0%, var(--gold) ' + pct + '%, #ddd ' + pct + '%, #ddd 100%)';
+      calcUpdate();
+    }
+    function calcUpdate() {
     const annualSpend = parseFloat(document.getElementById('calc-spend').value) || 120000;
     const cppDisplay = Number.isInteger(pwpCpp) ? pwpCpp + '¢' : pwpCpp.toFixed(1) + '¢';
 
