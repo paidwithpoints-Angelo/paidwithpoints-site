@@ -182,16 +182,22 @@
       background: var(--ivory2);
       border-bottom: 1px solid var(--rule);
     }
+    .tool-preview-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
     .tool-preview-main {
       width: 100%;
+      height: 100%;
       display: block;
-      aspect-ratio: 16/9;
       object-fit: cover;
       object-position: top;
-      cursor: pointer;
       transition: opacity .15s;
     }
-    .tool-preview-main:hover { opacity: .92; }
+    .tool-preview-wrap:hover .tool-preview-main { opacity: .92; }
     .tool-preview-thumbs {
       display: flex;
       gap: 0;
@@ -300,6 +306,7 @@
     }
     .tool-card-coming .tool-card-header {
       background: var(--ivory2);
+      border-bottom: 1px solid var(--rule);
     }
     .tool-card-coming .tool-name { color: var(--ink); }
     .tool-card-coming .tool-tagline { color: var(--muted); }
@@ -419,9 +426,11 @@
         </div>
         <!-- PREVIEW GALLERY -->
         <div class="tool-preview">
-          <img id="preview-main" class="tool-preview-main"
-            src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png"
-            alt="Statement Credits Tracker — overview">
+          <div class="tool-preview-wrap">
+            <img id="preview-main" class="tool-preview-main"
+              src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png"
+              alt="Statement Credits Tracker — overview">
+          </div>
           <div class="tool-preview-thumbs">
             <img class="tool-thumb active"
               src="https://images.squarespace-cdn.com/content/v1/6859817e4847ff53633d0059/e88d4d80-d8d6-48d1-9357-0764bf0c918a/pwp-tracker-1-hero.png"
