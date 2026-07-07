@@ -1442,7 +1442,23 @@
       }
       .proof-circle { width: 120px; height: 120px; }
       .proof-circle-val { font-size: 32px; }
-      .how-steps { grid-template-columns: 1fr; } .how-step { border-right: none; border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:last-child { border-bottom: none; }
+      .how-steps {
+        grid-template-columns: 1fr;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        gap: 0;
+      }
+      .how-step {
+        border-right: none;
+        border-bottom: none;
+        border-top: 3px solid rgba(184,146,42,.55);
+        padding: 36px 20px 40px;
+        margin-bottom: 2px;
+        border-radius: 0;
+      }
+      .how-step:first-child { border-radius: 8px 8px 0 0; }
+      .how-step:last-child { border-radius: 0 0 8px 8px; margin-bottom: 0; }
       .how-step-visual { aspect-ratio: 16/9; }
       .calc-field select { font-size: 13px; }
       .calc-output-val { font-size: 30px; }
