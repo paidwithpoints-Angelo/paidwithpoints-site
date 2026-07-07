@@ -1328,7 +1328,6 @@
     .expand-item.open .expand-body { display: block; }
     .expand-body .trips-section,
     .expand-body .clients-section,
-    .expand-body .how-section,
     .expand-body .who-section,
     .expand-body .about-section { padding-top: 16px; padding-left: 0; padding-right: 0; }
     @media (max-width: 640px) { .learn-more-section { padding: 60px 20px; } }
@@ -1384,6 +1383,11 @@
       .how-steps { grid-template-columns: 1fr 1fr; gap: 0; } .how-step { border-right: 2px solid rgba(255,255,255,.14); border-bottom: 2px solid rgba(255,255,255,.14); } .how-step:nth-child(2n) { border-right: none; } .how-step:nth-last-child(-n+2) { border-bottom: none; }
       .how-step { padding: 20px 14px; }
       .calc-section { padding: 52px 24px; }
+      .calc-widget-c { padding: 28px 20px; }
+      .calc-comp-row { flex-wrap: wrap; gap: 2px; }
+      .calc-comp-label { font-size: 12px; }
+      .calc-comp-val { font-size: 13px; margin-left: auto; }
+      .calc-comp-val-pwp { font-size: 14px; }
       .calc-inner { grid-template-columns: 1fr; gap: 36px; }
       .calc-widget { padding: 28px 24px; }
       .who-section { padding: 64px 24px; }
@@ -1482,10 +1486,10 @@
   <div class="nav-wrap">
     <a href="/" class="nav-logo">Paid<em>With</em>Points</a>
     <div class="nav-right">
-      <a href="#how" class="nav-link">How It Works</a>
-      <a href="#trips" class="nav-link">Real Trips</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#how" class="nav-link" onclick="navScrollTo('how',event)">How It Works</a>
+      <a href="#trips" class="nav-link" onclick="navScrollTo('trips',event)">Real Trips</a>
+      <a href="#about" class="nav-link" onclick="navScrollTo('about',event)">About</a>
+      <a href="#faq" class="nav-link" onclick="navScrollTo('faq',event)">FAQ</a>
       <a href="tools.html" class="nav-link">Tools</a>
       <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
       <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">Book a Discovery Call</a>
@@ -1507,7 +1511,7 @@
     </p>
     <div class="hero-actions">
       <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary">Book a Free Discovery Call →</a>
-      <a href="#how" class="hero-sub-link">See how it works</a>
+      <a href="#how" class="hero-sub-link" onclick="navScrollTo('how',event)">See how it works</a>
     </div>
     <p class="hero-ec-link">Looking for fully managed, white-glove service? <a href="executive-concierge.html">Explore EC Membership →</a></p>
 
@@ -1596,7 +1600,7 @@
         <span class="calc-comp-val" id="calc-std-val">$1,200 / yr</span>
       </div>
       <div class="calc-comp-row calc-comp-row-pwp">
-        <span class="calc-comp-label">PWP clients · 3–4× earn · 5.2¢/pt</span>
+        <span class="calc-comp-label">PWP clients · 3–4× earn · 5.2¢</span>
         <span class="calc-comp-val calc-comp-val-pwp" id="calc-pwp-val">$6,720 – $11,760 / yr</span>
       </div>
       <div class="calc-cta">
@@ -1614,220 +1618,7 @@
   <span class="pull-attr">— Angelo Minella, Founder · Paid With Points</span>
 </div>
 
-<!-- LEARN MORE -->
-<section class="learn-more-section">
-  <div class="learn-more-inner">
-    <p class="learn-more-label">Keep reading</p>
 
-<div class="expand-item">
-  <button class="expand-trigger" onclick="expandToggle(this)">
-    <span>Real client trips</span>
-    <span class="expand-plus">+</span>
-  </button>
-  <div class="expand-body">
-<!-- REAL TRIPS -->
-<section class="trips-section" id="trips">
-  <div class="trips-header">
-    <div>
-      <p class="section-label">Real Redemptions</p>
-      <h2 class="section-h2">What your points actually unlock</h2>
-    </div>
-    <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="trips-cta-link">Book a call to plan yours →</a>
-  </div>
-  <div class="trips-track" id="trips-track">
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="emirates-bar.png" alt="Emirates A380 Onboard Bar" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$30,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">Around the World — First Class</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~600,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">$800 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Route</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">JFK · MXP · DXB · HND · EWR</span></div>
-      </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="emirates-fc-suite.png" alt="Emirates First Class Suite" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$18,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">Emirates First Class Suite</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~220,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$300 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val">Rachel · arrived well rested</span></div>
-      </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="italy-biz.png" alt="Italy Business Class Round Trip" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$12,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">Italy — Business Class Round Trip</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~280,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$400 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Clients</span><span class="trip-detail-val">Garrett & Nicole · 10-year anniversary</span></div>
-      </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="honeymoon-suite.png" alt="Honeymoon Suite" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$22,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">Honeymoon Suite</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~380,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$100 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val">14hr Newlywed Nap</span></div>
-      </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="ba-first-class.jpg" alt="British Airways First Class" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$14,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">British Airways 787-9 — First Class</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~180,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$250 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Clients</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Frank & Lia · honeymoon finale</span></div>
-      </div>
-    </div>
-        <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="aa-flagship.png" alt="AA Flagship Business" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$13,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">AA Flagship Business</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$50 in taxes</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Value captured</span><span class="trip-detail-val gold">$12,700 saved</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Notable</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Swapped cabins to new product</span></div>
-      </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-top"><img class="trip-img" src="maldives-waldorf.webp" alt="Waldorf Astoria Maldives" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$40,000</div></div></div>
-      <div class="trip-body">
-        <div class="trip-name">Maldives — Business Class Round Trip</div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~500,000 pts</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">Taxes only</span></div>
-        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Jason · much deserved self care</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-  </div>
-</div>
-<div class="expand-item">
-  <button class="expand-trigger" onclick="expandToggle(this)">
-    <span>What clients say</span>
-    <span class="expand-plus">+</span>
-  </button>
-  <div class="expand-body">
-<!-- CLIENTS -->
-<section class="clients-section" id="clients">
-  <div class="clients-inner">
-    <div class="clients-header">
-      <p class="section-label">Client Stories</p>
-      <h2 class="section-h2">Real people. Real first-class trips.</h2>
-    </div>
-    <div class="clients-masonry">
-
-      <!-- Jason -->
-      <div class="client-card featured">
-        <div class="client-initials">J</div>
-        <div class="client-name">Jason</div>
-        <div class="client-trip-lbl">Entrepreneur · Asia + Maldives</div>
-        <p class="client-quote">Had loads of points from my businesses but had no idea how to use them. Working with Angelo has made the world my backyard — and now I actually understand the strategy behind everything.</p>
-        <div class="client-savings">$40,000+</div>
-        <div class="client-savings-lbl">Unlocked in travel value</div>
-        <div class="client-video">
-          <div class="yt-thumb" data-yt="3qh_EjEqL6k">
-            <img src="https://img.youtube.com/vi/3qh_EjEqL6k/mqdefault.jpg" alt="Meet Jason">
-            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Garrett & Nicole -->
-      <div class="client-card">
-        <div class="client-initials">G</div>
-        <div class="client-name">Garrett & Nicole</div>
-        <div class="client-trip-lbl">10-Year Anniversary · Italy</div>
-        <p class="client-quote">Business class on ITA to Rome, Emirates A380 home from Milan. Unlimited champagne on the upper deck. The perfect cap to our anniversary.</p>
-        <div class="client-savings">$22,000</div>
-        <div class="client-savings-lbl">Saved on a trip of a lifetime</div>
-        <div class="client-video">
-          <div class="yt-thumb" data-yt="G2xIcePJXxI">
-            <img src="https://img.youtube.com/vi/G2xIcePJXxI/mqdefault.jpg" alt="Meet Garrett & Nicole">
-            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Rachel -->
-      <div class="client-card">
-        <div class="client-initials">R</div>
-        <div class="client-name">Rachel</div>
-        <div class="client-trip-lbl">Emirates A380 First Class</div>
-        <p class="client-quote">I wanted the private suite, the shower at 40,000 feet, the bar. Angelo made it happen. I've been traveling the world in style ever since.</p>
-        <div class="client-savings">$18,000</div>
-        <div class="client-savings-lbl">First class for economy's price</div>
-        <div class="client-video">
-          <div class="yt-thumb" data-yt="1e1H9iWc6Io">
-            <img src="https://img.youtube.com/vi/1e1H9iWc6Io/mqdefault.jpg" alt="Meet Rachel">
-            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Gabrielle -->
-      <div class="client-card">
-        <div class="client-initials">Ga</div>
-        <div class="client-name">Gabrielle</div>
-        <div class="client-trip-lbl">Full Honeymoon on Points</div>
-        <p class="client-quote">A year of working together and our entire honeymoon — flights and hotel — was covered on points. We didn't pay a cent for travel.</p>
-        <div class="client-savings">$0 out of pocket</div>
-        <div class="client-savings-lbl">Flights + hotel — fully covered</div>
-        <div class="client-video">
-          <div class="yt-thumb" data-yt="wuxXq3NaAwc">
-            <img src="https://img.youtube.com/vi/wuxXq3NaAwc/mqdefault.jpg" alt="Meet Gabrielle">
-            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Amber & Ryan -->
-      <div class="client-card">
-        <div class="client-initials">A</div>
-        <div class="client-name">Amber & Ryan</div>
-        <div class="client-trip-lbl">Maldives Honeymoon · Qatar Q-Suites + Conrad</div>
-        <p class="client-quote">We had over 700k Hilton points and no idea what to do with them. Angelo mapped out every airline, every transfer ratio, every route — and landed us in Qatar Q-Suites business class to the Maldives with an over-water bungalow at the Conrad. We couldn't thank him enough.</p>
-        <div class="client-savings">$35,000+</div>
-        <div class="client-savings-lbl">Flights + 7 nights OTW — fully on points</div>
-      </div>
-
-      <!-- Frank & Lia -->
-      <div class="client-card">
-        <div class="client-initials">FL</div>
-        <div class="client-name">Frank & Lia</div>
-        <div class="client-trip-lbl">Honeymoon Finale · British Airways First Class</div>
-        <p class="client-quote">We wanted to close out our honeymoon the right way. Angelo put us in British Airways 787-9 First Class for 180,000 points — a $14,000 experience that cost us $250 in taxes.</p>
-        <div class="client-savings">$14,000</div>
-        <div class="client-savings-lbl">First class honeymoon finale on points</div>
-        <div class="client-video">
-          <div class="yt-thumb" data-yt="Oz10MoQ0ymw">
-            <img src="https://img.youtube.com/vi/Oz10MoQ0ymw/mqdefault.jpg" alt="Meet Frank & Lia">
-            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA (cols 2-3, row 3) -->
-      <div class="client-card cta-card">
-        <div class="cta-card-icon">✈️</div>
-        <div class="cta-card-body">
-          <div class="cta-card-h">Your trip could be next</div>
-          <p class="cta-card-sub">Start with a free 30-minute discovery call. Walk away knowing what your points are actually worth.</p>
-          <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">Book a Discovery Call →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-  </div>
-</div>
-<div class="expand-item">
-  <button class="expand-trigger" onclick="expandToggle(this)">
-    <span>How it works</span>
-    <span class="expand-plus">+</span>
-  </button>
-  <div class="expand-body">
 <!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div class="how-inner">
@@ -2186,8 +1977,216 @@
     </div>
   </div>
 </section>
+
+<!-- LEARN MORE -->
+<section class="learn-more-section">
+  <div class="learn-more-inner">
+    <p class="learn-more-label">Keep reading</p>
+
+<div class="expand-item">
+  <button class="expand-trigger" onclick="expandToggle(this)">
+    <span>Real client trips</span>
+    <span class="expand-plus">+</span>
+  </button>
+  <div class="expand-body">
+<!-- REAL TRIPS -->
+<section class="trips-section" id="trips">
+  <div class="trips-header">
+    <div>
+      <p class="section-label">Real Redemptions</p>
+      <h2 class="section-h2">What your points actually unlock</h2>
+    </div>
+    <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="trips-cta-link">Book a call to plan yours →</a>
+  </div>
+  <div class="trips-track" id="trips-track">
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="emirates-bar.png" alt="Emirates A380 Onboard Bar" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$30,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">Around the World — First Class</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~600,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">$800 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Route</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">JFK · MXP · DXB · HND · EWR</span></div>
+      </div>
+    </div>
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="emirates-fc-suite.png" alt="Emirates First Class Suite" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$18,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">Emirates First Class Suite</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~220,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$300 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val">Rachel · arrived well rested</span></div>
+      </div>
+    </div>
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="italy-biz.png" alt="Italy Business Class Round Trip" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$12,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">Italy — Business Class Round Trip</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~280,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$400 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Clients</span><span class="trip-detail-val">Garrett & Nicole · 10-year anniversary</span></div>
+      </div>
+    </div>
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="honeymoon-suite.png" alt="Honeymoon Suite" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$22,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">Honeymoon Suite</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~380,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$100 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val">14hr Newlywed Nap</span></div>
+      </div>
+    </div>
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="ba-first-class.jpg" alt="British Airways First Class" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$14,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">British Airways 787-9 — First Class</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~180,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$250 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Clients</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Frank & Lia · honeymoon finale</span></div>
+      </div>
+    </div>
+        <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="aa-flagship.png" alt="AA Flagship Business" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$13,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">AA Flagship Business</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">~$50 in taxes</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Value captured</span><span class="trip-detail-val gold">$12,700 saved</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Notable</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Swapped cabins to new product</span></div>
+      </div>
+    </div>
+    <div class="trip-card">
+      <div class="trip-top"><img class="trip-img" src="maldives-waldorf.webp" alt="Waldorf Astoria Maldives" loading="lazy"><div class="trip-retail"><div class="trip-retail-lbl">Retail value</div><div class="trip-retail-val">$40,000</div></div></div>
+      <div class="trip-body">
+        <div class="trip-name">Maldives — Business Class Round Trip</div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Points used</span><span class="trip-detail-val gold">~500,000 pts</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Out of pocket</span><span class="trip-detail-val green">Taxes only</span></div>
+        <div class="trip-detail"><span class="trip-detail-lbl">Client</span><span class="trip-detail-val" style="font-size:11px;letter-spacing:.02em;">Jason · much deserved self care</span></div>
+      </div>
+    </div>
+  </div>
+</section>
   </div>
 </div>
+<div class="expand-item">
+  <button class="expand-trigger" onclick="expandToggle(this)">
+    <span>What clients say</span>
+    <span class="expand-plus">+</span>
+  </button>
+  <div class="expand-body">
+<!-- CLIENTS -->
+<section class="clients-section" id="clients">
+  <div class="clients-inner">
+    <div class="clients-header">
+      <p class="section-label">Client Stories</p>
+      <h2 class="section-h2">Real people. Real first-class trips.</h2>
+    </div>
+    <div class="clients-masonry">
+
+      <!-- Jason -->
+      <div class="client-card featured">
+        <div class="client-initials">J</div>
+        <div class="client-name">Jason</div>
+        <div class="client-trip-lbl">Entrepreneur · Asia + Maldives</div>
+        <p class="client-quote">Had loads of points from my businesses but had no idea how to use them. Working with Angelo has made the world my backyard — and now I actually understand the strategy behind everything.</p>
+        <div class="client-savings">$40,000+</div>
+        <div class="client-savings-lbl">Unlocked in travel value</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="3qh_EjEqL6k">
+            <img src="https://img.youtube.com/vi/3qh_EjEqL6k/mqdefault.jpg" alt="Meet Jason">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Garrett & Nicole -->
+      <div class="client-card">
+        <div class="client-initials">G</div>
+        <div class="client-name">Garrett & Nicole</div>
+        <div class="client-trip-lbl">10-Year Anniversary · Italy</div>
+        <p class="client-quote">Business class on ITA to Rome, Emirates A380 home from Milan. Unlimited champagne on the upper deck. The perfect cap to our anniversary.</p>
+        <div class="client-savings">$22,000</div>
+        <div class="client-savings-lbl">Saved on a trip of a lifetime</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="G2xIcePJXxI">
+            <img src="https://img.youtube.com/vi/G2xIcePJXxI/mqdefault.jpg" alt="Meet Garrett & Nicole">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rachel -->
+      <div class="client-card">
+        <div class="client-initials">R</div>
+        <div class="client-name">Rachel</div>
+        <div class="client-trip-lbl">Emirates A380 First Class</div>
+        <p class="client-quote">I wanted the private suite, the shower at 40,000 feet, the bar. Angelo made it happen. I've been traveling the world in style ever since.</p>
+        <div class="client-savings">$18,000</div>
+        <div class="client-savings-lbl">First class for economy's price</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="1e1H9iWc6Io">
+            <img src="https://img.youtube.com/vi/1e1H9iWc6Io/mqdefault.jpg" alt="Meet Rachel">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gabrielle -->
+      <div class="client-card">
+        <div class="client-initials">Ga</div>
+        <div class="client-name">Gabrielle</div>
+        <div class="client-trip-lbl">Full Honeymoon on Points</div>
+        <p class="client-quote">A year of working together and our entire honeymoon — flights and hotel — was covered on points. We didn't pay a cent for travel.</p>
+        <div class="client-savings">$0 out of pocket</div>
+        <div class="client-savings-lbl">Flights + hotel — fully covered</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="wuxXq3NaAwc">
+            <img src="https://img.youtube.com/vi/wuxXq3NaAwc/mqdefault.jpg" alt="Meet Gabrielle">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amber & Ryan -->
+      <div class="client-card">
+        <div class="client-initials">A</div>
+        <div class="client-name">Amber & Ryan</div>
+        <div class="client-trip-lbl">Maldives Honeymoon · Qatar Q-Suites + Conrad</div>
+        <p class="client-quote">We had over 700k Hilton points and no idea what to do with them. Angelo mapped out every airline, every transfer ratio, every route — and landed us in Qatar Q-Suites business class to the Maldives with an over-water bungalow at the Conrad. We couldn't thank him enough.</p>
+        <div class="client-savings">$35,000+</div>
+        <div class="client-savings-lbl">Flights + 7 nights OTW — fully on points</div>
+      </div>
+
+      <!-- Frank & Lia -->
+      <div class="client-card">
+        <div class="client-initials">FL</div>
+        <div class="client-name">Frank & Lia</div>
+        <div class="client-trip-lbl">Honeymoon Finale · British Airways First Class</div>
+        <p class="client-quote">We wanted to close out our honeymoon the right way. Angelo put us in British Airways 787-9 First Class for 180,000 points — a $14,000 experience that cost us $250 in taxes.</p>
+        <div class="client-savings">$14,000</div>
+        <div class="client-savings-lbl">First class honeymoon finale on points</div>
+        <div class="client-video">
+          <div class="yt-thumb" data-yt="Oz10MoQ0ymw">
+            <img src="https://img.youtube.com/vi/Oz10MoQ0ymw/mqdefault.jpg" alt="Meet Frank & Lia">
+            <div class="yt-thumb-play"><div class="yt-play-circle"><div class="yt-play-arrow"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA (cols 2-3, row 3) -->
+      <div class="client-card cta-card">
+        <div class="cta-card-icon">✈️</div>
+        <div class="cta-card-body">
+          <div class="cta-card-h">Your trip could be next</div>
+          <p class="cta-card-sub">Start with a free 30-minute discovery call. Walk away knowing what your points are actually worth.</p>
+          <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">Book a Discovery Call →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  </div>
+</div>
+
 <div class="expand-item">
   <button class="expand-trigger" onclick="expandToggle(this)">
     <span>Who this is for</span>
@@ -2383,10 +2382,10 @@
   <div class="footer-inner">
     <div class="footer-logo">Paid<em>With</em>Points</div>
     <ul class="footer-links">
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#trips">Real Trips</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#how" onclick="navScrollTo('how',event)">How It Works</a></li>
+      <li><a href="#trips" onclick="navScrollTo('trips',event)">Real Trips</a></li>
+      <li><a href="#about" onclick="navScrollTo('about',event)">About</a></li>
+      <li><a href="#faq" onclick="navScrollTo('faq',event)">FAQ</a></li>
       <li><a href="executive-concierge.html" style="color:rgba(184,146,42,.6)!important">EC Membership</a></li>
     </ul>
     <div style="display:flex;gap:20px;flex-wrap:wrap;">
@@ -2405,6 +2404,15 @@
 
 <script>
   // Accordion (learn-more sections)
+  function navScrollTo(id, e) {
+    if (e) e.preventDefault();
+    var el = document.getElementById(id);
+    if (!el) return;
+    var item = el.closest ? el.closest('.expand-item') : null;
+    if (item) item.classList.add('open');
+    setTimeout(function() { el.scrollIntoView({behavior:'smooth', block:'start'}); }, 60);
+  }
+
   function expandToggle(btn) {
     const item = btn.closest('.expand-item');
     item.classList.toggle('open');
