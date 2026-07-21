@@ -177,71 +177,121 @@
       line-height: 1.5;
     }
 
-    /* ── PREVIEW STRIP ── */
-    .tool-preview {
-      background: var(--ivory2);
+    /* ── HIGHLIGHT REEL ── */
+    .reel-wrap {
+      background: #0f1923;
       border-bottom: 1px solid var(--rule);
-    }
-    .tool-preview-wrap {
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 ratio */
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--navy);
-    }
-    .tool-preview-main {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: top;
-      transition: opacity .15s;
-    }
-    .tool-preview-wrap:hover .tool-preview-main { opacity: .92; }
-    .tool-preview-thumbs {
+      padding: 20px 16px 12px;
       display: flex;
-      gap: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-      border-top: 1px solid var(--rule);
-    }
-    .tool-preview-thumbs::-webkit-scrollbar { display: none; }
-    .tool-thumb {
-      flex: 0 0 25%;
-      width: 25%;
-      height: 60px;
-      object-fit: cover;
-      object-position: top;
-      cursor: pointer;
-      border-right: 1px solid var(--rule);
-      opacity: .8;
-      transition: opacity .15s;
-    }
-    .tool-thumb:last-child { border-right: none; }
-    .tool-thumb:hover { opacity: 1; }
-    .tool-thumb.active { opacity: 1; outline: 2px solid var(--gold); outline-offset: -2px; }
-    .tool-thumb-html {
-      flex: 0 0 25%;
-      width: 25%;
-      height: 48px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      cursor: pointer;
-      border-right: 1px solid var(--rule);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .03em;
-      color: var(--muted);
-      background: var(--ivory2);
-      transition: color .15s, background .15s;
     }
-    .tool-thumb-html:last-child { border-right: none; }
-    .tool-thumb-html:hover { color: var(--ink); background: #f0ece4; }
-    .tool-thumb-html.active { color: var(--ink); background: #f0ece4; box-shadow: inset 0 -2px 0 var(--gold); }
+    .reel-frame {
+      width: 100%;
+      max-width: 380px;
+      background: #0D1B35;
+      border-radius: 18px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .reel-segs {
+      display: flex;
+      gap: 3px;
+      padding: 10px 12px 4px;
+    }
+    .reel-seg {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,.22);
+      overflow: hidden;
+    }
+    .reel-seg-fill {
+      height: 100%;
+      width: 0%;
+      background: #fff;
+    }
+    .reel-header {
+      padding: 6px 14px 12px;
+      color: #fff;
+    }
+    .reel-tag {
+      font-size: 9px;
+      letter-spacing: .1em;
+      color: #C9A84C;
+      margin-bottom: 2px;
+    }
+    .reel-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .reel-body {
+      padding: 0 14px 12px;
+      min-height: 230px;
+      color: #e5e7eb;
+    }
+    .reel-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 14px 8px;
+    }
+    .reel-timer {
+      font-size: 10px;
+      color: rgba(255,255,255,.4);
+    }
+    .reel-replay {
+      font-size: 10px;
+      color: #C9A84C;
+      border: 0.5px solid #C9A84C;
+      border-radius: 10px;
+      padding: 2px 9px;
+      background: none;
+      cursor: pointer;
+    }
+    .reel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 0 10px;
+    }
+    .reel-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.25);
+      transition: width .3s, background .3s;
+      cursor: pointer;
+    }
+    .reel-dot.active { width: 18px; background: #C9A84C; }
+    /* inner panel components */
+    .rp-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .rp-stat { background: rgba(255,255,255,.06); border-radius: 8px; padding: 10px; }
+    .rp-lbl { font-size: 10px; color: rgba(255,255,255,.45); margin-bottom: 3px; }
+    .rp-val { font-size: 18px; font-weight: 600; }
+    .rp-sub { font-size: 9px; color: rgba(255,255,255,.35); margin-top: 1px; }
+    .rp-prow { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 0.5px solid rgba(255,255,255,.07); }
+    .rp-prow:last-child { border-bottom: none; }
+    .rp-pname { font-size: 10px; font-weight: 600; }
+    .rp-psub { font-size: 9px; color: rgba(255,255,255,.4); }
+    .rp-pavail { font-size: 12px; font-weight: 600; color: #4ade80; }
+    .rp-pused { font-size: 9px; color: rgba(255,255,255,.4); }
+    .rp-month-row { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+    .rp-mwrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .rp-mouter { width: 100%; height: 52px; background: rgba(255,255,255,.06); border-radius: 3px; display: flex; align-items: flex-end; overflow: hidden; }
+    .rp-minner { width: 100%; background: #C9A84C; border-radius: 2px; height: 0%; transition: height .6s ease; }
+    .rp-mlbl { font-size: 8px; color: rgba(255,255,255,.4); }
+    .rp-mval { font-size: 8px; color: rgba(255,255,255,.7); font-weight: 600; }
+    .rp-crow { margin-bottom: 9px; }
+    .rp-ctop { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .rp-cname { font-size: 10px; font-weight: 600; }
+    .rp-camt { font-size: 10px; color: rgba(255,255,255,.5); }
+    .rp-track { height: 6px; background: rgba(255,255,255,.1); border-radius: 3px; overflow: hidden; }
+    .rp-fill { height: 100%; border-radius: 3px; width: 0%; transition: width .7s ease; }
+    .rp-alert { display: flex; align-items: flex-start; gap: 8px; padding: 8px; border-radius: 8px; margin-bottom: 6px; opacity: 0; transform: translateY(5px); transition: opacity .4s, transform .4s; }
+    .rp-aicon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; font-weight: 700; }
+    .rp-aname { font-size: 10px; font-weight: 600; }
+    .rp-adesc { font-size: 9px; color: rgba(255,255,255,.45); margin-top: 1px; }
+    .rp-abadge { font-size: 9px; padding: 2px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
 
     .tool-card-body {
       padding: 32px;
@@ -447,138 +497,32 @@
           <h2 class="tool-name">Statement Credits Tracker</h2>
           <p class="tool-tagline">Never leave a credit on the table again</p>
         </div>
-        <!-- PREVIEW GALLERY -->
-        <div class="tool-preview">
-          <div class="tool-preview-wrap" style="background:#0f1923">
-            <!-- Panel 1: Credit Tallies -->
-            <div class="tool-panel active" id="panel-1" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px">
-              <div style="width:90%;font-family:sans-serif">
-                <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c8a84b;margin-bottom:12px">Real-Time Credit Tallies</div>
-                <div style="display:flex;gap:8px">
-                  <div style="flex:1;background:#0d2318;border-radius:8px;padding:14px 8px;text-align:center">
-                    <div style="font-size:22px;font-weight:700;color:#4ade80">$1,659</div>
-                    <div style="font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#4ade8088;margin-top:5px">Available</div>
-                  </div>
-                  <div style="flex:1;background:#0d1a2e;border-radius:8px;padding:14px 8px;text-align:center">
-                    <div style="font-size:22px;font-weight:700;color:#60a5fa">$2,340</div>
-                    <div style="font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#60a5fa88;margin-top:5px">Redeemed</div>
-                  </div>
-                  <div style="flex:1;background:#2d0f0f;border-radius:8px;padding:14px 8px;text-align:center">
-                    <div style="font-size:22px;font-weight:700;color:#f87171">$90</div>
-                    <div style="font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#f8717188;margin-top:5px">Unused</div>
-                  </div>
-                </div>
-              </div>
+        <!-- HIGHLIGHT REEL -->
+        <div class="reel-wrap">
+          <div class="reel-frame" id="reelFrame">
+            <div class="reel-segs" id="reelSegs">
+              <div class="reel-seg"><div class="reel-seg-fill" id="rs0"></div></div>
+              <div class="reel-seg"><div class="reel-seg-fill" id="rs1"></div></div>
+              <div class="reel-seg"><div class="reel-seg-fill" id="rs2"></div></div>
+              <div class="reel-seg"><div class="reel-seg-fill" id="rs3"></div></div>
+              <div class="reel-seg"><div class="reel-seg-fill" id="rs4"></div></div>
             </div>
-            <!-- Panel 2: Year Progress -->
-            <div class="tool-panel" id="panel-2" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:20px">
-              <div style="width:90%;font-family:sans-serif">
-                <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c8a84b;margin-bottom:12px">Year-to-Date Progress</div>
-                <div style="background:#162030;border-radius:8px;padding:14px">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-                    <span style="font-size:10px;font-weight:600;color:#e5e7eb">2025 Annual Credits</span>
-                    <span style="font-size:14px;font-weight:700;color:#c8a84b">57%</span>
-                  </div>
-                  <div style="background:#1e2d3d;border-radius:4px;height:8px;margin-bottom:6px">
-                    <div style="background:linear-gradient(90deg,#c8a84b,#e8c76b);height:8px;border-radius:4px;width:57%"></div>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;margin-bottom:12px">
-                    <span style="font-size:7px;color:#6b7280">$2,340 redeemed</span>
-                    <span style="font-size:7px;color:#6b7280">$4,089 total</span>
-                  </div>
-                  <div style="display:flex;gap:3px">
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">J</div>
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">F</div>
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">M</div>
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">A</div>
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">M</div>
-                    <div style="flex:1;height:16px;background:#1d4030;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#4ade80">J</div>
-                    <div style="flex:1;height:16px;background:#2d2208;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#f59e0b">J</div>
-                    <div style="flex:1;height:16px;background:#1e2d3d;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#374151">A</div>
-                    <div style="flex:1;height:16px;background:#1e2d3d;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#374151">S</div>
-                    <div style="flex:1;height:16px;background:#1e2d3d;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#374151">O</div>
-                    <div style="flex:1;height:16px;background:#1e2d3d;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#374151">N</div>
-                    <div style="flex:1;height:16px;background:#1e2d3d;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:6px;color:#374151">D</div>
-                  </div>
-                </div>
-              </div>
+            <div class="reel-header">
+              <div class="reel-tag" id="reelTag">STATEMENT CREDITS TRACKER</div>
+              <div class="reel-title" id="reelTitle">Portfolio overview</div>
             </div>
-            <!-- Panel 3: Per-card breakdown -->
-            <div class="tool-panel" id="panel-3" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:20px">
-              <div style="width:90%;font-family:sans-serif">
-                <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c8a84b;margin-bottom:12px">Credits by Card</div>
-                <div>
-                  <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1e2d3d">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#c8a84b;flex-shrink:0"></div>
-                    <div style="font-size:9px;color:#d1d5db;flex:1">Amex Platinum</div>
-                    <div style="width:60px;height:5px;background:#1e2d3d;border-radius:3px;overflow:hidden"><div style="width:90%;height:5px;background:#c8a84b;border-radius:3px"></div></div>
-                    <div style="font-size:9px;font-weight:600;color:#c8a84b;width:38px;text-align:right">$1,800</div>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1e2d3d">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa;flex-shrink:0"></div>
-                    <div style="font-size:9px;color:#d1d5db;flex:1">Chase Sapphire Reserve</div>
-                    <div style="width:60px;height:5px;background:#1e2d3d;border-radius:3px;overflow:hidden"><div style="width:73%;height:5px;background:#60a5fa;border-radius:3px"></div></div>
-                    <div style="font-size:9px;font-weight:600;color:#60a5fa;width:38px;text-align:right">$1,469</div>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1e2d3d">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;flex-shrink:0"></div>
-                    <div style="font-size:9px;color:#d1d5db;flex:1">Amex Gold</div>
-                    <div style="width:60px;height:5px;background:#1e2d3d;border-radius:3px;overflow:hidden"><div style="width:40%;height:5px;background:#a78bfa;border-radius:3px"></div></div>
-                    <div style="font-size:9px;font-weight:600;color:#a78bfa;width:38px;text-align:right">$820</div>
-                  </div>
-                  <div style="display:flex;align-items:center;gap:8px;padding:7px 0">
-                    <div style="width:8px;height:8px;border-radius:50%;background:#34d399;flex-shrink:0"></div>
-                    <div style="font-size:9px;color:#d1d5db;flex:1">Hilton Aspire</div>
-                    <div style="width:60px;height:5px;background:#1e2d3d;border-radius:3px;overflow:hidden"><div style="width:20%;height:5px;background:#34d399;border-radius:3px"></div></div>
-                    <div style="font-size:9px;font-weight:600;color:#34d399;width:38px;text-align:right">$400</div>
-                  </div>
-                </div>
-              </div>
+            <div class="reel-body" id="reelBody"></div>
+            <div class="reel-foot">
+              <span class="reel-timer" id="reelTimer">0:00 / 0:37</span>
+              <button class="reel-replay" onclick="reelStart()">Replay</button>
             </div>
-            <!-- Panel 4: Expiration Alerts -->
-            <div class="tool-panel" id="panel-4" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:20px">
-              <div style="width:90%;font-family:sans-serif">
-                <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c8a84b;margin-bottom:12px">Expiring Soon — Don't Leave Money on the Table</div>
-                <div style="display:flex;flex-direction:column;gap:6px">
-                  <div style="background:#1e1008;border-left:3px solid #f59e0b;border-radius:0 6px 6px 0;padding:8px 10px">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-                      <span style="font-size:9px;font-weight:600;color:#fcd34d">Amex Platinum — Airline Fee</span>
-                      <span style="font-size:7px;background:#7c2d12;color:#fca5a5;padding:2px 6px;border-radius:3px">12 days left</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between">
-                      <span style="font-size:8px;color:#9ca3af">$200 airline fee credit</span>
-                      <span style="font-size:12px;font-weight:700;color:#f87171">$200</span>
-                    </div>
-                  </div>
-                  <div style="background:#0d2318;border-left:3px solid #4ade80;border-radius:0 6px 6px 0;padding:8px 10px">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-                      <span style="font-size:9px;font-weight:600;color:#4ade80">Chase Sapphire — Travel</span>
-                      <span style="font-size:7px;background:#14532d;color:#86efac;padding:2px 6px;border-radius:3px">Redeemed ✓</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between">
-                      <span style="font-size:8px;color:#9ca3af">$300 travel credit</span>
-                      <span style="font-size:12px;font-weight:700;color:#4ade80">$300</span>
-                    </div>
-                  </div>
-                  <div style="background:#1e1008;border-left:3px solid #f59e0b;border-radius:0 6px 6px 0;padding:8px 10px">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-                      <span style="font-size:9px;font-weight:600;color:#fcd34d">Amex Gold — Dining</span>
-                      <span style="font-size:7px;background:#7c2d12;color:#fca5a5;padding:2px 6px;border-radius:3px">31 days left</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between">
-                      <span style="font-size:8px;color:#9ca3af">$10/month dining credit — unused</span>
-                      <span style="font-size:12px;font-weight:700;color:#f87171">$10</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="reel-dots" id="reelDots">
+              <div class="reel-dot active" onclick="reelGo(0)"></div>
+              <div class="reel-dot" onclick="reelGo(1)"></div>
+              <div class="reel-dot" onclick="reelGo(2)"></div>
+              <div class="reel-dot" onclick="reelGo(3)"></div>
+              <div class="reel-dot" onclick="reelGo(4)"></div>
             </div>
-          </div>
-          <div class="tool-preview-thumbs">
-            <div class="tool-thumb-html active" onclick="setPanel(this,1)">Credit Tallies</div>
-            <div class="tool-thumb-html" onclick="setPanel(this,2)">YTD Progress</div>
-            <div class="tool-thumb-html" onclick="setPanel(this,3)">By Card</div>
-            <div class="tool-thumb-html" onclick="setPanel(this,4)">Expiring Soon</div>
           </div>
         </div>
         </div>
@@ -645,18 +589,174 @@
   </footer>
 
   <script>
-    function setPreview(thumb, src) {
-      document.getElementById('preview-main').src = src;
-      document.querySelectorAll('.tool-thumb').forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
+  (function() {
+    var PANELS = [
+      { tag: 'OVERVIEW', title: 'Portfolio overview', dur: 7 },
+      { tag: 'CREDIT TALLIES', title: 'Available vs. used', dur: 7 },
+      { tag: 'YTD PROGRESS', title: 'Monthly breakdown', dur: 8 },
+      { tag: 'BY CARD', title: 'Per-card utilization', dur: 8 },
+      { tag: 'EXPIRATION ALERTS', title: 'Upcoming deadlines', dur: 7 }
+    ];
+    var TOTAL_DUR = 37;
+    var cards = [
+      { name: 'Amex Platinum', annual: 1695, credits: ['$200 airline','$200 hotel','$240 digital','$300 Equinox','$189 Clear'], avail: 640, used: 1055, color: '#C9A84C' },
+      { name: 'Chase Sapphire Reserve', annual: 550, credits: ['$300 travel','$100 Global Entry','$60 Instacart'], avail: 300, used: 250, color: '#185FA5' },
+      { name: 'Amex Gold', annual: 325, credits: ['$120 dining','$120 Uber Cash','$100 hotel'], avail: 90, used: 235, color: '#3B6D11' },
+      { name: 'Hilton Aspire', annual: 550, credits: ['$400 resort','$200 airline','$100 on-property'], avail: 200, used: 350, color: '#854F0B' },
+      { name: 'Marriott Bonvoy Brilliant', annual: 650, credits: ['$300 dining','$100 on-property'], avail: 185, used: 465, color: '#3C3489' }
+    ];
+    var months = [
+      {m:'Jan',v:210},{m:'Feb',v:185},{m:'Mar',v:340},
+      {m:'Apr',v:260},{m:'May',v:420},{m:'Jun',v:195},{m:'Jul',v:450}
+    ];
+    var maxMonth = 450;
+    var alerts = [
+      { icon:'!', bg:'#3a0f0f', iconColor:'#f87171', name:'Amex Platinum — Saks credit', desc:'$50 left · expires Jun 30', badge:'Expires in 9 days', badgeBg:'#4a1515', badgeColor:'#fca5a5' },
+      { icon:'!', bg:'#2d1a08', iconColor:'#fbbf24', name:'Hilton Aspire — Resort credit', desc:'$400 remaining · resets Jan 1', badge:'Use this quarter', badgeBg:'#3a2108', badgeColor:'#fcd34d' },
+      { icon:'i', bg:'#0d1e30', iconColor:'#60a5fa', name:'Amex Gold — Dining credit', desc:'$10/mo · $30 unused since Apr', badge:'Monthly', badgeBg:'#0f2440', badgeColor:'#93c5fd' },
+      { icon:'✓', bg:'#0d2318', iconColor:'#4ade80', name:'Chase Sapphire — Travel credit', desc:'$300 fully redeemed', badge:'Complete', badgeBg:'#0e2e18', badgeColor:'#86efac' }
+    ];
+    var totalAvail = cards.reduce(function(a,c){return a+c.avail;},0);
+    var totalUsed = cards.reduce(function(a,c){return a+c.used;},0);
+    var timers = []; var raf = null; var clockInt = null; var elapsed = 0;
+
+    function pad(n){return n<10?'0'+n:''+n;}
+    function clearAll(){timers.forEach(clearTimeout);timers=[];if(raf)cancelAnimationFrame(raf);if(clockInt)clearInterval(clockInt);}
+    function $i(id){return document.getElementById(id);}
+
+    function countUp(el, target, prefix, suffix, ms) {
+      var start = null;
+      function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/ms,1);el.textContent=prefix+Math.round(p*target).toLocaleString()+suffix;if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
     }
-    function setPanel(thumb, n) {
-      document.querySelectorAll('.tool-panel').forEach(p => p.style.display = 'none');
-      document.querySelectorAll('.tool-thumb-html').forEach(t => t.classList.remove('active'));
-      var panel = document.getElementById('panel-' + n);
-      panel.style.display = 'flex';
-      thumb.classList.add('active');
+
+    function animSeg(fill, ms, done) {
+      var start = null;
+      fill.style.width='0%';
+      function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/ms*100,100);fill.style.width=p+'%';if(p<100){raf=requestAnimationFrame(step);}else{if(done)done();}}
+      raf=requestAnimationFrame(step);
     }
+
+    function updateDots(i){document.querySelectorAll('.reel-dot').forEach(function(d,j){d.classList.toggle('active',j===i);});}
+
+    function renderPortfolio(body) {
+      body.innerHTML = cards.map(function(c){
+        return '<div class="rp-prow"><div><div class="rp-pname">'+c.name+'</div><div class="rp-psub">'+c.credits.length+' credits</div></div>'
+          +'<div style="text-align:right"><div class="rp-pavail" id="pa'+c.name.replace(/\W/g,'')+'">$0</div>'
+          +'<div class="rp-pused">$'+c.used.toLocaleString()+' used</div></div></div>';
+      }).join('')+'<div class="rp-prow"><span style="font-size:10px;color:rgba(255,255,255,.45)">Total available</span>'
+        +'<span style="font-size:14px;font-weight:600;color:#4ade80" id="paTot">$0</span></div>';
+      cards.forEach(function(c,i){
+        var el=body.querySelector('#pa'+c.name.replace(/\W/g,''));
+        if(el){var t=setTimeout(function(){countUp(el,c.avail,'$','',700);},i*110);timers.push(t);}
+      });
+      var tot=body.querySelector('#paTot');
+      if(tot){var t=setTimeout(function(){countUp(tot,totalAvail,'$','',800);},200);timers.push(t);}
+    }
+
+    function renderTallies(body) {
+      body.innerHTML='<div class="rp-stat-grid">'
+        +'<div class="rp-stat"><div class="rp-lbl">Available</div><div class="rp-val" style="color:#4ade80" id="ta">$0</div><div class="rp-sub">5 cards</div></div>'
+        +'<div class="rp-stat"><div class="rp-lbl">Used this year</div><div class="rp-val" style="color:#60a5fa" id="tu">$0</div><div class="rp-sub">YTD redeemed</div></div>'
+        +'<div class="rp-stat"><div class="rp-lbl">Annual value</div><div class="rp-val" style="color:#C9A84C" id="tann">$0</div><div class="rp-sub">Total credits</div></div>'
+        +'<div class="rp-stat"><div class="rp-lbl">Utilization</div><div class="rp-val" style="color:#fbbf24" id="tpct">0%</div><div class="rp-sub">Used vs. available</div></div>'
+        +'</div>';
+      countUp(body.querySelector('#ta'),totalAvail,'$','',900);
+      countUp(body.querySelector('#tu'),totalUsed,'$','',900);
+      countUp(body.querySelector('#tann'),totalAvail+totalUsed,'$','',900);
+      countUp(body.querySelector('#tpct'),Math.round(totalUsed/(totalAvail+totalUsed)*100),'','%',900);
+    }
+
+    function renderYTD(body) {
+      var ytdSum=months.reduce(function(a,m){return a+m.v;},0);
+      body.innerHTML='<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:8px">Monthly credits redeemed — 2025</div>'
+        +'<div class="rp-month-row">'+months.map(function(m,i){
+          return '<div class="rp-mwrap"><div class="rp-mval" id="mv'+i+'"></div>'
+            +'<div class="rp-mouter"><div class="rp-minner" id="mb'+i+'" data-p="'+Math.round(m.v/maxMonth*100)+'"></div></div>'
+            +'<div class="rp-mlbl">'+m.m+'</div></div>';
+        }).join('')+'</div>'
+        +'<div style="display:flex;justify-content:space-between;border-top:0.5px solid rgba(255,255,255,.08);padding-top:8px;margin-top:4px">'
+        +'<span style="font-size:10px;color:rgba(255,255,255,.4)">YTD total</span>'
+        +'<span style="font-size:12px;font-weight:600;color:#C9A84C" id="ytdTot">$0</span></div>';
+      months.forEach(function(m,i){
+        var t=setTimeout(function(){
+          var bar=body.querySelector('#mb'+i);var val=body.querySelector('#mv'+i);
+          if(bar)bar.style.height=bar.dataset.p+'%';if(val)val.textContent='$'+m.v;
+        },i*80);timers.push(t);
+      });
+      var tot=body.querySelector('#ytdTot');
+      if(tot){var t=setTimeout(function(){countUp(tot,ytdSum,'$','',800);},100);timers.push(t);}
+    }
+
+    function renderByCard(body) {
+      body.innerHTML=cards.map(function(c,i){
+        return '<div class="rp-crow"><div class="rp-ctop"><span class="rp-cname">'+c.name+'</span>'
+          +'<span class="rp-camt">$<span id="cv'+i+'">0</span></span></div>'
+          +'<div class="rp-track"><div class="rp-fill" id="cf'+i+'" data-w="'+Math.round(c.used/c.annual*100)+'" style="background:'+c.color+'"></div></div>'
+          +'<div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:2px">'+c.credits.slice(0,2).join(' · ')+'</div></div>';
+      }).join('');
+      cards.forEach(function(c,i){
+        var t=setTimeout(function(){
+          var f=body.querySelector('#cf'+i);var v=body.querySelector('#cv'+i);
+          if(f)f.style.width=f.dataset.w+'%';if(v)countUp(v,c.used,'','',650);
+        },i*100);timers.push(t);
+      });
+    }
+
+    function renderAlerts(body) {
+      body.innerHTML=alerts.map(function(a,i){
+        return '<div class="rp-alert" id="al'+i+'" style="background:'+a.bg+'">'
+          +'<div class="rp-aicon" style="background:rgba(255,255,255,.08);color:'+a.iconColor+'">'+a.icon+'</div>'
+          +'<div style="flex:1"><div class="rp-aname">'+a.name+'</div><div class="rp-adesc">'+a.desc+'</div></div>'
+          +'<div class="rp-abadge" style="background:'+a.badgeBg+';color:'+a.badgeColor+'">'+a.badge+'</div></div>';
+      }).join('');
+      alerts.forEach(function(_,i){
+        var t=setTimeout(function(){
+          var el=body.querySelector('#al'+i);
+          if(el){el.style.opacity='1';el.style.transform='translateY(0)';}
+        },i*180);timers.push(t);
+      });
+    }
+
+    function renderPanel(idx) {
+      clearAll();
+      updateDots(idx);
+      var p=PANELS[idx];
+      $i('reelTag').textContent=p.tag;
+      $i('reelTitle').textContent=p.title;
+      for(var i=0;i<5;i++){var sf=$i('rs'+i);if(sf){sf.style.transition='none';sf.style.width=i<idx?'100%':'0%';}}
+      var body=$i('reelBody');
+      if(idx===0)renderPortfolio(body);
+      else if(idx===1)renderTallies(body);
+      else if(idx===2)renderYTD(body);
+      else if(idx===3)renderByCard(body);
+      else renderAlerts(body);
+      var startElapsed=PANELS.slice(0,idx).reduce(function(a,pp){return a+pp.dur;},0);
+      elapsed=startElapsed;
+      clockInt=setInterval(function(){
+        elapsed++;
+        var m=Math.floor(elapsed/60);
+        var el=$i('reelTimer');if(el)el.textContent=m+':'+pad(elapsed%60)+' / 0:37';
+        if(elapsed>=TOTAL_DUR)clearInterval(clockInt);
+      },1000);
+      animSeg($i('rs'+idx),p.dur*1000,function(){
+        if(idx<4){var t=setTimeout(function(){renderPanel(idx+1);},0);timers.push(t);}
+      });
+    }
+
+    window.reelStart=function(){renderPanel(0);};
+    window.reelGo=function(i){renderPanel(i);};
+
+    document.addEventListener('DOMContentLoaded',function(){
+      var frame=$i('reelFrame');
+      if(frame){
+        var obs=new IntersectionObserver(function(entries){
+          if(entries[0].isIntersecting){reelStart();obs.disconnect();}
+        },{threshold:0.3});
+        obs.observe(frame);
+      }
+    });
+  })();
   </script>
 </body>
 </html>
