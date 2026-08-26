@@ -29,7 +29,8 @@
   .plan-card.featured { background: rgba(184,146,42,.08); border-color: rgba(184,146,42,.4); }
   .plan-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: #b8922a; color: #fff; border-radius: 20px; padding: 3px 10px; margin-bottom: 12px; }
   .plan-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-  .plan-price { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 18px; }
+  .plan-price { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 6px; }
+  .plan-price-detail { font-size: 12px; color: rgba(255,255,255,.35); margin-bottom: 18px; }
   .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .plan-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.5; }
   .plan-features li::before { content: '✓'; color: #b8922a; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
@@ -38,9 +39,11 @@
   .one-off .title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
   .one-off .price { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 14px; }
   .fee-row { display: flex; justify-content: space-between; font-size: 13px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.65); }
-  .fee-row:last-child { border: none; }
+  .fee-row:last-of-type { border: none; }
   .fee-row span:last-child { color: #fff; font-weight: 600; }
   .refund-note { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.5; }
+  .credit-banner { margin-top: 14px; background: rgba(184,146,42,.12); border: 1px solid rgba(184,146,42,.35); border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #f0c84a; line-height: 1.55; }
+  .credit-banner strong { color: #fff; }
 
   .cta { padding: 36px 20px; text-align: center; max-width: 480px; margin: 0 auto; }
   .cta p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 20px; }
@@ -79,7 +82,8 @@
   <div class="plan-card featured">
     <div class="plan-badge">Most Popular</div>
     <div class="plan-title">Executive Concierge</div>
-    <div class="plan-price">$6,000 flat &nbsp;·&nbsp; or $3,000 down + 4 monthly payments</div>
+    <div class="plan-price">$6,000 flat</div>
+    <div class="plan-price-detail">or $3,000 down + 4 monthly payments of $1,000</div>
     <ul class="plan-features">
       <li>Complete audit of every card, program, and point balance — and what it's all worth</li>
       <li>Custom card strategy so every dollar you spend earns at its highest possible rate</li>
@@ -97,6 +101,7 @@
     <div class="fee-row"><span>Booking fee (5 pax × 2 ways × $200)</span><span>$1,000</span></div>
     <div class="fee-row"><span>Total if booked</span><span>$1,100</span></div>
     <div class="refund-note">If we can't find the flights, the $1,000 booking fee is fully refunded. The $100 search deposit is non-refundable.</div>
+    <div class="credit-banner">💡 If you decide to join the Executive Concierge program, the <strong>$1,100 paid here applies as a credit toward your membership</strong> — you'd only owe the remaining balance.</div>
   </div>
 </div>
 
