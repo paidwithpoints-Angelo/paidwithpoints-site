@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Paid With Points</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f9f7f4; color: #1a1a1a; }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; background: #f9f7f4; border-bottom: 1px solid #e8e4df; }
+    .nav-logo { font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+    .nav-logo span { color: #b8963e; font-style: italic; }
+    .nav-cta { background: transparent; border: 1.5px solid #1a1a1a; color: #1a1a1a; padding: 9px 20px; font-size: 14px; font-family: inherit; cursor: pointer; border-radius: 2px; text-decoration: none; }
+    .nav-cta:hover { background: #1a1a1a; color: #fff; }
+
+    .hero { text-align: center; padding: 60px 20px 40px; }
+    .hero-label { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #b8963e; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.1; color: #1a1a1a; max-width: 700px; margin: 0 auto; }
+
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .section-label { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #b8963e; margin: 52px 0 20px; }
+
+    .faq-item { border-bottom: 1px solid #ddd8d0; }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+      padding: 22px 0; font-family: Georgia, serif; font-size: 17px; font-weight: 700;
+      color: #1a1a1a; line-height: 1.35;
+    }
+    .faq-q:hover { color: #b8963e; }
+    .faq-icon { font-size: 22px; font-weight: 300; flex-shrink: 0; color: #999; line-height: 1; margin-top: 2px; transition: transform .2s; }
+    .faq-a {
+      display: none; padding-bottom: 22px;
+      font-family: 'Helvetica Neue', sans-serif; font-size: 15px; line-height: 1.75;
+      color: #444; max-width: 680px;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: #b8963e; }
+    .faq-item.open .faq-q { color: #b8963e; }
+
+    .back-link { display: inline-block; margin-top: 52px; font-family: 'Helvetica Neue', sans-serif; font-size: 13px; color: #888; text-decoration: none; }
+    .back-link:hover { color: #1a1a1a; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 16px 20px; }
+      .hero { padding: 40px 20px 28px; }
+      .faq-q { font-size: 15px; padding: 18px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://paidwithpoints.com" class="nav-logo">Paid<span>With</span>Points</a>
+  <a href="https://paidwithpoints.com/executive-concierge" class="nav-cta">Learn about EC →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Questions</div>
+  <h1>Everything you need to know.</h1>
+</div>
+
+<div class="container">
+
+  <div class="section-label">General questions</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Do I need to get new credit cards? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Not necessarily — though adding one or two strategic cards typically makes a significant difference in earn rate. During your discovery call we'll review what you have and identify where you're leaving points on the table. Any card recommendations are always yours to accept or decline.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Will this hurt my credit score? <span class="faq-icon">+</span></button>
+    <div class="faq-a">No — and when done correctly, the opposite is often true. I've maintained an excellent credit score while managing multiple cards for over a decade. We never recommend cards that don't fit your profile, and we always factor in your credit history when building a strategy.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">How long before I can take my first trip? <span class="faq-icon">+</span></button>
+    <div class="faq-a">If you already have points accumulated, we can often plan a significant trip within 3–6 months. Building from scratch with an optimized card strategy, most clients are positioned for a serious international trip within 12 months. We'll give you a realistic timeline on the discovery call based on your actual numbers.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Do you handle all the booking? <span class="faq-icon">+</span></button>
+    <div class="faq-a">We handle everything except the final click — and that's intentional. We find the award space, map out the transfer strategy, identify the right seats, and walk you through the exact steps on a call so you're the one placing the booking. Your loyalty account credentials and personal information stay entirely private. The complex part is never the booking itself — it's knowing what to book, when to transfer, and where to look. That's what we do.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Why are your redemptions worth so much more per point? <span class="faq-icon">+</span></button>
+    <div class="faq-a">We specialize in premium cabin redemptions — business and first class — using transfer partners and sweet spots that most people don't know exist. While a bank portal gives you 1¢ per point, we consistently achieve 4–5¢ or more. That difference is the entire value proposition. The around-the-world trip that cost $800 in taxes is worth $30,000 at retail. That's a 37x return on taxes paid.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">What if I don't have enough points yet? <span class="faq-icon">+</span></button>
+    <div class="faq-a">That's often the best time to start. We'll map out exactly what you need, build a strategy around your timeline, and track progress toward your goal. Many clients take a smaller trip along the way while we build up to the big one.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">What's the discovery call actually like? <span class="faq-icon">+</span></button>
+    <div class="faq-a">It's a 30-minute conversation — no pitch deck, no pressure, no homework required beforehand. We look at your spend, your existing points, and your travel goals. By the end you'll have a realistic picture of what your points are worth and whether working together makes sense. Most people leave with something useful even if they don't become clients.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Can't AI handle the award search? <span class="faq-icon">+</span></button>
+    <div class="faq-a">AI is great at strategy — which partners, which sweet spots, rough costs. But it can't see live availability, and it can surface phantom space: seats that look open but aren't there when you go to book direct with the airline. Transfer points on bad information and they're stuck — no program sends them back to the bank. We verify before you move anything.</div>
+  </div>
+
+  <div class="section-label">About the membership</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">What does the $6,000 annual fee actually cover? <span class="faq-icon">+</span></button>
+    <div class="faq-a">It covers a full 12 months of hands-on, personalized points management — including your initial portfolio audit, card strategy build, ongoing award searches, transfer coordination, booking guidance, and direct access throughout the year. You also get your own private client portal — a personalized dashboard where you can track your points, view booked redemptions, and follow your membership progress in real time. There are no additional fees for individual award searches or strategy consultations during your membership year.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Do I have to transfer my points to you? <span class="faq-icon">+</span></button>
+    <div class="faq-a">No. You retain full control of all your points and credit card accounts at all times. We advise, guide, and coordinate — you approve every transfer and every booking before anything happens.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">What if award availability is bad for my destination? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Award space fluctuates constantly. Part of our ongoing work is monitoring availability across multiple programs and alerting you when the right space opens. We also help you stay flexible on dates and routing, which dramatically increases what's findable. We've consistently found business class redemptions to destinations clients considered "impossible."</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">How does the payment plan work? <span class="faq-icon">+</span></button>
+    <div class="faq-a">With the payment plan option, $3,000 is due at the start of the engagement. The remaining balance is divided into 4 equal monthly installments of $1,000 each ($7,000 total). Full terms are disclosed before enrollment. You may cancel future installments at any time; amounts already paid are non-refundable per our cancellation policy.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">Can I cancel my membership? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Yes. For the annual renewal, send written cancellation notice at least 14 days before your anniversary date and the renewal will not be charged. For monthly payment plan installments, future payments stop immediately upon cancellation notice. The annual fee (or amounts already paid) is non-refundable once your engagement has begun. See our full Refund &amp; Cancellation Policy for details.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">How many clients do you take at once? <span class="faq-icon">+</span></button>
+    <div class="faq-a">Intentionally limited. The Executive Concierge is a white-glove, one-on-one service — not a scaled program. Keeping the client roster small is what makes it possible to deliver the level of attention and responsiveness the membership is built on.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">What's the minimum spend level to make this worthwhile? <span class="faq-icon">+</span></button>
+    <div class="faq-a">For most clients, the membership pays for itself on the first international trip — sometimes many times over. A single business or first class redemption that would have cost $8,000–$15,000 at retail, booked for a fraction of that in taxes and fees, makes the math very clear very fast. We'll give you a realistic picture of what that looks like for your specific situation on the discovery call.</div>
+  </div>
+
+  <a href="https://paidwithpoints.com" class="back-link">← Back to paidwithpoints.com</a>
+
+</div>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
