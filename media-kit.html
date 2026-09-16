@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid With Points — Media Kit</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #fafaf8;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+  .hero {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 64px 40px 56px;
+    text-align: center;
+  }
+  .hero .eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .hero .tagline {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+  .hero .gold-line {
+    width: 60px;
+    height: 2px;
+    background: #c9a84c;
+    margin: 28px auto 0;
+  }
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section {
+    padding: 56px 0 0;
+  }
+  section:last-child { padding-bottom: 64px; }
+  .section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #0a0a0a;
+  }
+  p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin: 32px 0;
+    background: #e8e8e4;
+  }
+  .stat {
+    background: #fff;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .stat .number {
+    font-size: 36px;
+    font-weight: 300;
+    color: #0a0a0a;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 32px 0;
+    background: #e8e8e4;
+  }
+  .pillar {
+    background: #fff;
+    padding: 28px 24px;
+  }
+  .pillar .icon { font-size: 22px; margin-bottom: 10px; }
+  .pillar .title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin-bottom: 6px;
+  }
+  .pillar .desc {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+  }
+  .why-list {
+    list-style: none;
+    margin: 24px 0;
+  }
+  .why-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid #e8e8e4;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: #333;
+    max-width: none;
+  }
+  .why-list li:first-child { border-top: 1px solid #e8e8e4; }
+  .why-list .bullet {
+    width: 6px;
+    height: 6px;
+    background: #c9a84c;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .why-list strong { color: #0a0a0a; }
+  .collab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+  }
+  .collab-box {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    padding: 28px 24px;
+  }
+  .collab-box h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 16px;
+  }
+  .collab-box ul {
+    list-style: none;
+    font-size: 14px;
+    color: #555;
+    line-height: 2;
+  }
+  .results-bar {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 48px 40px;
+    margin: 40px -32px 0;
+    text-align: center;
+  }
+  .results-bar .section-label { color: #c9a84c; }
+  .results-bar h2 { color: #fff; margin-bottom: 32px; }
+  .results-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: left;
+  }
+  .result-item .num {
+    font-size: 32px;
+    font-weight: 300;
+    color: #c9a84c;
+    margin-bottom: 8px;
+  }
+  .result-item .desc {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.5;
+  }
+  .contact-section {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    padding: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .contact-section h2 { margin-bottom: 0; }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+  }
+  .contact-links a {
+    color: #0a0a0a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .contact-links a:hover { color: #c9a84c; }
+  .contact-links .icon { font-size: 16px; }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: #e8e8e4;
+    margin: 48px 0 0;
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 32px; }
+    .stats-grid, .pillars, .collab-grid, .results-items { grid-template-columns: 1fr; }
+    .results-bar { margin: 40px -32px 0; padding: 40px 24px; }
+    .contact-section { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Media Kit 2025</div>
+  <h1>Paid With Points</h1>
+  <div class="tagline">Luxury Travel · Points & Miles · Education</div>
+  <div class="gold-line"></div>
+</div>
+
+<div class="container">
+
+  <section>
+    <div class="section-label">About</div>
+    <h2>Turning Everyday Spending Into Extraordinary Travel</h2>
+    <p>Paid With Points is a luxury travel education brand that teaches people how to turn everyday spending into business- and first-class flights, five-star hotels, and bucket-list experiences — without paying cash.</p>
+    <p>Founded by Angelo Minella, the brand simplifies complex points and miles strategies into actionable, real-world guidance. Known for credible, experience-backed education — not hype or unrealistic hacks.</p>
+  </section>
+
+  <section>
+    <div class="section-label">Creator</div>
+    <h2>Angelo Minella</h2>
+    <p>A travel rewards strategist who has redeemed <strong>8+ million points and miles</strong>, unlocking over <strong>$250,000 in luxury travel value</strong>. Real-world redemptions include around-the-world first-class trips, premium airline cabins, and luxury hotel stays — often for a fraction of the cash cost.</p>
+  </section>
+
+  <section>
+    <div class="section-label">Audience</div>
+    <h2>Who's Watching</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="number">48K</div>
+        <div class="label">Instagram Followers</div>
+      </div>
+      <div class="stat">
+        <div class="number">$250K+</div>
+        <div class="label">Travel Value Redeemed</div>
+      </div>
+      <div class="stat">
+        <div class="number">8M+</div>
+        <div class="label">Points & Miles Used</div>
+      </div>
+    </div>
+    <p>High-income travelers, entrepreneurs, professionals, and aspirational luxury travelers who actively seek actionable credit card, rewards, and travel strategy content.</p>
+  </section>
+
+  <section>
+    <div class="section-label">Content</div>
+    <h2>Content Pillars</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon">✈️</div>
+        <div class="title">Luxury Flights with Points</div>
+        <div class="desc">Business & first-class redemptions, routing strategies</div>
+      </div>
+      <div class="pillar">
+        <div class="icon">🏨</div>
+        <div class="title">High-End Hotels & Resorts</div>
+        <div class="desc">Five-star stays, award nights, suite upgrades</div>
+      </div>
+      <div class="pillar">
+        <div class="icon">💳</div>
+        <div class="title">Credit Card & Rewards Strategy</div>
+        <div class="desc">Card reviews, welcome bonuses, transfer partners</div>
+      </div>
+      <div class="pillar">
+        <div class="icon">📊</div>
+        <div class="title">Step-by-Step Education</div>
+        <div class="desc">Beginner to advanced tutorials, real redemption walkthroughs</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Why Partner</div>
+    <h2>Why Brands Work With Paid With Points</h2>
+    <ul class="why-list">
+      <li><span class="bullet"></span><div><strong>Authority & Trust</strong> — Built on real redemptions and transparent education, not sponsored opinion.</div></li>
+      <li><span class="bullet"></span><div><strong>High-Intent Audience</strong> — Followers actively seek travel, finance, and lifestyle solutions. They take action.</div></li>
+      <li><span class="bullet"></span><div><strong>Educational Storytelling</strong> — Complex products explained clearly and responsibly to an engaged audience.</div></li>
+      <li><span class="bullet"></span><div><strong>Premium Positioning</strong> — Aligns with aspirational and luxury brands across travel, hospitality, and finance.</div></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-label">Partnerships</div>
+    <h2>Collaboration Opportunities</h2>
+    <div class="collab-grid">
+      <div class="collab-box">
+        <h3>Ideal Brand Categories</h3>
+        <ul>
+          <li>Airlines & loyalty programs</li>
+          <li>Hotels, resorts & hospitality</li>
+          <li>Travel platforms & booking tools</li>
+          <li>Credit card issuers & fintech</li>
+          <li>Luxury lifestyle & travel accessories</li>
+        </ul>
+      </div>
+      <div class="collab-box">
+        <h3>Collaboration Types</h3>
+        <ul>
+          <li>Sponsored Reels & Posts</li>
+          <li>Educational Brand Integrations</li>
+          <li>Travel Experiences & Hosted Stays</li>
+          <li>Long-Term Brand Ambassadorships</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="results-bar">
+  <div class="section-label">Signature Results</div>
+  <h2>Proven Track Record</h2>
+  <div class="results-items">
+    <div class="result-item">
+      <div class="num">$30K+</div>
+      <div class="desc">Luxury itineraries redeemed for under $1,000 using points</div>
+    </div>
+    <div class="result-item">
+      <div class="num">8M+</div>
+      <div class="desc">Points and miles redeemed across airlines, hotels, and transfer partners</div>
+    </div>
+    <div class="result-item">
+      <div class="num">High-Touch</div>
+      <div class="desc">Paid education community and concierge services converting trust into action</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="contact-section">
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <h2>Let's Work Together</h2>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:paidwithpoints@gmail.com"><span class="icon">📧</span> paidwithpoints@gmail.com</a>
+      <a href="https://www.paidwithpoints.com" target="_blank"><span class="icon">🌐</span> www.paidwithpoints.com</a>
+      <a href="https://www.instagram.com/paidwithpoints/" target="_blank"><span class="icon">📸</span> @paidwithpoints</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
