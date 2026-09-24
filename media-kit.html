@@ -378,16 +378,16 @@
     <h2>Who's Watching</h2>
     <div class="stats-grid">
       <div class="stat">
-        <div class="number">48K</div>
+        <div class="number" id="mk-stat-followers">48K</div>
         <div class="label">Instagram Followers</div>
       </div>
       <div class="stat">
-        <div class="number">$250K+</div>
+        <div class="number" id="mk-stat-travel-value">$250K+</div>
         <div class="label">Travel Value Redeemed</div>
       </div>
       <div class="stat">
-        <div class="number">8M+</div>
-        <div class="label">Points & Miles Used</div>
+        <div class="number" id="mk-stat-points-used">8M+</div>
+        <div class="label">Points &amp; Miles Used</div>
       </div>
     </div>
     <p>High-income travelers, entrepreneurs, professionals, and aspirational luxury travelers who actively seek actionable credit card, rewards, and travel strategy content.</p>
@@ -398,23 +398,24 @@
     <h2>Content That Reaches &amp; Converts</h2>
     <div class="ig-overview">
       <div class="ig-stat">
-        <div class="num">3.85M</div>
+        <div class="num" id="mk-stat-views">3.85M</div>
         <div class="lbl">Total Views</div>
       </div>
       <div class="ig-stat">
-        <div class="num">30,433</div>
+        <div class="num" id="mk-stat-interactions">30,433</div>
         <div class="lbl">Total Interactions</div>
       </div>
       <div class="ig-stat">
-        <div class="num">1,925</div>
+        <div class="num" id="mk-stat-profile-actions">1,925</div>
         <div class="lbl">Profile Actions</div>
       </div>
       <div class="ig-stat">
-        <div class="num">3y 230d</div>
+        <div class="num" id="mk-stat-watch-time">3y 230d</div>
         <div class="lbl">Total Watch Time</div>
       </div>
     </div>
 
+    <p id="mk-last-updated-note" style="font-size:12px;color:#64748b;margin-bottom:4px;margin-top:-12px"></p>
     <p style="margin-bottom:24px;">Top performing reels — organic, no paid promotion.</p>
 
     <div class="reels-grid">
@@ -588,5 +589,38 @@
   </div>
 </div>
 
+<script>
+(async function() {
+  try {
+    const r = await fetch('https://paidwithpoints-dashboard.onrender.com/api/public/media-stats');
+    if (!r.ok) return;
+    const d = await r.json();
+
+    function setEl(id, val) {
+      if (val && val.toString().trim()) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+    }
+
+    if (d.ig_followers && d.ig_followers > 0) {
+      const fk = d.ig_followers >= 1000 ? Math.floor(d.ig_followers / 1000) + 'K' : d.ig_followers.toLocaleString();
+      setEl('mk-stat-followers', fk);
+    }
+    setEl('mk-stat-travel-value', d.travel_value);
+    setEl('mk-stat-points-used', d.points_used);
+    setEl('mk-stat-views', d.total_views_ytd);
+    setEl('mk-stat-interactions', d.total_interactions);
+    setEl('mk-stat-profile-actions', d.profile_actions);
+    setEl('mk-stat-watch-time', d.total_watch_time);
+
+    if (d.updated_at) {
+      const dt = new Date(d.updated_at);
+      const note = document.getElementById('mk-last-updated-note');
+      if (note) note.textContent = 'Stats as of ' + dt.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    }
+  } catch(e) { /* fail silently — hardcoded defaults remain */ }
+})();
+</script>
 </body>
 </html>
