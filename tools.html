@@ -372,6 +372,43 @@
       transform: translateY(-1px);
     }
 
+    /* ── RUNWAYIQ CARD ── */
+    .tool-card-riq .tool-card-header {
+      background: var(--navy);
+      border-bottom: none;
+    }
+    .riq-tier-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .riq-tier {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .02em;
+    }
+    .riq-tier-price {
+      color: rgba(255,255,255,.85);
+      font-weight: 700;
+    }
+    .riq-tier-first .riq-tier-price {
+      color: var(--gold);
+    }
+    .riq-tier-sep {
+      color: rgba(255,255,255,.25);
+      font-size: 14px;
+    }
+    .btn-buy-riq {
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .btn-buy-riq:hover {
+      background: var(--navy-mid, #0C447C);
+    }
+
     /* ── COMING SOON CARD ── */
     .tool-card-coming {
       opacity: .55;
@@ -547,27 +584,38 @@
         </div>
       </div>
 
-      <!-- CARD 2: Coming Soon -->
-      <div class="tool-card tool-card-coming">
+      <!-- CARD 2: RunwayIQ -->
+      <div class="tool-card tool-card-riq">
         <div class="tool-card-header">
-          <span class="coming-badge">Coming Soon</span>
-          <span class="tool-icon">✈️</span>
-          <h2 class="tool-name">Award Search Cheat Sheet</h2>
-          <p class="tool-tagline">Find first-class seats faster</p>
+          <span class="tool-badge">New &#x2713; Live Now</span>
+          <span class="tool-icon">&#x2726;</span>
+          <h2 class="tool-name">RunwayIQ</h2>
+          <p class="tool-tagline">The AI that actually knows your points — live award data, your real portfolio, and a travel expert when you need one.</p>
+          <div class="riq-tier-strip">
+            <span class="riq-tier">Economy <span class="riq-tier-price">Free</span></span>
+            <span class="riq-tier-sep">&#xB7;</span>
+            <span class="riq-tier">Business <span class="riq-tier-price">$9.99/mo</span></span>
+            <span class="riq-tier-sep">&#xB7;</span>
+            <span class="riq-tier riq-tier-first">First Class <span class="riq-tier-price">$49.99/mo</span></span>
+          </div>
         </div>
         <div class="tool-card-body">
-          <p class="tool-desc">A step-by-step guide to finding and booking business and first-class award seats — even when availability seems nonexistent.</p>
+          <p class="tool-desc">Stop guessing what your points are worth. RunwayIQ connects your real portfolio to live award availability and builds AI-powered strategies you can act on today.</p>
           <ul class="tool-features">
-            <li>Partner airline award search strategies</li>
-            <li>Best programs for each route</li>
-            <li>Waitlist and alert tactics</li>
+            <li>Live award search powered by seats.aero</li>
+            <li>AI trip planner with real-time availability</li>
+            <li>Transfer bonus alerts for your programs</li>
+            <li>Statement credits tracker across all cards</li>
+            <li>Shareable lifetime stats page</li>
           </ul>
         </div>
         <div class="tool-card-footer">
           <div class="tool-price">
-            <span class="tool-price-label">Coming soon</span>
-            <span class="tool-price-amount">—</span>
+            <span class="tool-price-label">Start free</span>
+            <span class="tool-price-amount">$0</span>
+            <span class="tool-price-sub">Upgrade anytime</span>
           </div>
+          <a href="/runwayiq" class="btn-buy btn-buy-riq">Explore RunwayIQ &#x2192;</a>
         </div>
       </div>
 
