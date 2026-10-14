@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Replace https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052 with your actual Acuity scheduling link -->
+  <!-- "See If You Qualify" goes to the intake application; Angelo reviews it before any call -->
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -195,6 +195,37 @@
     .ec-banner:hover { background: var(--navy2); }
     .ec-banner-tag { background: var(--gold); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; flex-shrink: 0; }
     .ec-banner-text strong { color: var(--gold); }
+
+    /* Wingman (free app) */
+    .hero-wm-link { margin-top: 10px; font-size: 15px; color: var(--muted); }
+    .hero-wm-link a { color: var(--navy); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid rgba(13,27,42,.35); padding-bottom: 1px; }
+    .hero-wm-link a:hover { border-color: var(--navy); }
+    .nav-link-wm { color: #185FA5 !important; font-weight: 700; }
+    .wm-section { background: var(--ivory2); padding: 80px 24px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .wm-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 56px; align-items: center; }
+    .wm-label { justify-content: flex-start; text-align: left; }
+    .wm-h2 { font-family: var(--serif); font-size: clamp(30px, 3.4vw, 44px); font-weight: 900; color: var(--ink); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 16px; }
+    .wm-h2 em { color: #185FA5; font-style: italic; }
+    .wm-body { font-size: 17px; line-height: 1.65; color: var(--muted); margin: 0 0 18px; max-width: 54ch; }
+    .wm-list { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 10px; }
+    .wm-list li { font-size: 15px; color: var(--ink); padding-left: 26px; position: relative; }
+    .wm-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+    .wm-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .wm-btn { background: #185FA5; }
+    .wm-btn:hover { background: #134d86; }
+    .wm-price { font-size: 13px; color: var(--muted); }
+    .wm-card { background: #fff; border: 1px solid var(--rule); border-radius: 16px; padding: 22px; box-shadow: 0 18px 40px rgba(13,27,42,.10); }
+    .wm-card-top { display: flex; justify-content: space-between; align-items: center; }
+    .wm-card-k { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .wm-card-pill { font-size: 11px; font-weight: 700; color: #185FA5; background: #E6F1FB; border-radius: 99px; padding: 3px 10px; }
+    .wm-card-v { font-family: var(--serif); font-size: 40px; font-weight: 900; color: var(--navy); margin: 8px 0 12px; }
+    .wm-bars { display: flex; gap: 3px; height: 8px; border-radius: 99px; overflow: hidden; margin-bottom: 16px; }
+    .wm-bars i { display: block; height: 100%; }
+    .wm-rows { display: grid; gap: 10px; }
+    .wm-rows div { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); border-top: 1px solid #f0ece5; padding-top: 10px; }
+    .wm-rows b { color: var(--ink); font-weight: 700; text-align: right; }
+    .wm-rows b.g { color: var(--green); }
+    @media (max-width: 860px) { .wm-inner { grid-template-columns: 1fr; gap: 32px; } .wm-section { padding: 60px 20px; } }
     .hero-ec-link {
       margin-top: 12px;
       font-size: 17px;
@@ -1379,7 +1410,7 @@
       letter-spacing: -.01em;
     }
     .footer-logo em { font-style: italic; color: var(--gold); }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 28px; list-style: none; padding: 0; }
     .footer-links a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.65); text-decoration: none; transition: color .15s; letter-spacing: .02em; }
     .footer-links a:hover { color: rgba(255,255,255,.6); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,.35); }
@@ -1536,11 +1567,12 @@
       <a href="#about" class="nav-link" onclick="navScrollTo('about',event)">About</a>
       <a href="#faq" class="nav-link" onclick="navScrollTo('faq',event)">FAQ</a>
       <a href="tools.html" class="nav-link">Tools</a>
+      <a href="https://paidwithpoints-dashboard.onrender.com/wingman" class="nav-link nav-link-wm">Wingman</a>
       <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
-      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">See If You Qualify</a>
+      <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="nav-cta">See If You Qualify</a>
     </div>
     <div class="nav-mobile-right">
-      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="nav-cta">See If You Qualify</a>
+      <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="nav-cta">See If You Qualify</a>
       <button class="nav-burger" onclick="toggleMobileNav()" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -1552,6 +1584,7 @@
     <a href="#about" class="nav-drawer-link" onclick="navScrollTo('about',event);toggleMobileNav()">About</a>
     <a href="#faq" class="nav-drawer-link" onclick="navScrollTo('faq',event);toggleMobileNav()">FAQ</a>
     <a href="tools.html" class="nav-drawer-link">Tools</a>
+    <a href="https://paidwithpoints-dashboard.onrender.com/wingman" class="nav-drawer-link">Wingman · free app</a>
     <a href="executive-concierge.html" class="nav-drawer-link">EC Membership</a>
   </div>
 </nav>
@@ -1564,16 +1597,17 @@
     <h1 class="hero-h1">
       We turn your credit card points<br>
       into <em>luxury travel.</em><br>
-      Done for you.
+      Expertly guided.
     </h1>
     <p class="hero-body">
       Most people have no idea what their points are actually worth. We do. We handle the research, the strategy, and the award space hunting — then walk you through every transfer and booking step-by-step — so the points you're already earning pay for travel you never thought was possible.
     </p>
     <div class="hero-actions">
-      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary">See If You Qualify →</a>
+      <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-primary">See If You Qualify →</a>
       <a href="#how" class="hero-sub-link" onclick="navScrollTo('how',event)">See how it works</a>
     </div>
     <p class="hero-ec-link">Looking for fully managed, white-glove service? <a href="executive-concierge.html">Explore EC Membership →</a></p>
+    <p class="hero-wm-link">Prefer to do it yourself? <a href="https://paidwithpoints-dashboard.onrender.com/wingman">Try Wingman free →</a></p>
 
   </div>
 </div>
@@ -1664,7 +1698,7 @@
         <span class="calc-comp-val calc-comp-val-pwp" id="calc-pwp-val">$6,720 – $11,760 / yr</span>
       </div>
       <div class="calc-cta">
-        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="display:inline-block;font-size:13px;padding:14px 28px;width:100%;text-align:center;box-sizing:border-box">See your actual number on a call →</a>
+        <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-primary" style="display:inline-block;font-size:13px;padding:14px 28px;width:100%;text-align:center;box-sizing:border-box">See your actual number on a call →</a>
       </div>
     </div>
   </div>
@@ -1688,8 +1722,8 @@
         <h2 class="section-h2" style="color:#fff">From your first call to your first flight — handled</h2>
       </div>
       <div>
-        <p class="how-desc">A four-step process built around your actual life — your spend, your goals, your dream trips. We handle everything. You just show up.</p>
-        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="how-cta-inline">Book your discovery call →</a>
+        <p class="how-desc">A four-step process built around your actual life — your spend, your goals, your dream trips. We find the award space and walk you through every booking.</p>
+        <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="how-cta-inline">Book your discovery call →</a>
       </div>
     </div>
     <div class="how-steps">
@@ -2056,7 +2090,7 @@
       <p class="section-label">Real Redemptions</p>
       <h2 class="section-h2">What your points actually unlock</h2>
     </div>
-    <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="trips-cta-link">See If You Qualify →</a>
+    <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="trips-cta-link">See If You Qualify →</a>
   </div>
   <div class="trips-track" id="trips-track">
     <div class="trip-card">
@@ -2236,8 +2270,8 @@
         <div class="cta-card-icon">✈️</div>
         <div class="cta-card-body">
           <div class="cta-card-h">Your trip could be next</div>
-          <p class="cta-card-sub">See if you qualify in 30 minutes. Walk away knowing exactly what your points are worth.</p>
-          <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">See If You Qualify →</a>
+          <p class="cta-card-sub">Apply in a few minutes. Angelo reviews it and reaches out to set up a free call.</p>
+          <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-primary" style="font-size:13px;padding:12px 24px;display:inline-block">See If You Qualify →</a>
         </div>
       </div>
 
@@ -2275,19 +2309,45 @@
         <div class="who-col-title">✗ &nbsp;This probably isn't for you if…</div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You spend less than $3,000/month — the math doesn't work at that level for concierge</span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You only want domestic flights or cash-back redemptions</span></div>
-        <div class="who-item no-item"><span class="who-mark no">✗</span><span>You enjoy doing the research yourself — AI and our Tools page are a great starting point</span></div>
+        <div class="who-item no-item"><span class="who-mark no">✗</span><span>You enjoy doing the research yourself — Wingman, our free app, is built for you</span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You're not open to adjusting your card setup at all</span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You need a trip booked in the next 2–3 weeks — strategy takes time to set up right</span></div>
       </div>
     </div>
     <div class="who-cta">
-      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-primary">See If You Qualify →</a>
-      <p class="who-cta-sub">30 minutes. Free. No pressure. Most people walk away with something useful regardless.</p>
+      <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-primary">See If You Qualify →</a>
+      <p class="who-cta-sub">A short application. Angelo reads every one himself and reaches out to set up a free call.</p>
     </div>
   </div>
 </section>
   </div>
 </div>
+
+<!-- WINGMAN: the free app for people who'd rather do it themselves -->
+<section class="wm-section" id="wingman">
+  <div class="wm-inner">
+    <div class="wm-copy">
+      <p class="section-label wm-label">Not ready for Concierge?</p>
+      <h2 class="wm-h2">Start with <em>Wingman</em>, our free app.</h2>
+      <p class="wm-body">Every balance, card and statement credit in one place. See what your points are worth today, what they can actually book, and which transfer bonuses are live for the points you hold.</p>
+      <ul class="wm-list">
+        <li>Points valued with current cents-per-point</li>
+        <li>Statement credits and annual fees tracked by card</li>
+        <li>Ask Wingman what your points can do for a trip</li>
+      </ul>
+      <div class="wm-actions">
+        <a href="https://paidwithpoints-dashboard.onrender.com/wingman" class="btn-primary wm-btn">Start free →</a>
+        <span class="wm-price">Economy is free · Business Class $9.99/mo</span>
+      </div>
+    </div>
+    <div class="wm-card" aria-hidden="true">
+      <div class="wm-card-top"><span class="wm-card-k">Lifetime value</span><span class="wm-card-pill">Wingman</span></div>
+      <div class="wm-card-v">$31,365</div>
+      <div class="wm-bars"><i style="width:56%;background:#534AB7"></i><i style="width:26%;background:#06B6D4"></i><i style="width:18%;background:#F59E0B"></i></div>
+      <div class="wm-rows"><div><span>Transferable points</span><b>340,000</b></div><div><span>Worth today</span><b>≈ $6,845</b></div><div><span>Live bonus for you</span><b class="g">Amex → Flying Blue +25%</b></div></div>
+    </div>
+  </div>
+</section>
 <div class="expand-item">
   <button class="expand-trigger" onclick="expandToggle(this)">
     <span>Why points go to waste</span>
@@ -2364,7 +2424,7 @@
         <div><div class="about-num-val">2015</div><div class="about-num-lbl">Year Started</div></div>
       </div>
       <div class="about-cta">
-        <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-outline-dark">See If You Qualify →</a>
+        <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-outline-dark">See If You Qualify →</a>
       </div>
     </div>
   </div>
@@ -2382,7 +2442,7 @@
       <p class="section-label">Common Questions</p>
       <h2 class="section-h2">Everything before the call</h2>
       <p>By the time you reach the bottom of this page you should know whether this is a fit. If you still have questions — just book a call and ask them there.</p>
-      <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-outline-dark" style="font-size:12px;padding:12px 22px">See If You Qualify →</a>
+      <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-outline-dark" style="font-size:12px;padding:12px 22px">See If You Qualify →</a>
     </div>
     <div class="faq-right">
       <div class="faq-item open">
@@ -2445,7 +2505,7 @@
     <span class="final-pill">📅 Book instantly</span>
     <span class="final-pill">✈ Real numbers, real strategy</span>
   </div>
-  <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank" class="btn-gold-large">See If You Qualify →</a>
+  <a href="https://paidwithpoints-dashboard.onrender.com/intake" class="btn-gold-large">See If You Qualify →</a>
   <p class="final-note">We only take clients we can genuinely help. Limited spots per month.</p>
 </section>
 
@@ -2458,6 +2518,7 @@
       <li><a href="#trips" onclick="navScrollTo('trips',event)">Real Trips</a></li>
       <li><a href="#about" onclick="navScrollTo('about',event)">About</a></li>
       <li><a href="#faq" onclick="navScrollTo('faq',event)">FAQ</a></li>
+      <li><a href="https://paidwithpoints-dashboard.onrender.com/wingman">Wingman</a></li>
       <li><a href="executive-concierge.html" style="color:rgba(184,146,42,.6)!important">EC Membership</a></li>
     </ul>
     <div style="display:flex;gap:20px;flex-wrap:wrap;">
@@ -2471,7 +2532,7 @@
 
 <!-- MOBILE STICKY -->
 <div class="sticky-bar">
-  <a href="https://paidwithpointscom.as.me/schedule/52026733/appointment/93674390/calendar/14127052" target="_blank">✈ &nbsp;See If You Qualify</a>
+  <a href="https://paidwithpoints-dashboard.onrender.com/intake">✈ &nbsp;See If You Qualify</a>
 </div>
 
 <script>
