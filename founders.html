@@ -146,6 +146,22 @@
     $('.offer-k').textContent = k; $('.offer-badge').textContent = badge;
     $('.offer-p').innerHTML = '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
   };
+  // Black Friday launch wording during the founder offer: founders get in Nov 20, everyone on Nov 27
+  var T_EARLY = Date.parse('2026-11-20T05:00:00Z'), T_BF = Date.parse('2026-11-27T05:00:00Z');
+  try { if (ph === 'early') now = T_EARLY + 1, skew = now - Date.now(); else if (ph === 'open') now = T_BF + 1, skew = now - Date.now(); } catch (e) {}
+  var perk1 = document.querySelectorAll('.perks li')[0], setPerk1 = function (h) { if (perk1) perk1.querySelector('span:last-child').innerHTML = h; };
+  if (phase === 'founder') {
+    if (now < T_EARLY) {
+      $('.pill').textContent = 'DOORS OPEN BLACK FRIDAY \u00b7 NOV 27';
+      setPerk1('<b>Founders get in Nov 20</b>, a week before doors open to everyone on Black Friday');
+    } else if (now < T_BF) {
+      $('.pill').textContent = 'FOUNDERS EARLY ACCESS IS OPEN';
+      setPerk1('<b>Founders are getting in now.</b> Doors open to everyone Black Friday, Nov 27');
+    } else {
+      $('.pill').textContent = 'DOORS ARE OPEN';
+      setPerk1('<b>Open now.</b> Join and I\u2019ll send your founder link');
+    }
+  }
   if (phase === 'teaser') {
     $('.pill').textContent = 'BIRTHDAY LAUNCH · JAN 31';
     setOffer('THE FOUNDER OFFER HAS ENDED', 'BIRTHDAY LAUNCH · JAN 31 – FEB 6', '$79', ' first year', 'One week only. Join the list and I’ll send it to you first.', 'Opens January 31 · ends February 6 at midnight');
