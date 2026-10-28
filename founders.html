@@ -80,6 +80,17 @@
       .side .offer { max-width: none; margin: 0 0 14px; text-align: center; }
       footer { padding-bottom: 32px; }
     }
+    /* Travel photo on top of the offer box */
+    .tripban { position: relative; border-radius: 14px 14px 0 0; overflow: hidden; margin: 0 auto; max-width: 440px; border: 1px solid rgba(133,183,235,.4); border-bottom: 0; }
+    .tripban img { display: block; width: 100%; height: 150px; object-fit: cover; object-position: center 45%; }
+    .tripban span { position: absolute; left: 10px; bottom: 10px; font-size: 12px; font-weight: 600; color: #fff; background: rgba(4,44,83,.78); border: 1px solid rgba(133,183,235,.35); border-radius: 999px; padding: 4px 10px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .tripban + .offer { border-top-left-radius: 0; border-top-right-radius: 0; border-top: 0; }
+    @media (min-width: 920px) {
+      .side .tripban { max-width: none; }
+      .tripban img { height: 130px; }
+    }
+    /* Short laptop screens: let the right column scroll with the page so the button is never cut off */
+    @media (min-width: 920px) and (max-height: 860px) { main > .side { position: static; } .tripban img { height: 100px; } }
   </style>
 </head>
 <body>
@@ -94,6 +105,7 @@
     <p class="lede">Since 2016, I've helped clients fly business and first class on points. Now I'm opening it up to everyone: a subscription that knows your points and shows you exactly what they can do, plus direct access to me to help you book your trip at the click of a button, whenever you want it.</p>
 
     <div class="side">
+    <div class="tripban"><img src="/founders-suite.jpg" alt="Emirates First Class suite with a sunset window" width="1000" height="668"><span>&#9992; Emirates First Class, booked with points</span></div>
     <div class="offer">
       <div class="offer-k">FOUNDER OFFER</div>
       <div class="offer-badge">LIFETIME RATE</div>
