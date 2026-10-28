@@ -35,6 +35,7 @@
     .offer-badge { display: inline-block; margin: 8px 0 2px; background: #FFD34E; color: #1a1405; font-size: 13px; font-weight: 800; letter-spacing: .08em; border-radius: 999px; padding: 5px 14px; box-shadow: 0 4px 14px rgba(255,211,78,.25); }
     .offer-p { margin: 4px 0 2px; } .offer-p b { font-size: 40px; font-weight: 800; letter-spacing: -.03em; } .offer-p span { font-size: 16px; color: var(--blue-mid); margin-left: 2px; }
     .offer-s { font-size: 14px; color: var(--white); }
+    .offer-end { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(133,183,235,.3); font-size: 13px; font-weight: 600; color: #FFD34E; }
     .card { background: var(--white); color: var(--text); border-radius: 16px; padding: 20px; text-align: left; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
     label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     input { width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--border); border-radius: 10px; padding: 12px 13px; margin-bottom: 14px; color: var(--text); background: #fff; }
@@ -96,6 +97,7 @@
       <div class="offer-badge">ONLY THE FIRST 100</div>
       <div class="offer-p"><b>$6.99</b><span>/month</span></div>
       <div class="offer-s">Locked in for life. Never goes up.</div>
+      <div class="offer-end" id="offer-end">Ends May 14, 2027, or when all 100 spots are gone.</div>
     </div>
 
     <div class="card" id="card">
@@ -114,7 +116,7 @@
 
     <ul class="perks">
       <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
-      <li><span class="ic">&#11088;</span><span><b>$6.99/month for life</b> for the first 100 founders</span></li>
+      <li><span class="ic">&#11088;</span><span><b>$6.99/month for life</b> for the first 100 founders, until May 14, 2027</span></li>
       <li><span class="ic">&#129309;</span><span><b>Help from me</b> booking your trip, at the click of a button, when you want it</span></li>
     </ul>
 
@@ -128,6 +130,12 @@
 <script>
 (function () {
   var API = 'https://wingman.paidwithpoints.com';
+  // After the deadline the founder price disappears on its own (the list keeps collecting emails for launch news)
+  if (Date.now() > Date.parse('2027-05-15T04:00:00Z')) {
+    var o = document.querySelector('.offer'); if (o) o.style.display = 'none';
+    var pk = document.querySelectorAll('.perks li')[1]; if (pk) pk.style.display = 'none';
+    var fi = document.querySelector('.fine'); if (fi) fi.textContent = 'No spam. Just launch news and early access.';
+  }
   var from = '';
   try { from = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30); } catch (e) {}
   var f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go');
