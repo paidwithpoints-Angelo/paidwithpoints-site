@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Founding Members — Paid With Points</title>
+  <meta name="description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
+  <meta property="og:title" content="Founding Members — Paid With Points">
+  <meta property="og:description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ivory: #F7F4EF; --navy: #0D1B2A; --navy2: #162536; --gold: #B8922A; --gold-lt: #F0E4C8;
+      --ink: #111111; --muted: #6B6560; --white: #FFFFFF; --rule: #DDD8CF;
+      --serif: 'Playfair Display', Georgia, serif; --sans: 'Inter', -apple-system, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    a { color: inherit; }
+    header { padding: 22px 20px; text-align: center; }
+    .logo { font-family: var(--serif); font-weight: 900; font-size: 22px; text-decoration: none; color: var(--white); }
+    .logo em { font-style: italic; color: var(--gold); }
+    main { flex: 1; width: 100%; max-width: 520px; margin: 0 auto; padding: 18px 16px 40px; text-align: center; }
+    .pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--gold); border: 1px solid rgba(184,146,42,.55); border-radius: 999px; padding: 5px 14px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(30px, 8vw, 42px); line-height: 1.12; margin: 18px 0 14px; letter-spacing: -.01em; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .lede { color: #C9D3DE; font-size: 16px; margin: 0 auto 24px; max-width: 440px; }
+    .card { background: var(--white); color: var(--ink); border-radius: 18px; padding: 20px; text-align: left; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+    label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 5px; }
+    input { width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--rule); border-radius: 10px; padding: 12px 13px; margin-bottom: 12px; color: var(--ink); background: #fff; }
+    input:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    button { width: 100%; font: inherit; font-size: 16px; font-weight: 700; border: 0; border-radius: 10px; padding: 14px; background: var(--gold); color: #1a1405; cursor: pointer; }
+    button:hover { filter: brightness(1.05); }
+    button:disabled { opacity: .6; cursor: default; }
+    .fine { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+    .err { color: #b42318; font-size: 13px; margin: -4px 0 10px; min-height: 0; }
+    .perks { list-style: none; text-align: left; margin: 26px auto 0; max-width: 420px; display: grid; gap: 12px; }
+    .perks li { display: flex; gap: 12px; align-items: flex-start; color: #C9D3DE; font-size: 15px; }
+    .perks b { color: var(--white); font-weight: 600; }
+    .perks .ic { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(184,146,42,.16); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .by { display: flex; gap: 12px; align-items: center; justify-content: center; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); text-align: left; }
+    .by .av { width: 46px; height: 46px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 900; font-size: 20px; color: var(--gold); border: 2px solid rgba(184,146,42,.6); background: var(--navy2); }
+    .by b { display: block; font-size: 14px; }
+    .by span { font-size: 13px; color: #A9B6C4; }
+    .done { text-align: center; padding: 8px 4px; }
+    .done .big { font-size: 40px; }
+    .done h2 { font-family: var(--serif); font-size: 24px; margin: 6px 0 8px; }
+    .done p { color: var(--muted); font-size: 15px; }
+    .done a { color: var(--gold); font-weight: 700; text-decoration: none; }
+    footer { text-align: center; font-size: 12px; color: #7F8C9A; padding: 18px 16px 26px; }
+    footer a { color: #A9B6C4; }
+  </style>
+</head>
+<body>
+  <header><a class="logo" href="/">Paid<em>With</em>Points</a></header>
+  <main>
+    <div class="pill">FOUNDING MEMBERS</div>
+    <h1>The tool I wish I had when I <em>started</em> in points</h1>
+    <p class="lede">I've spent years turning points into first-class trips. Now I'm building something that makes it simple: your points, your cards and your dream trips in one place, with real answers on what they can actually do. Founding members get in first.</p>
+
+    <div class="card" id="card">
+      <form id="f" novalidate>
+        <label for="fn">First name</label>
+        <input id="fn" name="first_name" autocomplete="given-name" required maxlength="60">
+        <label for="em">Email</label>
+        <input id="em" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+        <div class="hp" aria-hidden="true"><label for="ws">Website</label><input id="ws" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="err" id="err" role="alert"></div>
+        <button type="submit" id="go">Save my founder spot &rarr;</button>
+        <div class="fine">No spam. Just early access and founder perks.</div>
+      </form>
+    </div>
+
+    <ul class="perks">
+      <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
+      <li><span class="ic">&#9733;</span><span><b>Founding member pricing</b>, locked in</span></li>
+      <li><span class="ic">&#127873;</span><span><b>Founders-only perks</b> from me</span></li>
+    </ul>
+
+    <div class="by">
+      <span class="av" aria-hidden="true">A</span>
+      <div><b>Angelo, Paid With Points</b><span id="proof">Points and miles strategist</span></div>
+    </div>
+  </main>
+  <footer><a href="/">paidwithpoints.com</a> &middot; <a href="/privacy-policy.html">Privacy</a></footer>
+
+<script>
+(function () {
+  var API = 'https://wingman.paidwithpoints.com';
+  var from = '';
+  try { from = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30); } catch (e) {}
+  // Live proof line: total saved for clients (falls back to the plain title)
+  fetch(API + '/api/public/stats').then(function (r) { return r.json(); }).then(function (d) {
+    if (d && d.totalSaved > 1000) document.getElementById('proof').textContent = '$' + Math.floor(d.totalSaved / 1000) + 'k+ saved for clients with points';
+  }).catch(function () {});
+  var f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault(); err.textContent = '';
+    var name = f.first_name.value.trim(), email = f.email.value.trim();
+    if (!name) { err.textContent = 'Enter your first name'; f.first_name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Enter a valid email address'; f.email.focus(); return; }
+    go.disabled = true; go.textContent = 'Saving…';
+    fetch(API + '/api/public/founders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ first_name: name, email: email, from: from, website: f.website.value }) })
+      .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Something went wrong. Try again.'); return d; }); })
+      .then(function () {
+        document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>You’re on the founders list</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p></div>';
+      })
+      .catch(function (x) { err.textContent = x.message || 'Something went wrong. Try again.'; go.disabled = false; go.innerHTML = 'Save my founder spot &rarr;'; });
+  });
+})();
+</script>
+</body>
+</html>

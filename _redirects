@@ -1,3 +1,6 @@
 # Legacy Squarespace store URLs
 /store/p/paid-with-points-statement-credits-tracker  /tools.html  301
 /store/*  /tools.html  301
+
+# Founders list (comment PWP posts)
+/founders  /founders.html  200
