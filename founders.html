@@ -130,11 +130,39 @@
 <script>
 (function () {
   var API = 'https://wingman.paidwithpoints.com';
-  // After the deadline the founder price disappears on its own (the list keeps collecting emails for launch news)
-  if (Date.now() > Date.parse('2027-01-01T05:00:00Z')) {
-    var o = document.querySelector('.offer'); if (o) o.style.display = 'none';
-    var pk = document.querySelectorAll('.perks li')[1]; if (pk) pk.style.display = 'none';
-    var fi = document.querySelector('.fine'); if (fi) fi.textContent = 'No spam. Just launch news and early access.';
+  // ── Offer schedule (Eastern time). The page changes by itself on these dates:
+  //   now – Dec 31, 2026 11:59 PM  Founder offer: $6.99/month for life, first 100
+  //   Jan 1 – Jan 30, 2027         Teaser: birthday launch Jan 31 – Feb 6, $79 for the first year (join the list to get it first)
+  //   Jan 31 – Feb 6, 2027 11:59 PM Birthday launch is live, with a countdown
+  //   after Feb 6                  No offer; the list collects emails for news
+  var T_FOUNDER_END = Date.parse('2027-01-01T05:00:00Z'), T_BDAY_START = Date.parse('2027-01-31T05:00:00Z'), T_BDAY_END = Date.parse('2027-02-07T05:00:00Z');
+  var now = Date.now();
+  try { var ph = new URLSearchParams(location.search).get('preview'); if (ph === 'teaser') now = T_FOUNDER_END + 1; else if (ph === 'bday') now = T_BDAY_START + 3600e3; else if (ph === 'after') now = T_BDAY_END + 1; } catch (e) {}
+  var skew = now - Date.now();
+  var phase = now < T_FOUNDER_END ? 'founder' : now < T_BDAY_START ? 'teaser' : now < T_BDAY_END ? 'bday' : 'after';
+  window._pwpPhase = phase;
+  var $ = function (q) { return document.querySelector(q); }, perk2 = document.querySelectorAll('.perks li')[1];
+  var setOffer = function (k, badge, price, unit, sub, end) {
+    $('.offer-k').textContent = k; $('.offer-badge').textContent = badge;
+    $('.offer-p').innerHTML = '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
+  };
+  if (phase === 'teaser') {
+    $('.pill').textContent = 'BIRTHDAY LAUNCH · JAN 31';
+    setOffer('THE FOUNDER OFFER HAS ENDED', 'BIRTHDAY LAUNCH · JAN 31 – FEB 6', '$79', ' first year', 'One week only. Join the list and I’ll send it to you first.', 'Opens January 31 · ends February 6 at midnight');
+    if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b> during birthday launch week, Jan 31 – Feb 6';
+    $('#go').innerHTML = 'Get the birthday deal first &rarr;'; $('.fine').textContent = 'No spam. Just the birthday launch and early access.';
+  } else if (phase === 'bday') {
+    $('.pill').textContent = 'BIRTHDAY LAUNCH · THIS WEEK ONLY';
+    setOffer('BIRTHDAY LAUNCH', 'THIS WEEK ONLY', '$79', ' first year', 'Your first full year for $79.', 'Ends February 6 at midnight · <span id="cd"></span>');
+    if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b>, this week only (ends Feb 6)';
+    $('#go').innerHTML = 'Claim the $79 deal &rarr;'; $('.fine').textContent = 'No spam. I’ll send your link to claim it.';
+    var cd = function () { var ms = Math.max(0, T_BDAY_END - Date.now() - skew), d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4); var el = document.getElementById('cd'); if (el) el.textContent = (d ? d + 'd ' : '') + h + 'h ' + m + 'm left'; };
+    cd(); setInterval(cd, 30000);
+  } else if (phase === 'after') {
+    $('.offer').style.display = 'none'; if (perk2) perk2.style.display = 'none';
+    $('.pill').textContent = 'PAID WITH POINTS';
+    var perk1 = document.querySelectorAll('.perks li')[0]; if (perk1) perk1.querySelector('span:last-child').innerHTML = '<b>News and new features</b> before anyone else';
+    $('#go').innerHTML = 'Join the list &rarr;'; $('.fine').textContent = 'No spam. Just launch news and early access.';
   }
   var from = '';
   try { from = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30); } catch (e) {}
@@ -148,7 +176,7 @@
     fetch(API + '/api/public/founders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ first_name: name, email: email, from: from, website: f.website.value }) })
       .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Something went wrong. Try again.'); return d; }); })
       .then(function () {
-        document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>You’re on the founders list</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p></div>';
+        document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>' + (window._pwpPhase === 'founder' ? 'You’re on the founders list' : window._pwpPhase === 'after' ? 'You’re on the list' : 'You’re on the birthday launch list') + '</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p></div>';
       })
       .catch(function (x) { err.textContent = x.message || 'Something went wrong. Try again.'; go.disabled = false; go.innerHTML = 'Save my founder spot &rarr;'; });
   });
