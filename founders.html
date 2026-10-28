@@ -7,55 +7,54 @@
   <meta name="description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
   <meta property="og:title" content="Founding Members — Paid With Points">
   <meta property="og:description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/pwp-mark.png">
   <style>
+    /* Same look as the Wingman app and landing page: navy, Wingman blue, light-blue accent, system font */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ivory: #F7F4EF; --navy: #0D1B2A; --navy2: #162536; --gold: #B8922A; --gold-lt: #F0E4C8;
-      --ink: #111111; --muted: #6B6560; --white: #FFFFFF; --rule: #DDD8CF;
-      --serif: 'Playfair Display', Georgia, serif; --sans: 'Inter', -apple-system, sans-serif;
+      --navy: #042C53; --navy-mid: #0C447C; --blue: #185FA5; --blue-light: #E6F1FB; --blue-mid: #85B7EB;
+      --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --white: #fff;
     }
-    body { font-family: var(--sans); background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column;
+      background-image: radial-gradient(1000px 520px at 50% -160px, rgba(24,95,165,.55), transparent 70%); }
     a { color: inherit; }
-    header { padding: 22px 20px; text-align: center; }
-    .logo { font-family: var(--serif); font-weight: 900; font-size: 22px; text-decoration: none; color: var(--white); }
-    .logo em { font-style: italic; color: var(--gold); }
-    main { flex: 1; width: 100%; max-width: 520px; margin: 0 auto; padding: 18px 16px 40px; text-align: center; }
-    .pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--gold); border: 1px solid rgba(184,146,42,.55); border-radius: 999px; padding: 5px 14px; }
-    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(30px, 8vw, 42px); line-height: 1.12; margin: 18px 0 14px; letter-spacing: -.01em; }
-    h1 em { font-style: italic; color: var(--gold); }
-    .lede { color: #C9D3DE; font-size: 16px; margin: 0 auto 24px; max-width: 440px; }
-    .card { background: var(--white); color: var(--ink); border-radius: 18px; padding: 20px; text-align: left; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
-    label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 5px; }
-    input { width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--rule); border-radius: 10px; padding: 12px 13px; margin-bottom: 12px; color: var(--ink); background: #fff; }
-    input:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+    header { padding: 20px; display: flex; justify-content: center; }
+    .logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
+    .logo img { width: 34px; height: 34px; border-radius: 9px; }
+    main { flex: 1; width: 100%; max-width: 520px; margin: 0 auto; padding: 22px 16px 40px; text-align: center; }
+    .pill { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-mid); border: 1px solid rgba(133,183,235,.35); border-radius: 20px; padding: 5px 14px; }
+    h1 { font-weight: 700; font-size: clamp(32px, 8.5vw, 46px); line-height: 1.1; margin: 20px 0 16px; letter-spacing: -.03em; }
+    h1 em { font-style: normal; color: var(--blue-mid); }
+    .lede { color: var(--blue-mid); font-size: 17px; margin: 0 auto 26px; max-width: 450px; }
+    .card { background: var(--white); color: var(--text); border-radius: 16px; padding: 20px; text-align: left; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
+    label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    input { width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--border); border-radius: 10px; padding: 12px 13px; margin-bottom: 14px; color: var(--text); background: #fff; }
+    input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    button { width: 100%; font: inherit; font-size: 16px; font-weight: 700; border: 0; border-radius: 10px; padding: 14px; background: var(--gold); color: #1a1405; cursor: pointer; }
-    button:hover { filter: brightness(1.05); }
+    button { width: 100%; font: inherit; font-size: 16px; font-weight: 600; border: 0; border-radius: 10px; padding: 14px; background: var(--blue); color: #fff; cursor: pointer; }
+    button:hover { background: var(--navy-mid); }
     button:disabled { opacity: .6; cursor: default; }
     .fine { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
-    .err { color: #b42318; font-size: 13px; margin: -4px 0 10px; min-height: 0; }
+    .err { color: #dc2626; font-size: 13px; margin: -6px 0 10px; }
     .perks { list-style: none; text-align: left; margin: 26px auto 0; max-width: 420px; display: grid; gap: 12px; }
-    .perks li { display: flex; gap: 12px; align-items: flex-start; color: #C9D3DE; font-size: 15px; }
+    .perks li { display: flex; gap: 12px; align-items: center; color: var(--blue-mid); font-size: 15px; }
     .perks b { color: var(--white); font-weight: 600; }
-    .perks .ic { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(184,146,42,.16); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 14px; }
-    .by { display: flex; gap: 12px; align-items: center; justify-content: center; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); text-align: left; }
-    .by .av { width: 46px; height: 46px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 900; font-size: 20px; color: var(--gold); border: 2px solid rgba(184,146,42,.6); background: var(--navy2); }
+    .perks .ic { flex: none; width: 32px; height: 32px; border-radius: 9px; background: rgba(133,183,235,.14); border: 1px solid rgba(133,183,235,.25); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 15px; }
+    .by { display: flex; gap: 12px; align-items: center; justify-content: center; margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(133,183,235,.18); text-align: left; }
+    .by .av { width: 44px; height: 44px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: var(--white); background: var(--blue); border: 2px solid rgba(133,183,235,.5); }
     .by b { display: block; font-size: 14px; }
-    .by span { font-size: 13px; color: #A9B6C4; }
+    .by span { font-size: 13px; color: var(--blue-mid); }
     .done { text-align: center; padding: 8px 4px; }
     .done .big { font-size: 40px; }
-    .done h2 { font-family: var(--serif); font-size: 24px; margin: 6px 0 8px; }
+    .done h2 { font-size: 22px; letter-spacing: -.02em; margin: 6px 0 8px; color: var(--navy); }
     .done p { color: var(--muted); font-size: 15px; }
-    .done a { color: var(--gold); font-weight: 700; text-decoration: none; }
-    footer { text-align: center; font-size: 12px; color: #7F8C9A; padding: 18px 16px 26px; }
-    footer a { color: #A9B6C4; }
+    .done a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    footer { text-align: center; font-size: 12px; color: rgba(133,183,235,.7); padding: 18px 16px 26px; }
+    footer a { color: var(--blue-mid); }
   </style>
 </head>
 <body>
-  <header><a class="logo" href="/">Paid<em>With</em>Points</a></header>
+  <header><a class="logo" href="/"><img src="/pwp-mark.png" alt="">Paid With Points</a></header>
   <main>
     <div class="pill">FOUNDING MEMBERS</div>
     <h1>The tool I wish I had when I <em>started</em> in points</h1>
@@ -76,7 +75,7 @@
 
     <ul class="perks">
       <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
-      <li><span class="ic">&#9733;</span><span><b>Founding member pricing</b>, locked in</span></li>
+      <li><span class="ic">&#11088;</span><span><b>Founding member pricing</b>, locked in</span></li>
       <li><span class="ic">&#127873;</span><span><b>Founders-only perks</b> from me</span></li>
     </ul>
 
