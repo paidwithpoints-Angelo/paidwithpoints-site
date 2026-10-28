@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Founding Members — Paid With Points</title>
-  <meta name="description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
+  <meta name="description" content="10 years and $300k+ saved for clients with points. The first 100 founders lock in $6.99/month for life.">
   <meta property="og:title" content="Founding Members — Paid With Points">
-  <meta property="og:description" content="The tool I wish I had when I started in points and miles. Founding members get in first.">
+  <meta property="og:description" content="10 years and $300k+ saved for clients with points. The first 100 founders lock in $6.99/month for life.">
   <link rel="icon" href="/pwp-mark.png">
   <style>
     /* Same look as the Wingman app and landing page: navy, Wingman blue, light-blue accent, system font */
@@ -26,6 +26,14 @@
     h1 { font-weight: 700; font-size: clamp(32px, 8.5vw, 46px); line-height: 1.1; margin: 20px 0 16px; letter-spacing: -.03em; }
     h1 em { font-style: normal; color: var(--blue-mid); }
     .lede { color: var(--blue-mid); font-size: 17px; margin: 0 auto 26px; max-width: 450px; }
+    .proofbar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 auto 22px; max-width: 440px; }
+    .proofbar div { background: rgba(133,183,235,.1); border: 1px solid rgba(133,183,235,.25); border-radius: 14px; padding: 14px 10px; }
+    .proofbar b { display: block; font-size: clamp(28px, 8vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--white); }
+    .proofbar span { font-size: 13px; color: var(--blue-mid); }
+    .offer { margin: 0 auto 18px; max-width: 440px; border-radius: 14px; padding: 14px 16px; background: linear-gradient(135deg, #0C447C, #185FA5); border: 1px solid rgba(133,183,235,.4); }
+    .offer-k { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--blue-mid); }
+    .offer-p { margin: 4px 0 2px; } .offer-p b { font-size: 40px; font-weight: 800; letter-spacing: -.03em; } .offer-p span { font-size: 16px; color: var(--blue-mid); margin-left: 2px; }
+    .offer-s { font-size: 14px; color: var(--white); }
     .card { background: var(--white); color: var(--text); border-radius: 16px; padding: 20px; text-align: left; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
     label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     input { width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--border); border-radius: 10px; padding: 12px 13px; margin-bottom: 14px; color: var(--text); background: #fff; }
@@ -58,7 +66,17 @@
   <main>
     <div class="pill">FOUNDING MEMBERS</div>
     <h1>The tool I wish I had when I <em>started</em> in points</h1>
-    <p class="lede">I've spent years turning points into first-class trips. Now I'm building something that makes it simple: your points, your cards and your dream trips in one place, with real answers on what they can actually do. Founding members get in first.</p>
+    <div class="proofbar">
+      <div><b>$300k+</b><span>saved for my clients</span></div>
+      <div><b>10 years</b><span>booking award travel</span></div>
+    </div>
+    <p class="lede">For 10 years I've helped clients fly business and first class on points. Now I'm opening it up to everyone: a subscription that knows your points and shows you exactly what they can do, plus direct access to me to help you book your trip at the click of a button, whenever you want it.</p>
+
+    <div class="offer">
+      <div class="offer-k">FOUNDER OFFER &middot; FIRST 100 ONLY</div>
+      <div class="offer-p"><b>$6.99</b><span>/month</span></div>
+      <div class="offer-s">Locked in for life. Never goes up.</div>
+    </div>
 
     <div class="card" id="card">
       <form id="f" novalidate>
@@ -69,19 +87,19 @@
         <div class="hp" aria-hidden="true"><label for="ws">Website</label><input id="ws" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="err" id="err" role="alert"></div>
         <button type="submit" id="go">Save my founder spot &rarr;</button>
-        <div class="fine">No spam. Just early access and founder perks.</div>
+        <div class="fine">No spam. Just early access and your founder rate.</div>
       </form>
     </div>
 
     <ul class="perks">
       <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
-      <li><span class="ic">&#11088;</span><span><b>Founding member pricing</b>, locked in</span></li>
-      <li><span class="ic">&#127873;</span><span><b>Founders-only perks</b> from me</span></li>
+      <li><span class="ic">&#11088;</span><span><b>$6.99/month for life</b> for the first 100 founders</span></li>
+      <li><span class="ic">&#129309;</span><span><b>Help from me</b> booking your trip, at the click of a button, when you want it</span></li>
     </ul>
 
     <div class="by">
       <span class="av" aria-hidden="true">A</span>
-      <div><b>Angelo, Paid With Points</b><span id="proof">Points and miles strategist</span></div>
+      <div><b>Angelo, Paid With Points</b><span>10 years and $300k+ saved for clients with points</span></div>
     </div>
   </main>
   <footer><a href="/">paidwithpoints.com</a> &middot; <a href="/privacy-policy.html">Privacy</a></footer>
@@ -91,10 +109,6 @@
   var API = 'https://wingman.paidwithpoints.com';
   var from = '';
   try { from = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30); } catch (e) {}
-  // Live proof line: total saved for clients (falls back to the plain title)
-  fetch(API + '/api/public/stats').then(function (r) { return r.json(); }).then(function (d) {
-    if (d && d.totalSaved > 1000) document.getElementById('proof').textContent = '$' + Math.floor(d.totalSaved / 1000) + 'k+ saved for clients with points';
-  }).catch(function () {});
   var f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go');
   f.addEventListener('submit', function (e) {
     e.preventDefault(); err.textContent = '';
