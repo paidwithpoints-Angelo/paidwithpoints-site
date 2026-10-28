@@ -28,7 +28,7 @@
     .lede { color: var(--blue-mid); font-size: 17px; margin: 0 auto 26px; max-width: 450px; }
     .proofbar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 auto 22px; max-width: 440px; }
     .proofbar div { background: rgba(133,183,235,.1); border: 1px solid rgba(133,183,235,.25); border-radius: 14px; padding: 14px 10px; }
-    .proofbar b { display: block; font-size: clamp(28px, 8vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--white); }
+    .proofbar b { display: block; white-space: nowrap; font-size: clamp(24px, 7vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--white); }
     .proofbar span { font-size: 13px; color: var(--blue-mid); }
     .offer { margin: 0 auto 18px; max-width: 440px; border-radius: 14px; padding: 14px 16px; background: linear-gradient(135deg, #0C447C, #185FA5); border: 1px solid rgba(133,183,235,.4); }
     .offer-k { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--blue-mid); }
@@ -59,6 +59,23 @@
     .done a { color: var(--blue); font-weight: 700; text-decoration: none; }
     footer { text-align: center; font-size: 12px; color: rgba(133,183,235,.7); padding: 18px 16px 26px; }
     footer a { color: var(--blue-mid); }
+
+    /* Computers: two columns. Story on the left, offer and form on the right (stays in view while scrolling). */
+    @media (min-width: 920px) {
+      header { justify-content: flex-start; max-width: 1120px; width: 100%; margin: 0 auto; padding: 26px 32px; }
+      main { max-width: 1120px; padding: 34px 32px 56px; text-align: left; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, 440px); grid-template-rows: repeat(6, auto) 1fr; column-gap: 64px; align-items: start; }
+      main > .pill { grid-column: 1; grid-row: 1; justify-self: start; }
+      main > h1 { grid-column: 1; grid-row: 2; font-size: clamp(40px, 3.5vw, 50px); text-wrap: balance; margin: 22px 0 22px; max-width: 700px; }
+      main > .proofbar { grid-column: 1; grid-row: 3; margin: 0 0 22px; max-width: 520px; }
+      .proofbar div { text-align: left; padding: 16px 18px; }
+      .proofbar b { font-size: clamp(28px, 2.7vw, 38px); white-space: nowrap; }
+      main > .lede { grid-column: 1; grid-row: 4; margin: 0 0 8px; max-width: 580px; font-size: 18px; }
+      main > .perks { grid-column: 1; grid-row: 5; margin: 22px 0 0; max-width: 560px; }
+      main > .by { grid-column: 1; grid-row: 6; justify-content: flex-start; max-width: 560px; }
+      main > .side { grid-column: 2; grid-row: 1 / 8; position: sticky; top: 24px; }
+      .side .offer { max-width: none; margin: 0 0 14px; text-align: center; }
+      footer { padding-bottom: 32px; }
+    }
   </style>
 </head>
 <body>
@@ -72,6 +89,7 @@
     </div>
     <p class="lede">Since 2016, I've helped clients fly business and first class on points. Now I'm opening it up to everyone: a subscription that knows your points and shows you exactly what they can do, plus direct access to me to help you book your trip at the click of a button, whenever you want it.</p>
 
+    <div class="side">
     <div class="offer">
       <div class="offer-k">FOUNDER OFFER &middot; FIRST 100 ONLY</div>
       <div class="offer-p"><b>$6.99</b><span>/month</span></div>
@@ -89,6 +107,7 @@
         <button type="submit" id="go">Save my founder spot &rarr;</button>
         <div class="fine">No spam. Just early access and your founder rate.</div>
       </form>
+    </div>
     </div>
 
     <ul class="perks">
