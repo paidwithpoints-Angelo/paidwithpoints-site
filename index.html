@@ -1559,6 +1559,9 @@
       .trips-header { margin-bottom: 32px; }
     }
   </style>
+<style id="wm-toggle">html:not(.wm-on) .wm-only{display:none!important}html.wm-on .wm-off{display:none!important}</style>
+<script>/* Wingman show/hide: follows the "Open Wingman to the public" switch in Wingman settings. Hidden unless it's on. */
+(function(){try{fetch('https://wingman.paidwithpoints.com/api/public/launch').then(function(r){return r.json()}).then(function(d){if(d&&d.public_open)document.documentElement.classList.add('wm-on')}).catch(function(){})}catch(e){}})();</script>
 </head>
 <body>
 
@@ -1572,7 +1575,7 @@
       <a href="#about" class="nav-link" onclick="navScrollTo('about',event)">About</a>
       <a href="#faq" class="nav-link" onclick="navScrollTo('faq',event)">FAQ</a>
       <a href="tools.html" class="nav-link">Tools</a>
-      <a href="https://wingman.paidwithpoints.com/wingman" class="nav-link nav-link-wm">Wingman</a>
+      <a href="https://wingman.paidwithpoints.com/wingman" class="nav-link nav-link-wm wm-only">Wingman</a>
       <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
       <a href="https://wingman.paidwithpoints.com/intake" class="nav-cta">See If You Qualify</a>
     </div>
@@ -1589,7 +1592,7 @@
     <a href="#about" class="nav-drawer-link" onclick="navScrollTo('about',event);toggleMobileNav()">About</a>
     <a href="#faq" class="nav-drawer-link" onclick="navScrollTo('faq',event);toggleMobileNav()">FAQ</a>
     <a href="tools.html" class="nav-drawer-link">Tools</a>
-    <a href="https://wingman.paidwithpoints.com/wingman" class="nav-drawer-link">Wingman · free app</a>
+    <a href="https://wingman.paidwithpoints.com/wingman" class="nav-drawer-link wm-only">Wingman · free app</a>
     <a href="executive-concierge.html" class="nav-drawer-link">EC Membership</a>
   </div>
 </nav>
@@ -1613,9 +1616,9 @@
     </div>
     <div class="hero-paths">
       <a href="executive-concierge.html" class="hero-pill hero-pill-ec">Explore EC Membership →</a>
-      <a href="https://wingman.paidwithpoints.com/wingman" class="hero-pill hero-pill-wm">Try Wingman free →</a>
+      <a href="https://wingman.paidwithpoints.com/wingman" class="hero-pill hero-pill-wm wm-only">Try Wingman free →</a>
     </div>
-    <p class="hero-paths-sub">White-glove service from Angelo &nbsp;·&nbsp; or do it yourself with our free app</p>
+    <p class="hero-paths-sub">White-glove service from Angelo<span class="wm-only"> &nbsp;·&nbsp; or do it yourself with our free app</span></p>
 
   </div>
 </div>
@@ -2317,7 +2320,7 @@
         <div class="who-col-title">✗ &nbsp;This probably isn't for you if…</div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You spend less than $3,000/month — the math doesn't work at that level for concierge</span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You only want domestic flights or cash-back redemptions</span></div>
-        <div class="who-item no-item"><span class="who-mark no">✗</span><span>You enjoy doing the research yourself — Wingman, our free app, is built for you</span></div>
+        <div class="who-item no-item"><span class="who-mark no">✗</span><span>You enjoy doing the research yourself<span class="wm-only"> — Wingman, our free app, is built for you</span><span class="wm-off"> and don't want a strategist in your corner</span></span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You're not open to adjusting your card setup at all</span></div>
         <div class="who-item no-item"><span class="who-mark no">✗</span><span>You need a trip booked in the next 2–3 weeks — strategy takes time to set up right</span></div>
       </div>
@@ -2332,7 +2335,7 @@
 </div>
 
 <!-- WINGMAN: the free app for people who'd rather do it themselves -->
-<section class="wm-section" id="wingman">
+<section class="wm-section wm-only" id="wingman">
   <div class="wm-inner">
     <div class="wm-copy">
       <p class="section-label wm-label">Not ready for Concierge?</p>
@@ -2526,7 +2529,7 @@
       <li><a href="#trips" onclick="navScrollTo('trips',event)">Real Trips</a></li>
       <li><a href="#about" onclick="navScrollTo('about',event)">About</a></li>
       <li><a href="#faq" onclick="navScrollTo('faq',event)">FAQ</a></li>
-      <li><a href="https://wingman.paidwithpoints.com/wingman">Wingman</a></li>
+      <li class="wm-only"><a href="https://wingman.paidwithpoints.com/wingman">Wingman</a></li>
       <li><a href="executive-concierge.html" style="color:rgba(184,146,42,.6)!important">EC Membership</a></li>
     </ul>
     <div style="display:flex;gap:20px;flex-wrap:wrap;">

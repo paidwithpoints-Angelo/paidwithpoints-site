@@ -495,6 +495,9 @@
       footer { padding: 28px 24px; }
     }
   </style>
+<style id="wm-toggle">html:not(.wm-on) .wm-only{display:none!important}html.wm-on .wm-off{display:none!important}</style>
+<script>/* Wingman show/hide: follows the "Open Wingman to the public" switch in Wingman settings. Hidden unless it's on. */
+(function(){try{fetch('https://wingman.paidwithpoints.com/api/public/launch').then(function(r){return r.json()}).then(function(d){if(d&&d.public_open)document.documentElement.classList.add('wm-on')}).catch(function(){})}catch(e){}})();</script>
 </head>
 <body>
 
@@ -507,7 +510,7 @@
         <a href="/#trips" class="nav-link">Real Trips</a>
         <a href="/#about" class="nav-link">About</a>
         <a href="tools.html" class="nav-link nav-link-active">Tools</a>
-        <a href="https://wingman.paidwithpoints.com/wingman" class="nav-link" style="color:#185FA5;font-weight:700">Wingman</a>
+        <a href="https://wingman.paidwithpoints.com/wingman" class="nav-link wm-only" style="color:#185FA5;font-weight:700">Wingman</a>
         <a href="executive-concierge.html" class="nav-link nav-link-ec">EC Membership</a>
         <a href="https://wingman.paidwithpoints.com/intake" class="nav-cta">See If You Qualify</a>
       </div>
