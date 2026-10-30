@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Founding Members — Wingman by Paid With Points</title>
-  <meta name="description" content="Since 2016, $300k+ saved for clients with points. The first 100 founders lock in $6.99/month for life.">
+  <meta name="description" content="Since 2016, $300k+ saved for clients with points. The first 100 founders lock in $6.99/month or $69/year for life.">
   <meta property="og:title" content="Founding Members — Paid With Points">
-  <meta property="og:description" content="Since 2016, $300k+ saved for clients with points. The first 100 founders lock in $6.99/month for life.">
+  <meta property="og:description" content="Since 2016, $300k+ saved for clients with points. The first 100 founders lock in $6.99/month or $69/year for life.">
   <link rel="icon" href="/pwp-mark.png">
   <style>
     /* Same look as the Wingman app and landing page: navy, Wingman blue, light-blue accent, system font */
@@ -35,6 +35,13 @@
     .offer-k { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--blue-mid); }
     .offer-badge { display: inline-block; margin: 8px 0 2px; background: #FFD34E; color: #1a1405; font-size: 13px; font-weight: 800; letter-spacing: .08em; border-radius: 999px; padding: 5px 14px; box-shadow: 0 4px 14px rgba(255,211,78,.25); }
     .offer-p { margin: 4px 0 2px; } .offer-p b { font-size: 40px; font-weight: 800; letter-spacing: -.03em; } .offer-p span { font-size: 16px; color: var(--blue-mid); margin-left: 2px; } .offer-p s { font-size: 22px; font-weight: 600; color: #9fc2e8; text-decoration-color: #ff8a8a; text-decoration-thickness: 2px; margin-right: 8px; }
+    .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0 8px; }
+    .plan { position: relative; border: 1px solid rgba(133,183,235,.45); border-radius: 12px; padding: 12px 6px 10px; background: rgba(255,255,255,.06); }
+    .plan.best { border: 2px solid #FFD34E; background: rgba(255,211,78,.08); }
+    .pl-tag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #FFD34E; color: #1a1405; font-size: 10px; font-weight: 800; letter-spacing: .06em; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+    .pl-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--blue-mid); }
+    .pl-p b { font-size: 30px; font-weight: 800; letter-spacing: -.02em; } .pl-p s { font-size: 14px; color: #9fc2e8; text-decoration-color: #ff8a8a; text-decoration-thickness: 2px; }
+    .pl-u { font-size: 12.5px; color: #c7dcf3; }
     .offer-save { display: inline-block; margin-top: 6px; font-size: 12.5px; font-weight: 800; color: #bbf7d0; background: rgba(34,197,94,.18); border: 1px solid rgba(134,239,172,.4); border-radius: 999px; padding: 3px 10px; }
     .offer-s { font-size: 14px; color: var(--white); }
     .offer-lim { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 13px; font-weight: 700; color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 5px 11px; }
@@ -111,9 +118,12 @@
     <div class="offer">
       <div class="offer-k">FOUNDER OFFER</div>
       <div class="offer-badge">LIFETIME RATE</div>
-      <div class="offer-p"><s aria-label="Regular price $9.99 a month">$9.99</s><b>$6.99</b><span>/month</span></div>
-      <div class="offer-save" id="offer-save">30% off for life</div>
-      <div class="offer-s">Locked in for life. Never goes up.</div>
+      <div class="offer-p" style="display:none"></div>
+      <div class="plans" id="offer-plans">
+        <div class="plan"><div class="pl-k">MONTHLY</div><div class="pl-p"><s aria-label="Regular price $9.99 a month">$9.99</s> <b>$6.99</b></div><div class="pl-u">per month</div></div>
+        <div class="plan best"><div class="pl-tag">BEST DEAL</div><div class="pl-k">YEARLY</div><div class="pl-p"><s aria-label="Regular price $99 a year">$99</s> <b>$69</b></div><div class="pl-u">per year &middot; $5.75/mo</div></div>
+      </div>
+      <div class="offer-s">Either way, locked in for life. Never goes up.</div>
       <div class="offer-lim" id="offer-lim"><i></i>Limited to 100 members</div>
       <div class="offer-end" id="offer-end">Ends December 31, 2026, or when all 100 spots are taken.</div>
     </div>
@@ -134,7 +144,7 @@
 
     <ul class="perks">
       <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
-      <li><span class="ic">&#11088;</span><span><b><s style="opacity:.7;font-weight:600">$9.99</s> $6.99/month for life</b> for the first 100 founders, until December 31, 2026</span></li>
+      <li><span class="ic">&#11088;</span><span><b>$6.99/month or $69/year, for life</b> for the first 100 founders, until December 31, 2026</span></li>
       <li><span class="ic">&#129309;</span><span><b>Help from me</b> booking your trip, at the click of a button, when you want it</span></li>
     </ul>
 
@@ -149,7 +159,7 @@
 (function () {
   var API = 'https://wingman.paidwithpoints.com';
   // ── Offer schedule (Eastern time). The page changes by itself on these dates:
-  //   now – Dec 31, 2026 11:59 PM  Founder offer: $6.99/month for life, first 100
+  //   now – Dec 31, 2026 11:59 PM  Founder offer: $6.99/month or $69/year for life, first 100
   //   Jan 1 – Jan 30, 2027         Teaser: birthday launch Jan 31 – Feb 6, $79 for the first year (join the list to get it first)
   //   Jan 31 – Feb 6, 2027 11:59 PM Birthday launch is live, with a countdown
   //   after Feb 6                  No offer; the list collects emails for news
@@ -161,7 +171,7 @@
   window._pwpPhase = phase;
   var $ = function (q) { return document.querySelector(q); }, perk2 = document.querySelectorAll('.perks li')[1];
   var setOffer = function (k, badge, price, unit, sub, end) {
-    var lim = document.getElementById('offer-lim'); if (lim) lim.style.display = 'none'; var sv = document.getElementById('offer-save'); if (sv) sv.style.display = 'none';
+    var lim = document.getElementById('offer-lim'); if (lim) lim.style.display = 'none'; var pl = document.getElementById('offer-plans'); if (pl) pl.style.display = 'none'; $('.offer-p').style.display = '';
     $('.offer-k').textContent = k; $('.offer-badge').textContent = badge;
     $('.offer-p').innerHTML = '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
   };
@@ -183,12 +193,12 @@
   }
   if (phase === 'teaser') {
     $('.pill').textContent = 'BIRTHDAY LAUNCH · JAN 31';
-    setOffer('THE FOUNDER OFFER HAS ENDED', 'BIRTHDAY LAUNCH · JAN 31 – FEB 6', '$79', ' first year', 'One week only. Join the list and I’ll send it to you first.', 'Opens January 31 · ends February 6 at midnight');
+    setOffer('THE FOUNDER OFFER HAS ENDED', 'BIRTHDAY LAUNCH · JAN 31 – FEB 6', '$79', ' first year', 'One week only, then $99/year. Join the list and I’ll send it to you first.', 'Opens January 31 · ends February 6 at midnight');
     if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b> during birthday launch week, Jan 31 – Feb 6';
     $('#go').innerHTML = 'Get the birthday deal first &rarr;'; $('.fine').textContent = 'No spam. Just the birthday launch and early access.';
   } else if (phase === 'bday') {
     $('.pill').textContent = 'BIRTHDAY LAUNCH · THIS WEEK ONLY';
-    setOffer('BIRTHDAY LAUNCH', 'THIS WEEK ONLY', '$79', ' first year', 'Your first full year for $79.', 'Ends February 6 at midnight · <span id="cd"></span>');
+    setOffer('BIRTHDAY LAUNCH', 'THIS WEEK ONLY', '$79', ' first year', 'Your first full year for $79, then $99/year.', 'Ends February 6 at midnight · <span id="cd"></span>');
     if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b>, this week only (ends Feb 6)';
     $('#go').innerHTML = 'Claim the $79 deal &rarr;'; $('.fine').textContent = 'No spam. I’ll send your link to claim it.';
     var cd = function () { var ms = Math.max(0, T_BDAY_END - Date.now() - skew), d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4); var el = document.getElementById('cd'); if (el) el.textContent = (d ? d + 'd ' : '') + h + 'h ' + m + 'm left'; };
