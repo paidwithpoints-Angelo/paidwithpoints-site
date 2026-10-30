@@ -173,7 +173,7 @@
   var setOffer = function (k, badge, price, unit, sub, end) {
     var lim = document.getElementById('offer-lim'); if (lim) lim.style.display = 'none'; var pl = document.getElementById('offer-plans'); if (pl) pl.style.display = 'none'; $('.offer-p').style.display = '';
     $('.offer-k').textContent = k; $('.offer-badge').textContent = badge;
-    $('.offer-p').innerHTML = '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
+    $('.offer-p').innerHTML = (price === '$79' ? '<s aria-label="Regular price $99 a year">$99</s>' : '') + '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
   };
   // Black Friday launch wording during the founder offer: founders get in Nov 20, everyone on Nov 27
   var T_EARLY = Date.parse('2026-11-20T05:00:00Z'), T_BF = Date.parse('2026-11-27T05:00:00Z');
@@ -195,11 +195,13 @@
     $('.pill').textContent = 'BIRTHDAY LAUNCH · JAN 31';
     setOffer('THE FOUNDER OFFER HAS ENDED', 'BIRTHDAY LAUNCH · JAN 31 – FEB 6', '$79', ' first year', 'One week only, then $99/year. Join the list and I’ll send it to you first.', 'Opens January 31 · ends February 6 at midnight');
     if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b> during birthday launch week, Jan 31 – Feb 6';
+    setPerk1('<b>First to know</b> when the birthday deal opens');
     $('#go').innerHTML = 'Get the birthday deal first &rarr;'; $('.fine').textContent = 'No spam. Just the birthday launch and early access.';
   } else if (phase === 'bday') {
     $('.pill').textContent = 'BIRTHDAY LAUNCH · THIS WEEK ONLY';
     setOffer('BIRTHDAY LAUNCH', 'THIS WEEK ONLY', '$79', ' first year', 'Your first full year for $79, then $99/year.', 'Ends February 6 at midnight · <span id="cd"></span>');
     if (perk2) perk2.querySelector('span:last-child').innerHTML = '<b>$79 for your first year</b>, this week only (ends Feb 6)';
+    setPerk1('<b>Everything in Business Class:</b> Ask Wingman, dream trips, perks tracking');
     $('#go').innerHTML = 'Claim the $79 deal &rarr;'; $('.fine').textContent = 'No spam. I’ll send your link to claim it.';
     var cd = function () { var ms = Math.max(0, T_BDAY_END - Date.now() - skew), d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4); var el = document.getElementById('cd'); if (el) el.textContent = (d ? d + 'd ' : '') + h + 'h ' + m + 'm left'; };
     cd(); setInterval(cd, 30000);
