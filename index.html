@@ -1641,7 +1641,7 @@
 <section class="proof-bar">
   <div class="proof-bar-inner">
     <div class="proof-stat">
-      <div class="proof-stat-val" id="stat-total-saved">$59k</div>
+      <div class="proof-stat-val" id="stat-total-saved">$300k+</div>
       <div class="proof-stat-lbl">Total saved for clients</div>
     </div>
     <div class="proof-stat proof-stat-compare">
@@ -2610,7 +2610,7 @@
         const ap = document.getElementById('stat-avg-savings-pct');
         const tp = document.getElementById('stat-total-pts');
         const at = document.getElementById('stat-avg-trip');
-        if (ts && data.totalSaved > 0) ts.textContent = fmtSaved(data.totalSaved);
+        if (ts && data.totalSaved >= 300000) ts.textContent = fmtSaved(data.totalSaved); // until tracked bookings pass $300k, keep the all-time $300k+ (includes clients from before the dashboard)
         if (ac && data.avgCpp > 0) ac.textContent = data.avgCpp.toFixed(1) + '¢';
         if (ap && data.avgSavingsPct > 0) ap.textContent = data.avgSavingsPct + '%';
         if (tp && data.totalPts > 0) tp.textContent = fmtPts(data.totalPts);
