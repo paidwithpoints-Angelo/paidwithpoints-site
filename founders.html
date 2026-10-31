@@ -40,7 +40,7 @@
     .plan.best { border: 2px solid #FFD34E; background: rgba(255,211,78,.08); }
     .pl-tag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #FFD34E; color: #1a1405; font-size: 10px; font-weight: 800; letter-spacing: .06em; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
     .pl-k { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--blue-mid); }
-    .pl-p b { font-size: 30px; font-weight: 800; letter-spacing: -.02em; } .pl-p s { font-size: 14px; color: #9fc2e8; text-decoration-color: #ff8a8a; text-decoration-thickness: 2px; }
+    .pl-p b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; } .was { display: block; margin-top: 4px; font-size: 15px; font-weight: 600; color: #b9d2ee; } .offer-p .was s { font-size: inherit; margin: 0; font-weight: 600; color: inherit; } .was s { text-decoration-line: line-through; text-decoration-color: #ff9b9b; text-decoration-thickness: 1.5px; }
     .pl-u { font-size: 12.5px; color: #c7dcf3; }
     .offer-save { display: inline-block; margin-top: 6px; font-size: 12.5px; font-weight: 800; color: #bbf7d0; background: rgba(34,197,94,.18); border: 1px solid rgba(134,239,172,.4); border-radius: 999px; padding: 3px 10px; }
     .offer-s { font-size: 14px; color: var(--white); }
@@ -120,8 +120,8 @@
       <div class="offer-badge">LIFETIME RATE</div>
       <div class="offer-p" style="display:none"></div>
       <div class="plans" id="offer-plans">
-        <div class="plan"><div class="pl-k">MONTHLY</div><div class="pl-p"><s aria-label="Regular price $9.99 a month">$9.99</s> <b>$6.99</b></div><div class="pl-u">per month</div></div>
-        <div class="plan best"><div class="pl-tag">BEST DEAL</div><div class="pl-k">YEARLY</div><div class="pl-p"><s aria-label="Regular price $99 a year">$99</s> <b>$69</b></div><div class="pl-u">per year &middot; $5.75/mo</div></div>
+        <div class="plan"><div class="pl-k">MONTHLY</div><div class="pl-p"><span class="was">Reg. <s aria-label="Regular price $9.99 a month">$9.99</s></span><b>$6.99</b></div><div class="pl-u">per month</div></div>
+        <div class="plan best"><div class="pl-tag">BEST DEAL</div><div class="pl-k">YEARLY</div><div class="pl-p"><span class="was">Reg. <s aria-label="Regular price $99 a year">$99</s></span><b>$69</b></div><div class="pl-u">per year &middot; $5.75/mo</div></div>
       </div>
       <div class="offer-s">Either way, locked in for life. Never goes up.</div>
       <div class="offer-lim" id="offer-lim"><i></i>Limited to 100 members</div>
@@ -173,7 +173,7 @@
   var setOffer = function (k, badge, price, unit, sub, end) {
     var lim = document.getElementById('offer-lim'); if (lim) lim.style.display = 'none'; var pl = document.getElementById('offer-plans'); if (pl) pl.style.display = 'none'; $('.offer-p').style.display = '';
     $('.offer-k').textContent = k; $('.offer-badge').textContent = badge;
-    $('.offer-p').innerHTML = (price === '$79' ? '<s aria-label="Regular price $99 a year">$99</s>' : '') + '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
+    $('.offer-p').innerHTML = (price === '$79' ? '<span class="was">Reg. <s aria-label="Regular price $99 a year">$99</s></span>' : '') + '<b>' + price + '</b><span>' + unit + '</span>'; $('.offer-s').textContent = sub; $('#offer-end').innerHTML = end;
   };
   // Black Friday launch wording during the founder offer: founders get in Nov 20, everyone on Nov 27
   var T_EARLY = Date.parse('2026-11-20T05:00:00Z'), T_BF = Date.parse('2026-11-27T05:00:00Z');
