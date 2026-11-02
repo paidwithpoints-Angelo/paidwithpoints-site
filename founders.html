@@ -229,5 +229,58 @@
   });
 })();
 </script>
+<!-- "You're early" pop-up: only for tagged Instagram links (?from=...), once per visitor. App name is cropped out of the previews. -->
+<style>
+#ig-pop{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center;background:rgba(2,16,32,.6);padding:12px}
+#ig-pop.on{display:flex}
+@media(min-width:700px){#ig-pop{align-items:center}}
+.igp{position:relative;width:100%;max-width:420px;max-height:calc(100vh - 24px);overflow:auto;background:linear-gradient(180deg,#0C447C,#185FA5);border:1px solid rgba(133,183,235,.45);border-radius:22px;padding:20px 16px 16px;color:#fff;text-align:center;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
+@media(prefers-reduced-motion:no-preference){#ig-pop.on .igp{animation:igup .35s ease-out}@keyframes igup{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}}
+.igp-x{position:absolute;right:8px;left:auto;top:6px;width:auto;height:auto;margin:0;background:none;border:0;color:#c7dcf3;font-size:22px;cursor:pointer;padding:6px 10px}
+.igp-k{font-size:11px;font-weight:800;letter-spacing:.16em;color:#85B7EB;padding:0 28px}
+.igp-t{font-size:26px;font-weight:800;line-height:1.15;margin:6px 0 4px}
+.igp-s{font-size:14px;color:#c7dcf3;margin:0}
+.igp-rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px -16px 6px;padding:0 16px;scrollbar-width:none}
+.igp-rail::-webkit-scrollbar{display:none}
+.igp-sl{flex:0 0 78%;scroll-snap-align:center;border-radius:14px;overflow:hidden;border:3px solid rgba(255,255,255,.85);position:relative;background:#fff}
+.igp-sl img{display:block;width:100%;height:auto}
+.igp-sl span{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:rgba(4,44,83,.92);border:1px solid rgba(133,183,235,.5);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700;white-space:nowrap}
+.igp-dots{display:flex;gap:5px;justify-content:center;margin:4px 0 10px}.igp-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35)}.igp-dots i.on{background:#FFD34E}
+.igp-lock{display:inline-block;font-size:12.5px;font-weight:700;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 11px;margin-bottom:4px}
+.igp-b{display:block;width:100%;border:0;background:#FFD34E;color:#1a1405;font-weight:800;font-size:16px;border-radius:12px;padding:14px;margin-top:12px;cursor:pointer}
+</style>
+<div id="ig-pop" role="dialog" aria-modal="true" aria-labelledby="igp-t"><div class="igp">
+  <button class="igp-x" type="button" aria-label="Close" onclick="igClose()">&times;</button>
+  <div class="igp-k" id="igp-k">YOU&#8217;RE HERE FROM MY IG &#128064;</div>
+  <div class="igp-t" id="igp-t">You&#8217;re early.</div>
+  <p class="igp-s">Here&#8217;s a first look at what I&#8217;ve been building. Swipe &rarr;</p>
+  <div class="igp-rail" id="igp-rail">
+    <div class="igp-sl"><img src="/peek/home.jpg" alt="A first look: your points valued and your next trip" width="585" height="620"><span>Your points, valued</span></div>
+    <div class="igp-sl"><img src="/peek/plan.jpg" alt="A first look: a trip plan showing which points to move" width="585" height="535"><span>What they can book</span></div>
+    <div class="igp-sl"><img src="/peek/perks.jpg" alt="A first look: card credits you haven't used" width="585" height="620"><span>Credits you&#8217;re missing</span></div>
+  </div>
+  <div class="igp-dots" id="igp-dots"><i class="on"></i><i></i><i></i></div>
+  <div class="igp-lock">&#128274; Founders see the rest Nov 20</div>
+  <button class="igp-b" type="button" onclick="igClose(true)">Save my founder spot &rarr;</button>
+</div></div>
+<script>
+(function () {
+  var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
+  var from = (q.get('from') || '').toLowerCase(); if (!from) return;
+  try { if (localStorage.getItem('pwp-ig-pop')) return; } catch (e) {}
+  if (Date.now() >= Date.parse('2027-01-01T05:00:00Z') && !q.get('preview')) return;
+  if (from === 'bonus') { document.getElementById('igp-k').innerHTML = 'HERE FOR THE TRANSFER BONUSES? &#128064;'; }
+  var rail = document.getElementById('igp-rail'), dots = document.querySelectorAll('#igp-dots i');
+  rail.addEventListener('scroll', function () { var w = rail.firstElementChild.offsetWidth + 10, i = Math.round(rail.scrollLeft / w); dots.forEach(function (d, k) { d.classList.toggle('on', k === i); }); }, { passive: true });
+  setTimeout(function () { document.getElementById('ig-pop').classList.add('on'); }, 900);
+  window.igClose = function (go) {
+    document.getElementById('ig-pop').classList.remove('on');
+    try { localStorage.setItem('pwp-ig-pop', '1'); } catch (e) {}
+    if (go) { var c = document.getElementById('card'); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = document.getElementById('fn'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500); } }
+  };
+  document.getElementById('ig-pop').addEventListener('click', function (e) { if (e.target === this) igClose(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') igClose(); });
+})();
+</script>
 </body>
 </html>
