@@ -229,7 +229,7 @@
   });
 })();
 </script>
-<!-- "You're early" pop-up: only for tagged Instagram links (?from=...), once per visitor. App name is cropped out of the previews. -->
+<!-- "You're early" pop-up: every time a tagged Instagram link (?from=...) is opened. App name is cropped out of the previews. -->
 <style>
 #ig-pop{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center;background:rgba(2,16,32,.6);padding:12px}
 #ig-pop.on{display:flex}
@@ -273,7 +273,6 @@
 (function () {
   var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
   var from = (q.get('from') || '').toLowerCase(); if (!from) return;
-  try { if (localStorage.getItem('pwp-ig-pop')) return; } catch (e) {}
   if (Date.now() >= Date.parse('2027-01-01T05:00:00Z') && !q.get('preview')) return;
   if (from === 'bonus') { document.getElementById('igp-k').innerHTML = 'HERE FOR THE TRANSFER BONUSES? &#128064;';
     var lk = document.querySelector('.igp-lock'); if (lk) lk.insertAdjacentHTML('beforebegin', '<p class="igp-s" style="margin:2px 0 10px"><b style="color:#FFD34E">Join below and I&#8217;ll email you this month&#8217;s full transfer bonus list.</b></p>');
@@ -283,7 +282,6 @@
   setTimeout(function () { document.getElementById('ig-pop').classList.add('on'); }, 900);
   window.igClose = function (go) {
     document.getElementById('ig-pop').classList.remove('on');
-    try { localStorage.setItem('pwp-ig-pop', '1'); } catch (e) {}
     if (go) { var c = document.getElementById('card'); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = document.getElementById('fn'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500); } }
   };
   document.getElementById('ig-pop').addEventListener('click', function (e) { if (e.target === this) igClose(); });
