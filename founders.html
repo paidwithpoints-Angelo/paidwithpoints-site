@@ -223,7 +223,7 @@
     fetch(API + '/api/public/founders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ first_name: name, email: email, from: from, website: f.website.value }) })
       .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Something went wrong. Try again.'); return d; }); })
       .then(function () {
-        document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>' + (window._pwpPhase === 'founder' ? 'You’re on the founders list' : window._pwpPhase === 'after' ? 'You’re on the list' : 'You’re on the birthday launch list') + '</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p></div>';
+        document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>' + (window._pwpPhase === 'founder' ? 'You’re on the founders list' : window._pwpPhase === 'after' ? 'You’re on the list' : 'You’re on the birthday launch list') + '</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. ' + (/[?&]from=bonus\b/i.test(location.search) ? '<b>Check your inbox: this month’s transfer bonus list is on its way.</b> ' : '') + 'I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p></div>';
       })
       .catch(function (x) { err.textContent = x.message || 'Something went wrong. Try again.'; go.disabled = false; go.innerHTML = 'Save my founder spot &rarr;'; });
   });
@@ -264,12 +264,20 @@
   <button class="igp-b" type="button" onclick="igClose(true)">Save my founder spot &rarr;</button>
 </div></div>
 <script>
+// Visitors from tagged Instagram links: no product name until launch
+(function () { try { var fr = new URLSearchParams(location.search).get('from'); if (!fr) return; window._pwpHideName = true;
+  var lg = document.querySelector('header .logo'); if (lg) { var w = lg.querySelector('.wm'), b = lg.querySelector('.lby'); if (w) w.textContent = 'Paid With Points'; if (b) b.remove(); }
+  document.title = 'Founding Members — Paid With Points';
+  document.querySelectorAll('.perks li span:last-child').forEach(function (el) { el.innerHTML = el.innerHTML.replace(/Ask Wingman/g, 'Ask what your points can book').replace(/Wingman/g, 'the app'); });
+} catch (e) {} })();
 (function () {
   var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
   var from = (q.get('from') || '').toLowerCase(); if (!from) return;
   try { if (localStorage.getItem('pwp-ig-pop')) return; } catch (e) {}
   if (Date.now() >= Date.parse('2027-01-01T05:00:00Z') && !q.get('preview')) return;
-  if (from === 'bonus') { document.getElementById('igp-k').innerHTML = 'HERE FOR THE TRANSFER BONUSES? &#128064;'; }
+  if (from === 'bonus') { document.getElementById('igp-k').innerHTML = 'HERE FOR THE TRANSFER BONUSES? &#128064;';
+    var lk = document.querySelector('.igp-lock'); if (lk) lk.insertAdjacentHTML('beforebegin', '<p class="igp-s" style="margin:2px 0 10px"><b style="color:#FFD34E">Join below and I&#8217;ll email you this month&#8217;s full transfer bonus list.</b></p>');
+    var bt = document.querySelector('.igp-b'); if (bt) bt.innerHTML = 'Get the bonus list + my founder spot &rarr;'; }
   var rail = document.getElementById('igp-rail'), dots = document.querySelectorAll('#igp-dots i');
   rail.addEventListener('scroll', function () { var w = rail.firstElementChild.offsetWidth + 10, i = Math.round(rail.scrollLeft / w); dots.forEach(function (d, k) { d.classList.toggle('on', k === i); }); }, { passive: true });
   setTimeout(function () { document.getElementById('ig-pop').classList.add('on'); }, 900);
