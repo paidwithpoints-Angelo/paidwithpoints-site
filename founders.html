@@ -100,6 +100,13 @@
     }
     /* Short laptop screens: let the right column scroll with the page so the button is never cut off */
     @media (min-width: 920px) and (max-height: 860px) { main > .side { position: static; } .tripban img { height: 190px; } }
+    /* Founder plans are tappable: the chosen one is outlined; pay box replaces the old "save my spot" form */
+    #offer-plans .plan { cursor: pointer; transition: border-color .15s, box-shadow .15s, opacity .15s; }
+    #offer-plans .plan.sel { border-color: #FFD34E !important; box-shadow: 0 0 0 2px rgba(255,211,78,.55); opacity: 1; }
+    #offer-plans .plan:not(.sel) { opacity: .75; }
+    .paybox { text-align: center; }
+    .paybox .pb-h { font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 10px; }
+    .paybox .pb-btn { display: block; background: #FFD34E; color: #1a1405; font-weight: 800; font-size: 17px; border-radius: 12px; padding: 15px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
   </style>
 </head>
 <body>
@@ -136,14 +143,14 @@
         <input id="em" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
         <div class="hp" aria-hidden="true"><label for="ws">Website</label><input id="ws" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="err" id="err" role="alert"></div>
-        <button type="submit" id="go">Save my founder spot &rarr;</button>
+        <button type="submit" id="go">Join the list &rarr;</button>
         <div class="fine">No spam. Just early access and your founder rate.</div>
       </form>
     </div>
     </div>
 
     <ul class="perks">
-      <li><span class="ic">&#9992;</span><span><b>First access</b> before the public launch</span></li>
+      <li><span class="ic">&#9992;</span><span><b>Open now.</b> Sign up, pay, and start using it today</span></li>
       <li><span class="ic">&#11088;</span><span><b>$6.99/month or $69/year, for life</b> for the first 100 founders, until December 31, 2026</span></li>
       <li><span class="ic">&#129309;</span><span><b>Help from me</b> booking your trip, at the click of a button, when you want it</span></li>
     </ul>
@@ -180,16 +187,30 @@
   try { if (ph === 'early') now = T_EARLY + 1, skew = now - Date.now(); else if (ph === 'open') now = T_BF + 1, skew = now - Date.now(); } catch (e) {}
   var perk1 = document.querySelectorAll('.perks li')[0], setPerk1 = function (h) { if (perk1) perk1.querySelector('span:last-child').innerHTML = h; };
   if (phase === 'founder') {
-    if (now < T_EARLY) {
-      $('.pill').textContent = 'DOORS OPEN BLACK FRIDAY \u00b7 NOV 27';
-      setPerk1('<b>Founders get in Nov 20</b>, a week before doors open to everyone on Black Friday');
-    } else if (now < T_BF) {
-      $('.pill').textContent = 'FOUNDERS EARLY ACCESS IS OPEN';
-      setPerk1('<b>Founders are getting in now.</b> Doors open to everyone Black Friday, Nov 27');
-    } else {
-      $('.pill').textContent = 'DOORS ARE OPEN';
-      setPerk1('<b>Open now.</b> Join and I\u2019ll send your founder link');
-    }
+    // Wingman is open: sign up, pay with Stripe, use it right away (no more "save my spot")
+    $('.pill').textContent = 'OPEN NOW \u00b7 FOUNDING MEMBERS';
+    setPerk1('<b>Open now.</b> Sign up, pay, and start using it today');
+    var bill = 'mo', planEls = document.querySelectorAll('#offer-plans .plan');
+    var goUrl = function () { return API + '/riq/signup?plan=business&billing=' + bill; };
+    var paint = function () {
+      planEls.forEach(function (el, i) { el.classList.toggle('sel', (i === 1) === (bill === 'yr')); el.setAttribute('aria-pressed', (i === 1) === (bill === 'yr') ? 'true' : 'false'); });
+      var a = document.getElementById('pay-go'); if (a) { a.href = goUrl(); a.innerHTML = 'Join for ' + (bill === 'yr' ? '$69/year' : '$6.99/month') + ' &rarr;'; }
+    };
+    planEls.forEach(function (el, i) { el.setAttribute('role', 'button'); el.tabIndex = 0; var pick = function () { bill = i === 1 ? 'yr' : 'mo'; paint(); }; el.addEventListener('click', pick); el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } }); });
+    document.getElementById('card').innerHTML = '<div class="paybox"><div class="pb-h">Tap Monthly or Yearly above, then:</div>'
+      + '<a id="pay-go" class="pb-btn" href="#">Join &rarr;</a>'
+      + '<div class="fine">Create your account, pay securely with Stripe, and Business Class unlocks right away. Cancel any time.</div>'
+      + '<div class="fine" style="margin-top:6px">Already a member? <a href="' + API + '/riq/login" style="color:inherit;font-weight:700">Sign in</a></div></div>';
+    paint();
+    // Urgency line from Wingman (no member count), and what to show if the founder offer fills up early
+    fetch(API + '/riq/api/public/wm-price').then(function (r) { return r.json(); }).then(function (w) {
+      var lim = document.getElementById('offer-lim');
+      if (w.founder_open && w.urgency && lim) lim.innerHTML = '<i></i>' + w.urgency.text.replace(/^\S+\s/, '');
+      if (!w.founder_open) {
+        $('.offer-badge').textContent = 'FOUNDER SPOTS ARE FULL'; $('.offer-s').textContent = 'All 100 founder spots are taken. Business Class is $9.99/month or $99/year.';
+        if (lim) lim.style.display = 'none'; var a = document.getElementById('pay-go'); if (a) a.innerHTML = 'Get Business Class &rarr;';
+      }
+    }).catch(function () {});
   }
   if (phase === 'teaser') {
     $('.pill').textContent = 'BIRTHDAY LAUNCH · JAN 31';
@@ -214,7 +235,7 @@
   var from = '';
   try { from = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30); } catch (e) {}
   var f = document.getElementById('f'), err = document.getElementById('err'), go = document.getElementById('go');
-  f.addEventListener('submit', function (e) {
+  if (f) f.addEventListener('submit', function (e) { // the list form only exists outside the founder offer
     e.preventDefault(); err.textContent = '';
     var name = f.first_name.value.trim(), email = f.email.value.trim();
     if (!name) { err.textContent = 'Enter your first name'; f.first_name.focus(); return; }
@@ -225,7 +246,7 @@
       .then(function () {
         document.getElementById('card').innerHTML = '<div class="done"><div class="big">&#127881;</div><h2>' + (window._pwpPhase === 'founder' ? 'You’re on the founders list' : window._pwpPhase === 'after' ? 'You’re on the list' : 'You’re on the birthday launch list') + '</h2><p>Thanks, ' + name.replace(/[<>&"]/g, '') + '. ' + (/[?&]from=bonus\b/i.test(location.search) ? '<b>Check your inbox: this month’s transfer bonus list is on its way.</b> ' : '') + 'I’ll email you the moment doors open. Follow <a href="https://www.instagram.com/paidwithpoints/" target="_blank" rel="noopener">@paidwithpoints</a> so you don’t miss the launch.</p>' + (window._pwpPhase === 'founder' ? '<p style="margin-top:12px;font-size:14px;background:rgba(255,211,78,.14);border:1px solid rgba(255,211,78,.45);border-radius:10px;padding:9px 12px">&#128233; Don’t see my email? Check your <b>Promotions</b> tab (Gmail) or <b>Offers</b> folder (Yahoo), and drag it to your inbox so you get the early-access link.</p>' : '') + '</div>';
       })
-      .catch(function (x) { err.textContent = x.message || 'Something went wrong. Try again.'; go.disabled = false; go.innerHTML = 'Save my founder spot &rarr;'; });
+      .catch(function (x) { err.textContent = x.message || 'Something went wrong. Try again.'; go.disabled = false; go.innerHTML = 'Join the list &rarr;'; });
   });
 })();
 </script>
@@ -257,20 +278,20 @@ html.igp-open,html.igp-open body{overflow:hidden}
   <button class="igp-x" type="button" aria-label="Close" onclick="igClose()">&times;</button>
   <div class="igp-100"><i></i>LIMITED TO THE FIRST 100 MEMBERS</div>
   <div class="igp-k" id="igp-k">YOU&#8217;RE HERE FROM MY IG &#128064;</div>
-  <div class="igp-t" id="igp-t">You&#8217;re early.</div>
-  <p class="igp-s">Here&#8217;s a first look at what I&#8217;ve been building. Swipe &rarr;</p>
+  <div class="igp-t" id="igp-t">It&#8217;s open.</div>
+  <p class="igp-s">Here&#8217;s what I&#8217;ve been building. Swipe &rarr;</p>
   <div class="igp-rail" id="igp-rail">
     <div class="igp-sl"><img src="/peek/home.jpg" alt="A first look: your points valued and your next trip" width="585" height="620"><span>Your points, valued</span></div>
     <div class="igp-sl"><img src="/peek/plan.jpg" alt="A first look: a trip plan showing which points to move" width="585" height="535"><span>What they can book</span></div>
     <div class="igp-sl"><img src="/peek/perks.jpg" alt="A first look: card credits you haven't used" width="585" height="620"><span>Credits you&#8217;re missing</span></div>
   </div>
   <div class="igp-dots" id="igp-dots"><i class="on"></i><i></i><i></i></div>
-  <div class="igp-lock">&#128274; Founders see the rest Nov 20</div>
-  <div class="igp-foot"><button class="igp-b" type="button" onclick="igClose(true)">Save my founder spot &rarr;</button></div>
+  <div class="igp-lock">&#128275; Open now &middot; founder rate ends Dec 31</div>
+  <div class="igp-foot"><button class="igp-b" type="button" onclick="igClose(true)">Get my founder rate &rarr;</button></div>
 </div></div>
 <script>
 // Visitors from tagged Instagram links: no product name until launch
-(function () { try { var fr = new URLSearchParams(location.search).get('from'); if (!fr) return; window._pwpHideName = true;
+(function () { try { var fr = new URLSearchParams(location.search).get('from'); if (!fr || Date.now() >= Date.parse('2026-11-15T05:00:00Z')) return; window._pwpHideName = true; // launched Nov 15: name shows for everyone
   var lg = document.querySelector('header .logo'); if (lg) { var w = lg.querySelector('.wm'), b = lg.querySelector('.lby'); if (w) w.textContent = 'Paid With Points'; if (b) b.remove(); }
   document.title = 'Founding Members — Paid With Points';
   document.querySelectorAll('.perks li span:last-child').forEach(function (el) { el.innerHTML = el.innerHTML.replace(/Ask Wingman/g, 'Ask what your points can book').replace(/Wingman/g, 'the app'); });
@@ -280,14 +301,14 @@ html.igp-open,html.igp-open body{overflow:hidden}
   var from = (q.get('from') || '').toLowerCase(); if (!from) return;
   if (Date.now() >= Date.parse('2027-01-01T05:00:00Z') && !q.get('preview')) return;
   if (from === 'bonus') { document.getElementById('igp-k').innerHTML = 'HERE FOR THE TRANSFER BONUSES? &#128064;';
-    var lk = document.querySelector('.igp-lock'); if (lk) lk.insertAdjacentHTML('beforebegin', '<p class="igp-s" style="margin:2px 0 10px"><b style="color:#FFD34E">Join below and I&#8217;ll email you this month&#8217;s full transfer bonus list.</b></p>');
-    var bt = document.querySelector('.igp-b'); if (bt) bt.innerHTML = 'Get the bonus list + my founder spot &rarr;'; }
+    var lk = document.querySelector('.igp-lock'); if (lk) lk.insertAdjacentHTML('beforebegin', '<p class="igp-s" style="margin:2px 0 10px"><b style="color:#FFD34E">Every transfer bonus, ranked for your points, is inside Business Class.</b></p>');
+  }
   var rail = document.getElementById('igp-rail'), dots = document.querySelectorAll('#igp-dots i');
   rail.addEventListener('scroll', function () { var w = rail.firstElementChild.offsetWidth + 10, i = Math.round(rail.scrollLeft / w); dots.forEach(function (d, k) { d.classList.toggle('on', k === i); }); }, { passive: true });
   setTimeout(function () { document.getElementById('ig-pop').classList.add('on'); document.documentElement.classList.add('igp-open'); }, 900);
   window.igClose = function (go) {
     document.getElementById('ig-pop').classList.remove('on'); document.documentElement.classList.remove('igp-open');
-    if (go) { var c = document.getElementById('card'); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = document.getElementById('fn'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500); } }
+    if (go) { var c = document.getElementById('offer-plans') || document.getElementById('card'); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); var f = document.getElementById('fn'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500); } }
   };
   document.getElementById('ig-pop').addEventListener('click', function (e) { if (e.target === this) igClose(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') igClose(); });
