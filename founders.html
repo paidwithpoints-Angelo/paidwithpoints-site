@@ -101,9 +101,15 @@
     /* Short laptop screens: let the right column scroll with the page so the button is never cut off */
     @media (min-width: 920px) and (max-height: 860px) { main > .side { position: static; } .tripban img { height: 190px; } }
     /* Founder plans are tappable: the chosen one is outlined; pay box replaces the old "save my spot" form */
-    #offer-plans .plan { cursor: pointer; transition: border-color .15s, box-shadow .15s, opacity .15s; }
-    #offer-plans .plan.sel { border-color: #FFD34E !important; box-shadow: 0 0 0 2px rgba(255,211,78,.55); opacity: 1; }
-    #offer-plans .plan:not(.sel) { opacity: .75; }
+    #offer-plans .plan { cursor: pointer; transition: border-color .15s, box-shadow .15s, opacity .15s, transform .15s; }
+    #offer-plans .plan { border: 2px solid rgba(133,183,235,.35) !important; background: rgba(255,255,255,.04) !important; }
+    #offer-plans .plan.sel { border: 3px solid #FFD34E !important; background: rgba(255,211,78,.16) !important; box-shadow: 0 0 0 4px rgba(255,211,78,.25), 0 10px 26px rgba(0,0,0,.3); opacity: 1; transform: scale(1.03); }
+    #offer-plans .plan:not(.sel) { opacity: .5; }
+    #offer-plans .plan:not(.sel):hover { opacity: .8; }
+    #offer-plans .plan .pl-chk { display: none; position: absolute; top: -12px; right: -8px; width: 28px; height: 28px; border-radius: 50%; background: #FFD34E; color: #1a1405; font-size: 17px; font-weight: 900; line-height: 28px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,.35); }
+    #offer-plans .plan.sel .pl-chk { display: block; }
+    #offer-plans .plan .pl-on { display: none; margin-top: 7px; font-size: 11.5px; font-weight: 800; letter-spacing: .08em; color: #1a1405; background: #FFD34E; border-radius: 999px; padding: 3px 9px; }
+    #offer-plans .plan.sel .pl-on { display: inline-block; }
     .paybox { text-align: center; }
     .paybox .pb-h { font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 10px; }
     .paybox .pb-btn { display: block; background: #FFD34E; color: #1a1405; font-weight: 800; font-size: 17px; border-radius: 12px; padding: 15px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
@@ -190,14 +196,15 @@
     // Wingman is open: sign up, pay with Stripe, use it right away (no more "save my spot")
     $('.pill').textContent = 'OPEN NOW \u00b7 FOUNDING MEMBERS';
     setPerk1('<b>Open now.</b> Sign up, pay, and start using it today');
-    var bill = 'mo', planEls = document.querySelectorAll('#offer-plans .plan');
+    var bill = 'yr', planEls = document.querySelectorAll('#offer-plans .plan');
     var goUrl = function () { return API + '/riq/signup?plan=business&billing=' + bill; };
     var paint = function () {
       planEls.forEach(function (el, i) { el.classList.toggle('sel', (i === 1) === (bill === 'yr')); el.setAttribute('aria-pressed', (i === 1) === (bill === 'yr') ? 'true' : 'false'); });
       var a = document.getElementById('pay-go'); if (a) { a.href = goUrl(); a.innerHTML = 'Join for ' + (bill === 'yr' ? '$69/year' : '$6.99/month') + ' &rarr;'; }
+      var h = document.getElementById('pb-h'); if (h) h.textContent = bill === 'yr' ? 'Yearly selected: the best deal. Prefer monthly? Tap it above.' : 'Monthly selected. Tap Yearly above to save more.';
     };
-    planEls.forEach(function (el, i) { el.setAttribute('role', 'button'); el.tabIndex = 0; var pick = function () { bill = i === 1 ? 'yr' : 'mo'; paint(); }; el.addEventListener('click', pick); el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } }); });
-    document.getElementById('card').innerHTML = '<div class="paybox"><div class="pb-h">Tap Monthly or Yearly above, then:</div>'
+    planEls.forEach(function (el, i) { el.insertAdjacentHTML('afterbegin', '<span class="pl-chk" aria-hidden="true">\u2713</span>'); el.insertAdjacentHTML('beforeend', '<div class="pl-on">SELECTED</div>'); el.setAttribute('role', 'button'); el.tabIndex = 0; var pick = function () { bill = i === 1 ? 'yr' : 'mo'; paint(); }; el.addEventListener('click', pick); el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } }); });
+    document.getElementById('card').innerHTML = '<div class="paybox"><div class="pb-h" id="pb-h"></div>'
       + '<a id="pay-go" class="pb-btn" href="#">Join &rarr;</a>'
       + '<div class="fine">Create your account, pay securely with Stripe, and Business Class unlocks right away. Cancel any time.</div>'
       + '<div class="fine" style="margin-top:6px">Already a member? <a href="' + API + '/riq/login" style="color:inherit;font-weight:700">Sign in</a></div></div>';
