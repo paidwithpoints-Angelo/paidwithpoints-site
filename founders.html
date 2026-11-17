@@ -113,6 +113,15 @@
     .paybox { text-align: center; }
     .paybox .pb-h { font-size: 13px; font-weight: 700; color: #64748b; margin-bottom: 10px; }
     .paybox .pb-btn { display: block; background: #FFD34E; color: #1a1405; font-weight: 800; font-size: 17px; border-radius: 12px; padding: 15px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+    .vids { margin: 30px 0 6px; }
+    .vids h2 { font-size: 22px; font-weight: 800; margin: 0 0 4px; text-align: center; }
+    .vids .vs { text-align: center; color: #bcd9ff; font-size: 14px; margin: 0 0 14px; }
+    .vrow { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 12px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+    .vrow figure { margin: 0; flex: 0 0 210px; scroll-snap-align: start; }
+    .vrow video { width: 210px; aspect-ratio: 9/16; border-radius: 16px; background: #0b2347; display: block; box-shadow: 0 10px 26px rgba(0,0,0,.3); border: 1px solid rgba(133,183,235,.3); }
+    .vrow figcaption { font-size: 13.5px; font-weight: 700; margin-top: 8px; text-align: center; }
+    .vrow figcaption span { display: block; font-weight: 500; color: #bcd9ff; font-size: 12.5px; }
+    @media (min-width: 900px) { .vrow { display: grid; grid-template-columns: repeat(2, 210px); justify-content: center; overflow: visible; gap: 22px 28px; } }
   </style>
 </head>
 <body>
@@ -160,6 +169,17 @@
       <li><span class="ic">&#11088;</span><span><b>$6.99/month or $69/year, for life</b> for the first 100 founders, until December 31, 2026</span></li>
       <li><span class="ic">&#129309;</span><span><b>1:1 booking help, if you want it.</b> Request a session with me right in the app. It&#8217;s a paid add-on, priced per trip</span></li>
     </ul>
+
+    <section class="vids" aria-label="Wingman videos">
+      <h2>See Wingman in action</h2>
+      <p class="vs">Quick tours, about a minute each. Tap to play.</p>
+      <div class="vrow">
+        <figure><video src="/videos/why-wingman.mp4" poster="/videos/why-wingman.jpg" controls playsinline preload="none"></video><figcaption>Why trust Wingman<span>It reads the travel news daily</span></figcaption></figure>
+        <figure><video src="/videos/ask-wingman.mp4" poster="/videos/ask-wingman.jpg" controls playsinline preload="none"></video><figcaption>Ask Wingman anything<span>It knows your wallet</span></figcaption></figure>
+        <figure><video src="/videos/card-fees.mp4" poster="/videos/card-fees.jpg" controls playsinline preload="none"></video><figcaption>Card fees, paid back<span>See what each card earns you</span></figcaption></figure>
+        <figure><video src="/videos/card-credits.mp4" poster="/videos/card-credits.jpg" controls playsinline preload="none"></video><figcaption>Every credit, tracked<span>Never miss a statement credit</span></figcaption></figure>
+      </div>
+    </section>
 
     <div class="by">
       <span class="av" aria-hidden="true">A</span>
@@ -321,5 +341,6 @@ html.igp-open,html.igp-open body{overflow:hidden}
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') igClose(); });
 })();
 </script>
+<script>document.querySelectorAll(".vrow video").forEach(function(v){v.addEventListener("play",function(){document.querySelectorAll(".vrow video").forEach(function(o){if(o!==v)o.pause();});});});</script>
 </body>
 </html>
