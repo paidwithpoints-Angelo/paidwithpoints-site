@@ -34,6 +34,12 @@
     .hero-body { font-size: 18px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
     .hero-cta { display: inline-block; background: var(--gold); color: #fff; font-size: 15px; font-weight: 700; padding: 18px 40px; border-radius: 4px; text-decoration: none; letter-spacing: .02em; transition: background .18s; }
     .hero-cta:hover { background: #a07c22; }
+    .hero-video { position: relative; width: min(340px, 78vw); margin: 8px auto 44px; border-radius: 22px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(201,162,39,.35); background: #000; aspect-ratio: 9 / 16; }
+    .hero-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .hv-sound { position: absolute; left: 50%; bottom: 18%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.95); color: #111; border: 0; border-radius: 999px; padding: 12px 20px; font: 700 14px/1 inherit; font-family: inherit; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.4); animation: hvPulse 2s ease-in-out infinite; }
+    .hv-sound[hidden] { display: none; }
+    @keyframes hvPulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
+    .hv-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 14px; font-weight: 600; }
     .hero-note { margin-top: 40px; font-size: 13px; color: rgba(255,255,255,.75); letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
 
     /* SECTION SHARED */
@@ -196,6 +202,11 @@
   <div class="hero-inner">
     <div class="hero-kicker">Executive Concierge Membership</div>
     <h1>Your points.<br><em>Working harder than you think.</em></h1>
+    <div class="hv-label">See how it works · 4 min</div>
+    <div class="hero-video">
+      <video id="ecVideo" src="/videos/executive-concierge.mp4" poster="/videos/executive-concierge.jpg" autoplay muted playsinline preload="metadata"></video>
+      <button class="hv-sound" id="ecSound" type="button">🔊 Tap for sound</button>
+    </div>
     <p class="hero-body">Most high earners are quietly leaving $20,000–$50,000 in travel value on the table every single year. We handle the strategy, the searches, and the transfers — so your everyday spending turns into business-class flights and luxury stays. What you save on travel goes right back into the things that matter more. Your business. Your family. Your next big move.</p>
     <a href="https://wingman.paidwithpoints.com/intake" class="hero-cta">See If You Qualify</a>
     <p class="hero-note">Limited spots available · No commitment required</p>
@@ -495,6 +506,16 @@
     document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+</script>
+<script>
+(function(){
+  var v=document.getElementById('ecVideo'),b=document.getElementById('ecSound');
+  if(!v||!b)return;
+  function on(){v.muted=false;v.controls=true;try{v.currentTime=0;}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});b.hidden=true;}
+  b.addEventListener('click',on);
+  v.addEventListener('click',function(){if(v.muted)on();});
+  v.addEventListener('ended',function(){v.controls=true;b.hidden=true;});
+})();
 </script>
 </body>
 </html>
