@@ -41,6 +41,12 @@
     .hv-sound[hidden] { display: none; }
     @keyframes hvPulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
     .hv-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 14px; font-weight: 600; }
+    .free-steps{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;align-items:center;margin-top:22px;font-size:13px;font-weight:600;color:#fff}
+    .free-steps span.st{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 14px}
+    .free-steps span.st b{color:#7ee2a8}
+    .free-steps span.ar{color:rgba(255,255,255,.5)}
+    @media (max-width:560px){.free-steps{flex-direction:column}.free-steps span.ar{transform:rotate(90deg)}}
+    .free-pill{display:inline-block;background:#1A6B3C;color:#fff;font-size:11px;font-weight:800;letter-spacing:.14em;padding:4px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
     .hero-note { margin-top: 40px; font-size: 13px; color: rgba(255,255,255,.75); letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
 
     /* SECTION SHARED */
@@ -209,8 +215,9 @@
       <button class="hv-sound" id="ecSound" type="button">🔊 Tap for sound</button>
     </div>
     <p class="hero-body">Most high earners are quietly leaving $20,000–$50,000 in travel value on the table every single year. We handle the strategy, the searches, and the transfers — so your everyday spending turns into business-class flights and luxury stays. What you save on travel goes right back into the things that matter more. Your business. Your family. Your next big move.</p>
-    <a href="https://wingman.paidwithpoints.com/intake" class="hero-cta">See If You Qualify</a>
-    <p class="hero-note">Limited spots available · No commitment required</p>
+    <a href="https://wingman.paidwithpoints.com/intake" class="hero-cta">See If You Qualify<span class="free-pill">FREE</span></a>
+    <div class="free-steps"><span class="st">1 · Apply <b>free</b> (2 min)</span><span class="ar">→</span><span class="st">2 · Book your <b>free</b> discovery call</span></div>
+    <p class="hero-note">No payment · No card · No commitment · Limited spots</p>
   </div>
 </section>
 
@@ -392,7 +399,8 @@
       </div>
     </div>
     <p class="pricing-note">Memberships run for 12 months from your first payment and renew on the same date each year. See our <a href="refund-policy.html" style="color:rgba(184,146,42,.7)">Refund &amp; Cancellation Policy</a> for full terms.</p>
-    <a href="https://wingman.paidwithpoints.com/intake" class="pricing-cta">See If You Qualify</a>
+    <a href="https://wingman.paidwithpoints.com/intake" class="pricing-cta">See If You Qualify<span class="free-pill">FREE</span></a>
+    <p class="pricing-note" style="margin-top:14px">Free to apply · Free discovery call · No payment to book</p>
   </div>
 </section>
 
@@ -478,7 +486,7 @@
     <h2 class="section-h2">The call is free. The insight is real.</h2>
     <p class="section-body">See if you qualify. We'll look at your cards, your points, and your travel goals — and give you a straight answer on what's possible. No pitch. No pressure.</p>
     <a href="https://wingman.paidwithpoints.com/intake" class="btn-gold">See If You Qualify →</a>
-    <p class="final-note">We only take clients we can genuinely help. Spots are limited.</p>
+    <p class="final-note">Free to apply and free to book your call. No payment, no card. We only take clients we can genuinely help.</p>
   </div>
 </section>
 
